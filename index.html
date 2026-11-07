@@ -503,4 +503,13 @@
     </footer>
 
 </body>
+<div style="margin: 20px 0;">
+  <label for="content-select" style="font-weight: bold; margin-left: 10px;">اختر محتوى:</label>
+  <select id="content-select" onchange="if (this.value) window.location.href=this.value;" style="padding: 8px; border-radius: 5px; font-family: Tahoma;">
+    <option value="">-- تصفح أقسام الموقع --</option>
+    <option value="index.html">الصفحة الرئيسية</option>
+    <option value="story1.html">القصة الأولى</option>
+    <option value="sitemap.xml">خريطة الموقع</option>
+  </select>
+</div>
 </html>
