@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدونة الأستاذ ما شاء الله</title>    <!-- استدعاء خط "Tajawal" للغة العربية من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. المتغيرات والتنسيقات العامة (CSS Variables)
+           ========================================== */
+        :root {
+            --primary-color: #1e3a8a;       /* أزرق داكن راقٍ */
+            --secondary-color: #0d9488;     /* تركواز دافئ */
+            --accent-color: #d97706;        /* ذهبي دافئ للتأكيد */
+            --bg-light: #f8fafc;            /* خلفية فاتحة مريحة للعين */
+            --bg-card: #ffffff;             /* خلفية البطاقات */
+            --text-dark: #1e293b;           /* لون النصوص الرئيسية */
+            --text-muted: #64748b;          /* لون النصوص الفرعية */
+            --border-color: #e2e8f0;        /* لون الحدود */
+            --radius: 12px;                 /* انحناء الحواف */
+            --transition: all 0.3s ease;    /* التأثيرات الحركية */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ==========================================
+           2. شريط الملاحة (Navigation Header)
+           ========================================== */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ==========================================
+           3. القسم التعريفي الرئيسي (Hero Section)
+           ========================================== */
+        .hero {
+            padding: 90px 0 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #e0f2fe;
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero-title span {
+            color: var(--secondary-color);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 14px rgba(30, 58, 138, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .hero-avatar {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .avatar-img {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--bg-card);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* ==========================================
+           4. قسم المهارات والاهتمامات (Skills Section)
+           ========================================== */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 30px 25px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
+            border-color: rgba(13, 148, 136, 0.3);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #ccfbf1;
+            color: var(--secondary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           5. قسم التذييل (Footer)
+           ========================================== */
+        .footer {
+            background-color: #0f172a;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           6. التصميم المتجاوب (Responsive Design)
+           ========================================== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .avatar-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "مدونة الأستاذ ما شاء الله",
+    "url": "https://elhassanaitlahcen.netlify.app/"
+  }
+  </script>
+</head>
+<body>
+
+    <!-- 1. شريط التنقل (Header) -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+<span>مدونة الأستاذ ما شاء الله</span>            </a>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">نبذة عني</a></li>
+                <li><a href="#skills">اهتماماتي</a></li>
+                <li><a href="#contact">تواصل معي</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 2. قسم العرض الرئيسي (Hero Section) -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">أهلاً بك في المساحة الخاصة بي</span>
+                <h1 class="hero-title">مرحباً، أنا <span>طالب العلم والمعرفة</span></h1>
+                <p class="hero-description">
+                    مدرس ومطور شغوف بالتعلم المستمر والبحث في المناهج البرمجية والتربوية. أشارك هنا رحلتي في طلب العلم، وتجاربي، والمقالات المتميزة.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">تواصل معي</a>
+                    <a href="#skills" class="btn btn-secondary">استكشف اهتماماتي</a>
+                </div>
+            </div><div class="hero-avatar">
+    <div class="avatar-img" style="display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; color: #1e3a8a; background: #ffffff;">
+        ما شاء الله
+    </div>
+</div>
+    </section>
+
+    <!-- 3. قسم الاهتمامات والمهارات (Skills/Interests) -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">مجالات الاهتمام</h2>
+                <p class="section-subtitle">الركائز الأساسية التي أعمل عليها وأسعى لتطويرها دائماً</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- بطاقة 1 -->
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <h3 class="card-title">تطوير المواقع</h3>
+                    <p class="card-desc">كتابة الأكواد النظيفة لبناء مواقع وتطبيقات ويب سريعة، متجاوبة ومريحة للمستخدم.</p>
+                </div>
+
+                <!-- بطاقة 2 -->
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">البحث والتعليم</h3>
+                    <p class="card-desc">دراسة المناهج الحديثة وتبسيط المعلومات المعقدة لإتاحتها بصورة ميسرة للجميع.</p>
+                </div>
+
+				<!-- قسم الكتابة والتدوين -->
+<div class="card">
+    <h3>الكتابة والتدوين</h3>
+    <p>صياغة المقالات التخصصية والتربوية ونشر المعرفة النافعة لمشاركة الخبرات.</p>
+    
+    <!-- هذا هو كود الرابط المطلوب إضافته -->
+    <a href="story1.html" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background-color: #008080; color: white; text-decoration: none; border-radius: 5px;">اقرأ قصة الطفلتين</a>
+</div>
+
+                <!-- بطاقة 4 -->
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">تصميم الواجهات</h3>
+                    <p class="card-desc">الاهتمام بالتفاصيل البصرية والتناسق بين الألوان لإبراز المحتوى بشكل راقٍ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. التذييل (Footer) -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+ <div class="footer-logo">مدونة الأستاذ ما شاء الله</div>                <div class="footer-links">
+                    <a href="#home">الرئيسية</a>
+                    <a href="#about">نبذة عني</a>
+                    <a href="#skills">الاهتمامات</a>
+<a href="https://modawanaelhassan.blogspot.com/" target="_blank">زيارة مدونتي</a>
+					<p>&nbsp;<a href="https://surahquran.com/Radio-Quran-UAE.html">اضغظ هنا للرقية الشرعية.</a></p>
+                </div>
+            </div>
+            <p class="copyright">جميع الحقوق محفوظة &copy; 2026 | تم التصميم بشغف لطلب العلم</p>
+        </div>
+    </footer>
+
+</body>
+</html>
