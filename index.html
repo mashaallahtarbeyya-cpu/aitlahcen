@@ -439,5 +439,24 @@ function displayToast(msg) {
         📖 تلاوة عطرة
     </div>
 </div>
+	<!-- قسم تعليقات الزوار -->
+<div class="max-w-3xl mx-auto my-8 p-6 bg-white rounded-2xl shadow-xl border border-slate-200" dir="rtl">
+    <h3 class="text-lg font-bold text-slate-800 mb-4">💬 تعليقات الزوار</h3>
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+    var disqus_config = function () {
+        this.page.url = window.location.href;  // رابط الصفحة الحالي
+        this.page.identifier = window.location.pathname; // معرف فريد للصفحة
+    };
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://YOUR-SHORTNAME.disqus.com/embed.js'; // استبدل YOUR-SHORTNAME باسم حسابك في ديزكس
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.appendChild(s));
+    })();
+</script>
+<noscript>يرجى تفعيل جافا سكريبت لعرض التعليقات.</noscript>
 </body>
 	</html>
