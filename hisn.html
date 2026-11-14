@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حصن المسلم - الأذكار والأدعية اليومية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Changa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-deep: #0d4f3c;
+            --primary-green: #218756;
+            --primary-soft: #e8f3ee;
+            --accent-gold: #c9a227;
+            --text-ink: #1e2b27;
+            --bg-ivory: #f7f6f1;
+            --bg-card: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-ivory);
+            color: var(--text-ink);
+            font-family: 'Changa', sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .hisn-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(13,79,60,0.1);
+            overflow: hidden;
+            border: 1px solid rgba(13,79,60,0.1);
+        }
+        .hisn-hero {
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary-green));
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .hisn-hero h1 {
+            font-family: 'Amiri', serif;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .hisn-hero p {
+            color: #d1e7dd;
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .hisn-content {
+            padding: 30px;
+        }
+        /* تصميم خانة البحث الجديدة */
+        .search-box-container {
+            margin-bottom: 25px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            font-family: 'Changa', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: #faf9f5;
+            color: var(--text-ink);
+        }
+        .search-input:focus {
+            border-color: var(--primary-green);
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(33,135,86,0.1);
+        }
+        .hisn-section-title {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            color: var(--primary-deep);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        .hisn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .hisn-card {
+            background: #faf9f5;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .hisn-card:hover {
+            background: var(--primary-soft);
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+        .hisn-name {
+            font-weight: 600;
+            color: var(--primary-deep);
+            font-size: 14.5px;
+        }
+        .hisn-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hisn-badge {
+            background: var(--primary-green);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .hisn-audio-tag {
+            background: var(--accent-gold);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="hisn-container">
+    <div class="hisn-hero">
+        تصميم الاستاذ الحسن أيت لحسن
+        <h1>حصن المسلم</h1>
+        <p>الأذكار والأدعية الصحيحة من الكتاب والسنة للقراءة والاستماع اليومي.</p>
+    </div>
+    <div class="hisn-content">
+        
+        <!-- خانة البحث الفوري المضافة -->
+        <div class="search-box-container">
+            <input type="text" id="hisnSearch" placeholder="🔍 ابحث عن أي ذكر أو دعاء (مثل: الصباح، النوم، الصلاة...)..." class="search-input" onkeyup="filterHisnCards()">
+        </div>
+
+        <h2 class="hisn-section-title">فهرس أبواب الأذكار والأصوات</h2>                        
+        
+        <!-- قائمة البيانات المدمجة مع روابط الأصوات الآلية -->
+        <div id="raw-data" style="display:none;">
+            أذكار الاستيقاظ من النوم 4 https://quran.tv/adhkar/أذكار-الاستيقاظ-من-النوم
+            دعاء لبس الثوب 1 https://quran.tv/adhkar/دعاء-لبس-الثوب
+            دعاء لبس الثوب الجديد 1 https://quran.tv/adhkar/دعاء-لبس-الثوب-الجديد
+            الدعاء لمن لبس ثوباً جديداً 2 https://quran.tv/adhkar/الدعاء-لمن-لبس-ثوبا-جديدا
+            ما يقول إذا وضع ثوبه 1 https://quran.tv/adhkar/ما-يقول-إذا-وضع-ثوبه
+            دعاء دخول الخلاء 1 https://quran.tv/adhkar/دعاء-دخول-الخلاء
+            دعاء الخروج من الخلاء 1 https://quran.tv/adhkar/دعاء-الخروج-من-الخلاء
+            الذكر قبل الوضوء 1 https://quran.tv/adhkar/الذكر-قبل-الوضوء
+            الذكر بعد الفراغ من الوضوء 3 https://quran.tv/adhkar/الذكر-بعد-الفراغ-من-الوضوء
+            الذكر عند الخروج من المنزل 2 https://quran.tv/adhkar/الذكر-عند-الخروج-من-المنزل
+            الذكر عند دخول المنزل 1 https://quran.tv/adhkar/الذكر-عند-دخول-المنزل
+            دعاء الذهاب إلى المسجد 4 https://quran.tv/adhkar/دعاء-الذهاب-إلى-المسجد
+            دعاء دخول المسجد 2 https://quran.tv/adhkar/دعاء-دخول-المسجد
+            دعاء الخروج من المسجد 1 https://quran.tv/adhkar/دعاء-الخروج-من-المسجد
+            أذكار الأذان 5 https://quran.tv/adhkar/أذكار-الأذان
+            دعاء الاستفتاح 6 https://quran.tv/adhkar/دعاء-الاستفتاح
+            دعاء الركوع 5 https://quran.tv/adhkar/دعاء-الركوع
+            دعاء الرفع من الركوع 3 https://quran.tv/adhkar/دعاء-الرفع-من-الركوع
+            دعاء السجود 7 https://quran.tv/adhkar/دعاء-السجود
+            دعاء الجلسة بين السجدتين 2 https://quran.tv/adhkar/دعاء-الجلسة-بين-السجدتين
+            دعاء سجود التلاوة 2 https://quran.tv/adhkar/دعاء-سجود-التلاوة
+            التشهد 1 https://quran.tv/adhkar/التشهد
+            الصلاة على النبي صلى الله عليه وسلم بعد التشهد 2 https://quran.tv/adhkar/الصلاة-على-النبي-بعد-التشهد
+            الدعاء بعد التشهد الأخير وقبل السلام 11 https://quran.tv/adhkar/الدعاء-بعد-التشهد-الأخير-وقبل-السلام
+            الأذكار بعد السلام من الصلاة 8 https://quran.tv/adhkar/الأذكار-بعد-السلام-من-الصلاة
+            دعاء صلاة الاستخارة 1 https://quran.tv/adhkar/دعاء-صلاة-الاستخارة
+            أذكار الصباح 24 https://quran.tv/adhkar/أذكار-الصباح
+            أذكار المساء 22 https://quran.tv/adhkar/أذكار-المساء
+            أذكار النوم 15 https://quran.tv/adhkar/أذكار-النوم
+            الدعاء إذا تقلب ليلا 1 https://quran.tv/adhkar/الدعاء-إذا-تقلب-ليلا
+            دعاء الفزع في النوم ومن بلي بالوحشة 1 https://quran.tv/adhkar/دعاء-الفزع-في-النوم-ومن-بلي-بالوحشة
+            ما يفعل من رأى الرؤيا أو الحلم 5 https://quran.tv/adhkar/ما-يفعل-من-رأى-الرؤيا-أو-الحلم
+            دعاء قنوت الوتر 3 https://quran.tv/adhkar/دعاء-قنوت-الوتر
+            الذكر عقب السلام من الوتر 1 https://quran.tv/adhkar/الذكر-عقب-السلام-من-الوتر
+            دعاء الهم والحزن 2 https://quran.tv/adhkar/دعاء-الهم-والحزن
+            دعاء الكرب 4 https://quran.tv/adhkar/دعاء-الكرب
+            دعاء لقاء العدو وذي السلطان 3 https://quran.tv/adhkar/دعاء-لقاء-العدو-وذي-السلطان
+            دعاء من خاف ظلم السلطان 2 https://quran.tv/adhkar/دعاء-من-خاف-ظلم-السلطان
+            الدعاء على العدو 1 https://quran.tv/adhkar/الدعاء-على-العدو
+            ما يقول من خاف قوما 1 https://quran.tv/adhkar/ما-يقول-من-خاف-قوما
+            دعاء من أصابه شك في الإيمان 4 https://quran.tv/adhkar/دعاء-من-أصابه-شك-في-الإيمان
+            دعاء قضاء الدين 2 https://quran.tv/adhkar/دعاء-قضاء-الدين
+            دعاء الوسوسة في الصلاة والقراءة 1 https://quran.tv/adhkar/دعاء-الوسوسة-في-الصلاة-والقراءة
+            دعاء من استصعب عليه أمر 1 https://quran.tv/adhkar/دعاء-من-استصعب-عليه-أمر
+            ما يقول ويفعل من أذنب ذنبا 1 https://quran.tv/adhkar/ما-يقول-ويفعل-من-أذنب-ذنبا
+            دعاء طرد الشيطان ووساوسه 3 https://quran.tv/adhkar/دعاء-طرد-الشيطان-ووساوسه
+            الدعاء حينما يقع ما لا يرضاه أو غلب على أمره 1 https://quran.tv/adhkar/الدعاء-حينما-يقع-ما-لا-يرضاه-أو-غلب-على-أمره
+            تهنئة المولود له وجوابه 1 https://quran.tv/adhkar/تهنئة-المولود-له-وجوابه
+            ما يعوذ به الأولاد 1 https://quran.tv/adhkar/ما-يعوذ-به-الأولاد
+            الدعاء للمريض في عيادته 2 https://quran.tv/adhkar/الدعاء-للمريض-في-عيادته
+            فضل عيادة المريض 1 https://quran.tv/adhkar/فضل-عيادة-المريض
+            دعاء المريض الذي يئس من حياته 3 https://quran.tv/adhkar/دعاء-المريض-الذي-يئس-من-حياته
+            تلقين المحتضر 1 https://quran.tv/adhkar/تلقين-المحتضر
+            دعاء من أصيب بمصيبة 1 https://quran.tv/adhkar/دعاء-من-أصيب-بمصيبة
+            الدعاء عند إغماض الميت 1 https://quran.tv/adhkar/الدعاء-عند-إغماض-الميت
+            الدعاء للميت في الصلاة عليه 4 https://quran.tv/adhkar/الدعاء-للميت-في-الصلاة-عليه
+            الدعاء للفرط في الصلاة عليه 3 https://quran.tv/adhkar/الدعاء-للفرط-في-الصلاة-عليه
+            دعاء التعزية 2 https://quran.tv/adhkar/دعاء-التعزية
+            الدعاء عند إدخال الميت القبر 1 https://quran.tv/adhkar/الدعاء-عند-إدخال-الميت-القبر
+            الدعاء بعد دفن الميت 1 https://quran.tv/adhkar/الدعاء-بعد-دفن-الميت
+            دعاء زيارة القبور 1 https://quran.tv/adhkar/دعاء-زيارة-القبور
+            دعاء الريح 2 https://quran.tv/adhkar/دعاء-الريح
+            دعاء الرعد 1 https://quran.tv/adhkar/دعاء-الرعد
+            من أدعية الاستسقاء 3 https://quran.tv/adhkar/من-أدعية-الاستسقاء
+            الدعاء إذا نزل المطر 1 https://quran.tv/adhkar/الدعاء-إذا-نزل-المطر
+            الذكر بعد نزول المطر 1 https://quran.tv/adhkar/الذكر-بعد-نزول-المطر
+            من أدعية الاستصحاء 1 https://quran.tv/adhkar/من-أدعية-الاستصحاء
+            دعاء رؤية الهلال 1 https://quran.tv/adhkar/دعاء-رؤية-الهلال
+            الدعاء عند إفطار الصائم 2 https://quran.tv/adhkar/الدعاء-عند-إفطار-الصائم
+            الدعاء قبل الطعام 2 https://quran.tv/adhkar/الدعاء-قبل-الطعام
+            الدعاء عند الفراغ من الطعام 2 https://quran.tv/adhkar/الدعاء-عند-الفراغ-من-الطعام
+            دعاء الضيف لصاحب الطعام 1 https://quran.tv/adhkar/دعاء-الضيف-لصاحب-الطعام
+            الدعاء لمن سقاه أو إذا أراد ذلك 1 https://quran.tv/adhkar/الدعاء-لمن-سقاه-أو-إذا-أراد-ذلك
+            الدعاء إذا أفطر عند أهل بيت 1 https://quran.tv/adhkar/الدعاء-إذا-أفطر-عند-أهل-بيت
+            دعاء الصائم إذا حضر الطعام ولم يفطر 1 https://quran.tv/adhkar/دعاء-الصائم-إذا-حضر-الطعام-ولم-يفطر
+            ما يقول الصائم إذا سابه أحد 1 https://quran.tv/adhkar/ما-يقول-الصائم-إذا-سابه-أحد
+            الدعاء عند رؤية باكورة الثمر 1 https://quran.tv/adhkar/الدعاء-عند-رؤية-باكورة-الثمر
+            دعاء العطاس 1 https://quran.tv/adhkar/دعاء-العطاس
+            ما يقال للكافر إذا عطس فحمد الله 1 https://quran.tv/adhkar/ما-يقال-للكافر-إذا-عطس-فحمد-الله
+            الدعاء للمتزوج 1 https://quran.tv/adhkar/الدعاء-للمتزوج
+            دعاء المتزوج وشراء الدابة 1 https://quran.tv/adhkar/دعاء-المتزوج-وشراء-الدابة
+            الدعاء قبل إتيان الزوجة 1 https://quran.tv/adhkar/الدعاء-قبل-إتيان-الزوجة
+            دعاء الغضب 1 https://quran.tv/adhkar/دعاء-الغضب
+            دعاء من رأى مبتلى 1 https://quran.tv/adhkar/دعاء-من-رأى-مبتلى
+            ما يقال في المجلس 1 https://quran.tv/adhkar/ما-يقال-في-المجلس
+            كفارة المجلس 1 https://quran.tv/adhkar/كفارة-المجلس
+            الدعاء لمن قال غفر الله لك 1 https://quran.tv/adhkar/الدعاء-لمن-قال-غفر-الله-لك
+            الدعاء لمن صنع إليك معروفا 1 https://quran.tv/adhkar/الدعاء-لمن-صنع-إليك-معروفا
+            ما يعصم الله به من الدجال 2 https://quran.tv/adhkar/ما-يعصم-الله-به-من-الدجال
+            الدعاء لمن قال إني أحبك في الله 1 https://quran.tv/adhkar/الدعاء-لمن-قال-إني-أحبك-في-الله
+            الدعاء لمن عرض عليك ماله 1 https://quran.tv/adhkar/الدعاء-لمن-عرض-عليك-ماله
+            الدعاء لمن أقرض عند القضاء 1 https://quran.tv/adhkar/الدعاء-لمن-أقرض-عند-القضاء
+            دعاء الخوف من الشرك 1 https://quran.tv/adhkar/دعاء-الخوف-من-الشرك
+            الدعاء لمن قال بارك الله فيك 1 https://quran.tv/adhkar/الدعاء-لمن-قال-بارك-الله-فيك
+            دعاء كراهية الطيرة 1 https://quran.tv/adhkar/دعاء-كراهية-الطيرة
+            دعاء الركوب 1 https://quran.tv/adhkar/دعاء-الركوب
+            دعاء السفر 1 https://quran.tv/adhkar/دعاء-السفر
+            دعاء دخول القرية أو البلدة 1 https://quran.tv/adhkar/دعاء-دخول-القرية-أو-البلدة
+            دعاء دخول السوق 1 https://quran.tv/adhkar/دعاء-دخول-السوق
+            الدعاء إذا تعس المركوب 1 https://quran.tv/adhkar/دعاء-إذا-تعس-المركوب
+            دعاء المسافر للمقيم 1 https://quran.tv/adhkar/دعاء-المسافر-للمقيم
+            دعاء المقيم للمسافر 2 https://quran.tv/adhkar/دعاء-المقيم-للمسافر
+            التكبير والتسبيح في سير السفر 1 https://quran.tv/adhkar/التكبير-والتسبيح-في-سير-السفر
+            دعاء المسافر إذا أسحر 1 https://quran.tv/adhkar/دعاء-المسافر-إذا-أسحر
+            الدعاء إذا نزل منزلا في سفر أو غيره 1 https://quran.tv/adhkar/الدعاء-إذا-نزل-منزلا-في-سفر-أو-غيره
+            ذكر الرجوع من السفر 1 https://quran.tv/adhkar/ذكر-الرجوع-من-السفر
+            ما يقول من أتاه أمر يسره أو يكرهه 1 https://quran.tv/adhkar/ما-يقول-من-أتاه-أمر-يسره-أو-يكرهه
+            فضل الصلاة على النبي صلى الله عليه وسلم 5 https://quran.tv/adhkar/فضل-الصلاة-على-النبي
+            إفشاء السلام 3 https://quran.tv/adhkar/إفشاء-السلام
+            كيف يرد السلام على الكافر إذا سلم 1 https://quran.tv/adhkar/كيف-يرد-السلام-على-الكافر
+            الدعاء عند صياح الديك ونهيق الحمار 1 https://quran.tv/adhkar/الدعاء-عند-صياح-الديك
+            الدعاء عند سماع نباح الكلاب بالليل 1 https://quran.tv/adhkar/الدعاء-عند-سماع-نباح-الكلاب
+            الدعاء لمن سببته 1 https://quran.tv/adhkar/الدعاء-لمن-سببته
+            ما يقول المسلم إذا مدح المسلم 1 https://quran.tv/adhkar/ما-يقول-المسلم-إذا-مدح
+            ما يقول المسلم إذا زكي 1 https://quran.tv/adhkar/ما-يقول-المسلم-إذا-زكي
+            كيف يلبي المحرم في الحج أو العمرة 1 https://quran.tv/adhkar/كيف-يلبي-المحرم
+            التكبير إذا أتى الركن الأسود 1 https://quran.tv/adhkar/التكبير-إذا-أتى-الركن-الأسود
+            الدعاء بين الركن اليماني والحجر الأسود 1 https://quran.tv/adhkar/الدعاء-بين-الركن-اليماني
+            دعاء الوقوف على الصفا والمروة 1 https://quran.tv/adhkar/دعاء-الوقوف-على-الصفا-والمروة
+            دعاء يوم عرفة 1 https://quran.tv/adhkar/دعاء-يوم-عرفة
+            الذكر عند المشعر الحرام 1 https://quran.tv/adhkar/الذكر-عند-المشعر-الحرام
+            التكبير عند رمي الجمار مع كل حصاة 1 https://quran.tv/adhkar/التكبير-عند-رمي-الجمار
+            دعاء التعجب والأمر السار 2 https://quran.tv/adhkar/دعاء-التعجب-والأمر-السار
+            ما يفعل من أتاه أمر يسره 1 https://quran.tv/adhkar/ما-يفعل-من-أتاه-أمر-يسره
+            ما يقول من أحس وجعا في جسده 1 https://quran.tv/adhkar/ما-يقول-من-حس-وجعا
+            دعاء من خشي أن يصيب شيئا بعينه 1 https://quran.tv/adhkar/دعاء-من-خشي-أن-يصيب-شيئا
+            ما يقال عند الفزع 1 https://quran.tv/adhkar/ما-يقال-عند-الفزع
+            ما يقول عند الذبح أو النحر 1 https://quran.tv/adhkar/ما-يقول-عند-الذبح-أو-النحر
+            ما يقول لرد كيد مردة الشياطين 1 https://quran.tv/adhkar/ما-يقول-لرد-كيد-مردة
+            الاستغفار والتوبة 6 https://quran.tv/adhkar/الاستغفار-والتوبة
+            فضل التسبيح والتحميد والتهليل 12 https://quran.tv/adhkar/فضل-التسبيح-والتحميد
+            كيف كان النبي صلى الله عليه وسلم يسبح 1 https://quran.tv/adhkar/كيف-كان-النبي-يسبح
+            من أنواع الخير والآداب الجامعة 1 https://quran.tv/adhkar/من-أنواع-الخير
+        </div>
+        
+        <div class="hisn-grid" id="hisn-container-grid"></div>
+    </div>
+</div>
+
+<script>
+    // توليد البطاقات تلقائياً من البيانات النصية
+    const rawElement = document.getElementById('raw-data');
+    if (rawElement) {
+        const lines = rawElement.innerText.trim().split('\n');
+        const grid = document.getElementById('hisn-container-grid');
+        lines.forEach(line => {
+            if(!line.trim()) return;
+            const parts = line.trim().split(/\s+/);
+                        
+            let audioLink = "#";
+            let titleParts = [];
+            let count = "1";
+
+            if (parts[parts.length - 1].startsWith('http')) {
+                audioLink = parts[parts.length - 1];
+                count = parts[parts.length - 2];
+                titleParts = parts.slice(0, parts.length - 2);
+            } else {
+                count = parts[parts.length - 1];
+                titleParts = parts.slice(0, parts.length - 1);
+            }
+
+            const title = titleParts.join(' ');
+
+            const card = document.createElement('a');
+            card.className = 'hisn-card';
+            card.href = audioLink;
+            card.target = "_blank";
+            // نضيف خاصية لتسهيل البحث بالصيغة النصية
+            card.setAttribute('data-title', title);
+            card.innerHTML = `
+                <span class="hisn-name">${title}</span>
+                <div class="hisn-right">
+                    <span class="hisn-audio-tag">🔊 استماع</span>
+                    <span class="hisn-badge">${count}</span>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // دالة البحث الفوري المفلترة للبطاقات
+    function filterHisnCards() {
+        let input = document.getElementById('hisnSearch').value.toLowerCase().trim();
+        let cards = document.getElementsByClassName('hisn-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].getAttribute('data-title').toLowerCase();
+            if (title.indexOf(input) > -1) {
+                cards[i].style.display = ""; // إظهار البطاقة إذا تطابق البحث
+            } else {
+                cards[i].style.display = "none"; // إخفاء البطاقة إذا لم تتطابق
+            }
+        }
+    }
+</script>
+</body>
+</html>
