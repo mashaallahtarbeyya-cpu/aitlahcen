@@ -64,6 +64,136 @@
         كيف تساهم الأدوات البرمجية التفاعلية وأزرار التبديل الذكية في ضبط النظام داخل أقسام التعليم الاعدادي وتسهيل أخذ الحضور...
       </p>
 </body>
+		<!-- شريط التنقل العلوي الموحد لجميع صفحات الموقع -->
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="index.html" class="site-logo">موقع الأستاذ الحسن أيت لحسن</a>
+    
+    <div class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="husn.html">حصن المسلم</a>
+      
+      <!-- قائمة منسدلة لـ فضاء التربية -->
+      <div class="dropdown">
+        <a href="tarbeya.html" class="drop-btn">فضاء التربية ▼</a>
+        <div class="dropdown-menu">
+          <a href="#">تخطيطات الوحدات</a>
+          <a href="daftar.html">دفتر النصوص الرقمي</a>
+          <a href="#">أنشطة دعم المتعلمين</a>
+        </div>
+      </div>
+
+      <!-- قائمة منسدلة لـ قصائد ونفحات -->
+      <div class="dropdown">
+        <a href="qasaid.html" class="drop-btn">قصائد ونفحات ▼</a>
+        <div class="dropdown-menu">
+          <a href="#">من وحي السكون والرحلة</a>
+          <a href="#">خواطر أدبية</a>
+        </div>
+      </div>
+
+      <!-- قائمة منسدلة لـ أدوات الأستاذ -->
+      <div class="dropdown">
+        <a href="Rawabit.html" class="drop-btn">أدوات الأستاذ ▼</a>
+        <div class="dropdown-menu">
+          <a href="Rawabit.html">روابط مفيدة</a>
+          <a href="daftar.html">دفتر النصوص</a>
+        </div>
+      </div>
+
+      <a href="contact.html">اتصل بنا</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* تنسيق شريط التنقل العلوي */
+  .site-nav {
+    background-color: #1e3a5f;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    direction: rtl;
+  }
+
+  .nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .site-logo {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links > a, .drop-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-links > a:hover, .drop-btn:hover {
+    color: #ffffff;
+    background-color: #0f766e;
+  }
+
+  /* تصميم القائمة المنسدلة في الشريط العلوي */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    z-index: 100;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .dropdown-menu a {
+    color: #334155;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: right;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f1f5f9;
+    color: #0f766e;
+  }
+
+  /* إظهار القائمة عند المرور بالفأرة أو النقر في الهاتف */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+</style>
 </html>
 
     <!-- مقال 2 -->
