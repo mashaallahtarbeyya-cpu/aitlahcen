@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خريطة القسم التقنية - إدارة المقاعد</title>
+<!-- Tailwind CSS للتنسيق الحديث والتجاوب -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Tajawal', sans-serif;
+background-color: #f8fafc;
+}
+/* تنسيقات خاصة بالطباعة */
+@media print {
+.no-print {
+display: none !important;
+}
+body {
+background-color: #ffffff;
+padding: 0;
+margin: 0;
+}
+.container-box {
+box-shadow: none !important;
+border: none !important;
+width: 100% !important;
+max-width: 100% !important;
+padding: 0 !important;
+}
+input {
+border: 1px solid #cbd5e1 !important;
+background-color: transparent !important;
+}
+.seat-card {
+break-inside: avoid;
+}
+}
+</style>
+</head>
+<body class="text-slate-800 p-2 sm:p-6 min-h-screen">
+
+<div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-8 container-box transition-all">
+<!-- الهيدر والتحكم في الأقسام -->
+<div class="no-print flex flex-col md:flex-row justify-between items-center gap-4 mb-6 pb-6 border-b border-slate-200">
+<div>
+<h1 class="text-2xl sm:text-3xl font-extrabold text-emerald-800 flex items-center gap-2">
+<span>📋</span> خريطة القسم التقنية
+</h1>
+<p class="text-xs sm:text-sm text-slate-500 mt-1">توزيع وتريب المقاعد التفاعلي للسنوات والأقسام الستة</p>
+</div>
+
+<!-- محدد الأقسام والأزرار -->
+<div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto">
+<div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-1.5">
+<label for="classSelect" class="font-bold text-emerald-900 text-sm whitespace-nowrap">القسم:</label>
+<select id="classSelect" onchange="changeClass(this.value)" class="bg-white border border-emerald-300 font-bold text-emerald-800 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+<option value="1">القسم 1</option>
+<option value="2">القسم 2</option>
+<option value="3">القسم 3</option>
+<option value="4">القسم 4</option>
+<option value="5">القسم 5</option>
+<option value="6">القسم 6</option>
+</select>
+</div>
+
+<button onclick="saveCurrentClassData()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition-all shadow-md hover:shadow-lg flex items-center gap-1">
+<span>💾</span> حفظ البيانات
+</button>
+
+<button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition-all shadow-md hover:shadow-lg flex items-center gap-1">
+<span>🖨️</span> طباعة الخريطة
+</button>
+
+<button onclick="clearCurrentClassData()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold px-3 py-2 rounded-xl text-sm transition-all">
+<span>🗑️</span> تفريغ
+</button>
+</div>
+</div>
+
+<!-- منصة السبورة/المعلم (إرشاد موقع الرؤية) -->
+<div class="mb-6 text-center">
+<div class="inline-block bg-slate-800 text-slate-100 font-bold px-12 py-2 rounded-lg shadow-md border-b-4 border-emerald-500 text-sm tracking-wide">
+🖥️ السبورة / مكتب الأستاذ (الأمام)
+</div>
+</div>
+
+<!-- رسالة التنبيه عند الحفظ -->
+<div id="toast" class="hidden no-print fixed bottom-5 left-5 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-bold border-r-4 border-emerald-500 z-50">
+تم حفظ البيانات بنجاح!
+</div>
+
+<!-- شبكة المقاعد (4 صفوف/أعمدة رئيسية) -->
+<!-- الترتيب يظهر من 6 أعلى إلى 1 أسفل لتوزيع الصفوف التنازلي بصرياً، ولكن الترقيم يُقرأ من 1 في الأسفل -->
+<div class="overflow-x-auto">
+<div class="min-w-[700px]">
+<!-- رؤوس الأعمدة (أسماء الصفوف) -->
+<div class="grid grid-cols-12 gap-2 mb-3 text-center font-bold text-slate-700 text-sm sm:text-base">
+<div class="col-span-1 text-slate-400">#</div>
+<div class="col-span-2 bg-emerald-100 text-emerald-900 py-2 rounded-lg border border-emerald-200">الصف 1 (اليمين)</div>
+<div class="col-span-1 text-slate-300"></div>
+<div class="col-span-2 bg-blue-100 text-blue-900 py-2 rounded-lg border border-blue-200">الصف 2 (الوسط يمين)</div>
+<div class="col-span-1 text-slate-300"></div>
+<div class="col-span-2 bg-indigo-100 text-indigo-900 py-2 rounded-lg border border-indigo-200">الصف 3 (الوسط يسار)</div>
+<div class="col-span-1 text-slate-300"></div>
+<div class="col-span-2 bg-purple-100 text-purple-900 py-2 rounded-lg border border-purple-200">الصف 4 (اليسار)</div>
+</div>
+
+<!-- حاوي جميع الصفوف الستة -->
+<div id="seatingGrid" class="space-y-3">
+<!-- سيتم توليد المقاعد ديناميكياً عن طريق JavaScript -->
+</div>
+
+</div>
+</div>
+
+<!-- التذييل والتعليمات -->
+<div class="mt-8 pt-4 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+<div>خريطة القسم التقنية &copy; 2026 - مخصصة لتنظيم الأقسام والمقاعد المزدوجة</div>
+<div class="no-print font-medium text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+💡 يتم حفظ البيانات تلقائياً في المتصفح بكل أمان
+</div>
+</div>
+
+</div>
+
+<!-- السكريبت البرمجي لإدارة البيانات والشبكة -->
+<script>
+const NUM_ROWS = 6; // عدد المقاعد في كل عمود (1 إلى 6)
+const NUM_COLS = 4; // عدد الأعمدة (الصفوف الأربعة)
+let currentClass = "1"; // القسم الحالي المختار
+
+// أسماء الصفوف الأربعة
+const colNames = ["اليمين", "الوسط اليمين", "الوسط اليسار", "اليسار"];
+
+// كائن تخزين بيانات جميع الأقسام الستة
+let allData = {};
+
+// عند تحميل الصفحة
+window.onload = function() {
+loadSavedData();
+renderGrid();
+loadClassDataToUI(currentClass);
+};
+
+// إنتاج الشبكة الهندسية للمقاعد
+function renderGrid() {
+const gridContainer = document.getElementById('seatingGrid');
+gridContainer.innerHTML = '';
+
+// نولد الصفوف من المقعد 6 في الأعلى إلى المقعد 1 في الأسفل ليطابق شكل القاعة
+for (let r = NUM_ROWS; r >= 1; r--) {
+const rowDiv = document.createElement('div');
+rowDiv.className = 'grid grid-cols-12 gap-2 items-center bg-slate-50/50 p-2 rounded-xl border border-slate-200 hover:border-slate-300 transition-all';
+// العمود الأول: رقم المقعد الجانبي (1 إلى 6)
+let htmlContent = `
+<div class="col-span-1 flex items-center justify-center">
+<span class="w-8 h-8 rounded-full bg-slate-700 text-white font-black text-sm flex items-center justify-center shadow-sm">
+${r}
+</span>
+</div>
+`;
+
+// إضافة المقاعد للأعمدة الأربعة
+for (let c = 1; c <= NUM_COLS; c++) {
+htmlContent += `
+<div class="col-span-2 seat-card bg-white p-2 rounded-lg border border-slate-300 shadow-sm hover:shadow transition-all">
+<div class="text-[10px] font-bold text-slate-400 mb-1 text-center border-b border-slate-100 pb-0.5">
+مقعد ${r} - ${colNames[c-1]}
+</div>
+<div class="grid grid-cols-2 gap-1">
+<div>
+<input type="text"
+id="seat_${r}_${c}_right"
+placeholder="الشق الأيمن"
+oninput="autoSaveData()"
+class="w-full text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded px-1.5 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-center placeholder:text-slate-300 placeholder:font-normal">
+</div>
+<div>
+<input type="text"
+id="seat_${r}_${c}_left"
+placeholder="الشق الأيسر"
+oninput="autoSaveData()"
+class="w-full text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded px-1.5 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-center placeholder:text-slate-300 placeholder:font-normal">
+</div>
+</div>
+</div>
+`;
+
+// ممر بين الأعمدة لمكافأة الواقعية في القسم
+if (c < NUM_COLS) {
+htmlContent += `<div class="col-span-1 flex justify-center text-slate-300 text-xs">│</div>`;
+}
+}
+
+rowDiv.innerHTML = htmlContent;
+gridContainer.appendChild(rowDiv);
+}
+}
+
+// تغيير القسم الحالي
+function changeClass(newClass) {
+saveCurrentClassData(false); // حفظ القسم القديم دون إظهار الإشعار
+currentClass = newClass;
+clearUIInputs();
+loadClassDataToUI(currentClass);
+}
+
+// حفظ بيانات القسم الحالي في الكائن و LocalStorage
+function saveCurrentClassData(showToast = true) {
+if (!allData[currentClass]) {
+allData[currentClass] = {};
+}
+
+for (let r = 1; r <= NUM_ROWS; r++) {
+for (let c = 1; c <= NUM_COLS; c++) {
+const rightVal = document.getElementById(`seat_${r}_${c}_right`)?.value || '';
+const leftVal = document.getElementById(`seat_${r}_${c}_left`)?.value || '';
+allData[currentClass][`seat_${r}_${c}`] = {
+right: rightVal,
+left: leftVal
+};
+}
+}
+
+// التخزين المحلي في المتصفح
+try {
+localStorage.setItem('classroom_seating_data', JSON.stringify(allData));
+if (showToast) displayToast("تم حفظ التعديلات بنجاح!");
+} catch (e) {
+console.error("تعذر الحفظ التلقائي:", e);
+}
+}
+
+// الحفظ التلقائي عند الكتابة
+function autoSaveData() {
+saveCurrentClassData(false);
+}
+
+// تحميل البيانات المسجلة من المتصفح
+function loadSavedData() {
+const saved = localStorage.getItem('classroom_seating_data');
+if (saved) {
+try {
+allData = JSON.parse(saved);
+} catch (e) {
+allData = {};
+}
+}
+}
+
+// إسقاط بيانات القسم المختار على الواجهة
+function loadClassDataToUI(classId) {
+const classData = allData[classId];
+if (!classData) return;
+
+for (let r = 1; r <= NUM_ROWS; r++) {
+for (let c = 1; c <= NUM_COLS; c++) {
+const seatInfo = classData[`seat_${r}_${c}`];
+if (seatInfo) {
+const rightInput = document.getElementById(`seat_${r}_${c}_right`);
+const leftInput = document.getElementById(`seat_${r}_${c}_left`);
+if (rightInput) rightInput.value = seatInfo.right || '';
+if (leftInput) leftInput.value = seatInfo.left || '';
+}
+}
+}
+}
+
+// تفريغ الواجهة من النصوص
+function clearUIInputs() {
+for (let r = 1; r <= NUM_ROWS; r++) {
+for (let c = 1; c <= NUM_COLS; c++) {
+const rightInput = document.getElementById(`seat_${r}_${c}_right`);
+const leftInput = document.getElementById(`seat_${r}_${c}_left`);
+if (rightInput) rightInput.value = '';
+if (leftInput) leftInput.value = '';
+}
+}
+}
+
+// تفريغ بيانات القسم الحالي بطلب المستخدم
+function clearCurrentClassData() {
+if (confirm(`هل أنت تأكد من تفريغ كافة أسماء التلاميذ في (القسم ${currentClass})؟`)) {
+clearUIInputs();
+if (allData[currentClass]) {
+delete allData[currentClass];
+}
+saveCurrentClassData(false);
+displayToast(`تم تفريغ بيانات القسم ${currentClass}`);
+}
+}
+
+// إظهار إشعار مؤقت
+function displayToast(msg) {
+const toast = document.getElementById('toast');
+toast.innerText = msg;
+toast.classList.remove('hidden');
+setTimeout(() => {
+toast.classList.add('hidden');
+}, 2500);
+}
+</script>
+</body>
+</html>
