@@ -122,13 +122,45 @@
     <p class="text-xs text-slate-500 mb-4">استماع مباشر لتلاوة مباركة</p>
     
     <!-- مشغل الصوت المباشر -->
-    <audio controls class="w-full mb-3 rounded-lg">
+    <!-- الختمة السريعة للقرآن الكريم مع حفظ مكان السماع -->
+<div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 text-center">
+    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">🎧</div>
+    <h4 class="font-extrabold text-slate-800 mb-1">الختمة السريعة للقرآن الكريم</h4>
+    <p class="text-xs text-slate-500 mb-4">استماع مباشر لتلاوة مباركة مع حفظ مكان التوقف</p>
+    
+    <!-- مشغل الصوت متضمنًا رابط الختمة ومعرف الاستئناف -->
+    <audio id="resumeAudio" controls class="w-full mb-3 rounded-lg">
         <source src="https://ahmed-deban.com/Quran1/95/ahmed-deban478892.mp3" type="audio/mpeg">
         متصفحك لا يدعم تشغيل الصوت المباشر.
     </audio>
+    
     <div class="text-[11px] text-emerald-700 bg-emerald-50 py-1.5 rounded-lg font-bold">
         📖 تلاوة عطرة
     </div>
+
+    <script>
+        const audioPlayer = document.getElementById('resumeAudio');
+        const storageKey = 'quran_audio_position';
+
+        // استرجاع آخر نقطة توقف عندها المستمع عند فتح الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTime = localStorage.getItem(storageKey);
+            if (savedTime) {
+                audioPlayer.currentTime = parseFloat(savedTime);
+            }
+        });
+
+        // حفظ الوقت تلقائياً أثناء الاستماع
+        audioPlayer.addEventListener('timeupdate', () => {
+            localStorage.setItem(storageKey, audioPlayer.currentTime);
+        });
+
+        // مسح التخزين إذا انتهت التلاوة تماماً
+        audioPlayer.addEventListener('ended', () => {
+            localStorage.removeItem(storageKey);
+        });
+    </script>
+</div>
 </div>
 	<!--هل تحتاج إلى مساعدة  -->
 <div class="max-w-3xl mx-auto my-8 p-6 bg-white rounded-2xl shadow-xl border border-slate-200" dir="rtl">
