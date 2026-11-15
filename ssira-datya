@@ -1,0 +1,122 @@
+<!-- القسم الأول: يفتح تلقائياً عند دخول الموقع -->
+    <section id="bio" class="page-section active">
+        <div class="bio-header">
+            <h2>السيرة الذاتية: الحسن آيت الحسن (ابن ربيعة)</h2>
+            <span class="bio-badge">أستاذ اللغة العربية للتعليم الثانوي | كاتب وشاعر ومدون</span>
+        </div>
+
+        <p style="font-size: 1.15rem; text-align: justify;">
+            أستاذ اللغة العربية للتعليم الثانوي، وُلد بقلب الأطلس الكبير (دوار إِرْثْمْ). مربٍّ لُقب بين طلابه بـ <strong>"أستاذ ما شاء الله"</strong>؛ جمع بين أصالة النشأة القروية ورصانة التكوين الأكاديمي، ليصنع من محنه منارات لطلابه.
+        </p>
+
+        <div class="bio-grid">
+            <div class="bio-box">
+                <h3>🎓 المسار الدراسي والتميز</h3>
+                <ul>
+                    <li><strong>البدايات:</strong> انطلقت رحلته من "إرثم"، ثم "ثكموث" حيث عاش طفولةً ملؤها النجابة والارتباط بالأرض، مع حضور لافت في الكتاتيب القرآنية.</li>
+                    <li><strong>البكالوريا:</strong> ثانوية سيدي وسيدي التأهيلية بتارودانت (2012).</li>
+                    <li><strong>التعليم العالي:</strong> الإجازة في الدراسات العربية من جامعة ابن زهر بأكادير (2016).</li>
+                    <li><strong>التكوين المهني:</strong> تخرج أستاذاً للتعليم الثانوي بشقيه سنة 2017 بعد تدريب بمدرسة الترجي الخصوصية.</li>
+                </ul>
+            </div>
+
+            <div class="bio-box">
+                <h3>🏫 المحطات المهنية (رسالة الوفاء)</h3>
+                <ul>
+                    <li><strong>ثانوية إسكاون:</strong> (2017 - 2019).</li>
+                    <li><strong>ثانوية أوزيوة:</strong> (2019 - 2020).</li>
+                    <li><strong>ثانوية العرفان التأهيلية:</strong> (2020 - 2021).</li>
+                    <li><strong>ثانوية تازمورت:</strong> (منذ 2021 إلى الآن)، عائداً بجذوره ليغرس العلم في محيطه الأول.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <strong>ملامح الشخصية (بين اللين والشدة):</strong><br>
+            "تعامله مع الخلق يفيضُ رقةً وعطفاً، سيما مع البراعمِ والناشئة، يرى فيهم أمانة الغدِ وبشائر المستقبل. وتكتسي شخصيتُه صبغةً روحانيةً واجفة، تجدُ أنسها في ذكر الله ومكاشفة النفس، ورغم هذا اللين، فهو أستاذٌ ذو حزمٍ ومهابة، لا يرضى في حرف الضادِ عوجاً، ولا في مقامِ العلمِ لغواً، يوازنُ بين دقةِ 'قنّاص الأغلاط' ورحمةِ المربي المشفق."
+        </div>
+
+        <div class="bio-grid">
+            <div class="bio-box">
+                <h3>🌱 الجانب الروحي والتربوي</h3>
+                <ul>
+                    <li><strong>الابتلاء والانتصار:</strong> مرَّ بمحطةٍ من الاختبار النفسي الشديد، لكنه بفضل الله ثم بقوة الإيمان والصبر، جعل من تلك المعاناة جسراً للعبور نحو نضجٍ روحيٍ أعمق.</li>
+                    <li><strong>لقب "ما شاء الله":</strong> عُرف بأسلوبه التحفيزي الذي يرتكز على كلمة "ما شاء الله"، حتى صار البراعم ينادونه بها.</li>
+                </ul>
+            </div>
+
+            <div class="bio-box">
+                <h3>📚 المنهج العلمي والمشرب العقدي</h3>
+                <p>سنيٌّ أثري، ينهلُ من معينِ الكتاب والسنة بفهمِ سلفِ الأمة. عكف على القرآن الكريم، والأصول الثلاثة، والعقيدة الواسطية، ولامية ابن تيمية، وكتب الإمام ابن القيم (كـ "المدارج" والداء والدواء)، وفاعل في تنظيم مسابقات التجويد.</p>
+            </div>
+        </div>
+
+        <div class="quote-box" style="background: #f0f4f8; border-color: #2b2d42;">
+            <strong>أغلى التكريمات (شهادات البراعم):</strong><br>
+            "ليست الشهادات ما تُعلق على الجدران فحسب، بل هي ما يُحفر في وجدان الناشئة؛ ومن أعز ما أعتز به في مسيرتي، كلمات صادقة وشهادات مودة خطّتها أنامل تلاميذي، لتكون لي زاداً في طريق التربية."
+        </div>
+
+        <!-- روابط تفتح المواضيع الأخرى بملء الصفحة -->
+        <div class="related-tags">
+            <strong>مواضيع ذات صلة (اضغط للفتح بملء الصفحة):</strong>
+            <button onclick="openPage('mobdi3')">المبدع الصغير</button>
+            <button onclick="openPage('tarbiya')">المستجد التربوي</button>
+            <button onclick="openPage('hikma')">بيت الحكمة</button>
+            <button onclick="openPage('wamda')">فن الومضة</button>
+        </div>
+    </section>
+
+    <!-- مثال لمقال يأخذ الصفحة كلها عند الضغط عليه -->
+    <section id="tarbiya" class="page-section">
+        <button onclick="openPage('bio')" style="background:var(--accent); border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-bottom:20px; font-weight:bold;">← العودة إلى نبذة عن الأستاذ</button>
+        <h2 style="color:var(--primary); font-family:'Amiri', serif; font-size:2rem;">قسم المستجد التربوي</h2>
+        <hr style="margin:15px 0;">
+        <p>هنا يظهر محتوى المقال بكامل عرض الصفحة وبشكل مريح للقراءة دون أي تشتيت جانبي...</p>
+    </section>
+
+    <section id="hikma" class="page-section">
+        <button onclick="openPage('bio')" style="background:var(--accent); border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-bottom:20px; font-weight:bold;">← العودة إلى نبذة عن الأستاذ</button>
+        <h2 style="color:var(--primary); font-family:'Amiri', serif; font-size:2rem;">بيت الحكمة</h2>
+        <hr style="margin:15px 0;">
+        <p>تأملات فكرية وأدبية تعرض بملء الصفحة...</p>
+    </section>
+
+    <section id="wamda" class="page-section">
+        <button onclick="openPage('bio')" style="background:var(--accent); border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-bottom:20px; font-weight:bold;">← العودة إلى نبذة عن الأستاذ</button>
+        <h2 style="color:var(--primary); font-family:'Amiri', serif; font-size:2rem;">فن الومضة</h2>
+        <hr style="margin:15px 0;">
+        <p>ومضات أدبية وشعرية مركزة...</p>
+    </section>
+
+    <section id="mobdi3" class="page-section">
+        <button onclick="openPage('bio')" style="background:var(--accent); border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-bottom:20px; font-weight:bold;">← العودة إلى نبذة عن الأستاذ</button>
+        <h2 style="color:var(--primary); font-family:'Amiri', serif; font-size:2rem;">المبدع الصغير</h2>
+        <hr style="margin:15px 0;">
+        <p>إبداعات التلاميذ والبراعم تعرض هنا بكامل الصفحة...</p>
+    </section>
+
+</main>
+
+<script>
+    function openPage(pageId, btnElement) {
+        // إخفاء جميع الأقسام
+        const sections = document.querySelectorAll('.page-section');
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // إظهار القسم المطلوب ليأخذ الصفحة كلها
+        document.getElementById(pageId).classList.add('active');
+
+        // تحديث حالة الأزرار في القائمة العلوية
+        const buttons = document.querySelectorAll('nav button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        if (btnElement) {
+            btnElement.classList.add('active');
+        }
+
+        // الصعود لأعلى الصفحة بسلاسة
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
