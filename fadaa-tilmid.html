@@ -168,10 +168,11 @@
 
    fetch("https://script.google.com/macros/s/AKfycbzFIiKBzP0EX-0pjKaqSo5IY2UhNeJYd3jy8euh5cOB7nsWwVjh4UdL63GS2BAa5KLV/exec", {
   method: 'POST',
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'text/plain' },
   body: JSON.stringify({
     name: name,
     level: level,
-    title: 'Fadaa Tilmid Alert',
     msg: 'تلميذ جديد دخل للتحدي - الاسم: ' + name + ' - المستوى: ' + level
   })
 }).catch(err => console.log('Notification error:', err));
