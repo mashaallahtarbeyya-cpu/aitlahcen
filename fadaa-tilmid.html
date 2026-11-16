@@ -111,7 +111,7 @@
       if (!name) { alert("من فضلك اكتب اسمك الكامل أولاً لتظهر في الشهادة."); return; }
       // --- الإصلاح هنا: نرسل بـ GET عبر صورة، لا يبلوكه المتصفح ---
       try {
-        var url = "https://script.google.com/macros/s/AKfycbzFIiKBzP0EX-0pjKaqSo5IY2UhNeJYd3jy8euh5cOB7nsWwVjh4UdL63GS2BAa5KLV/exec?name=" + encodeURIComponent(name) + "&level=" + encodeURIComponent(level);
+        var url = "https://script.google.com/macros/s/AKfycbzFIiKBzP0EX-0pjKaqSo5IY2UhNeJYd3jy8euh5cOB7nsWwVjh4UdL63GS2BAa5KLV/exec?name=" + encodeURIComponent(name) + "&level=" + encodeURIComponent(level) + "&t=" + Date.now();
         var img = new Image();
         img.src = url;
       } catch(e) {}
