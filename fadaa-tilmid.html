@@ -166,16 +166,15 @@
         return;
       }
 
-      // إرسال تنبيه فوري إلى هاتفك عبر خدمة ntfy.sh
-      fetch('https://ntfy.sh/Mashaallah', {
-        method: 'POST',
-        body: `🎓 انضم تلميذ جديد للاختبار:\nالاسم: ${name}\nالمستوى: ${level}`,
-        headers: {
-          'Title': 'Fadaa Tilmid Alert',
-          'Priority': 'high'
-        }
-      }).catch(err => console.log('Notification error:', err));
-
+   fetch("https://script.google.com/macros/s/AKfycbzFIiKBzP0EX-0pjKaqSo5IY2UhNeJYd3jy8euh5cOB7nsWwVjh4UdL63GS2BAa5KLV/exec", {
+  method: 'POST',
+  body: JSON.stringify({
+    name: name,
+    level: level,
+    title: 'Fadaa Tilmid Alert',
+    msg: 'تلميذ جديد دخل للتحدي - الاسم: ' + name + ' - المستوى: ' + level
+  })
+}).catch(err => console.log('Notification error:', err));
       document.getElementById('startScreen').classList.add('hidden');
       document.getElementById('quizScreen').classList.remove('hidden');
       showQuestion();
