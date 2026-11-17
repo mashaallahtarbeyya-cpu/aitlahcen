@@ -186,6 +186,13 @@
       <div class="text-[11px] text-emerald-700 bg-emerald-50 py-1.5 rounded-lg font-bold">
         🔴 بث حي مباشر
       </div>
+		<div class="max-w-xl mx-auto my-6 p-6 bg-white rounded-2xl shadow-md border border-slate-200 text-center" dir="rtl">
+    <h3 class="text-xl font-extrabold text-emerald-800 mb-3">✨ اخترت لكم اليوم ✨</h3>
+    <div id="daily-content" class="text-slate-700 text-base leading-relaxed font-medium min-h-[80px] flex items-center justify-center">
+        <!-- سيتم جلب محتوى اليوم تلقائياً هنا -->
+    </div>
+    <div id="daily-date" class="text-xs text-slate-400 mt-4 pt-2 border-t border-slate-100"></div>
+		</div>
     <!-- مشغل الصوت المباشر -->
     <!-- الختمة السريعة للقرآن الكريم مع حفظ مكان السماع -->
 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 text-center">
@@ -261,5 +268,42 @@
     </div>
   </div>
 </footer>
+	<script>
+    // مصفوفة تحتوي على الأدعية أو الحكم أو المعلومات لكل يوم من أيام الشهر (من 1 إلى 31)
+    const monthlyItems = {
+        1: "«اللهم إني أسئلك العفو والعافية في ديني ودنياي وأهلي ومالي.»",
+        2: "حكمة اليوم: «خير الكلام ما قل ودل ولم يطول فيفمل.»",
+        3: "معلومة أدبية: يُعدّ البحتري أحد أعمق شعراء العصر العباسي وصفاً للطبيعة.",
+        4: "«ربنا أتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.»",
+        5: "حكمة اليوم: «الوقت كالسيف إن لم تقطعه قطعك.»",
+        6: "معلومة تربوية: التحفيز الإيجابي للمتعلم يصنع المستحيل ويبني الثقة بالنفس.",
+        7: "«اللهم آت نفسي تقواها وزكها أنت خير من زكاها، أنت وليها ومولاها.»",
+        // يمكنك متابعة إضافة باقي الأيام حتى اليوم 31 بنفس الطريقة...
+        31: "خاتمة الشهر: «من سلك طريقاً يلتمس فيه علماً سهل الله له به طريقاً إلى الجنة.»"
+    };
+
+    // دالة لجلب محتوى اليوم تلقائياً حسب تاريخ الجهاز أو المتصفح
+    function loadDailyWisdom() {
+        const today = new Date();
+        const dayNumber = today.getDate(); // يحصل على رقم اليوم الحالي (1 إلى 31)
+        
+        const contentBox = document.getElementById('daily-content');
+        const dateBox = document.getElementById('daily-date');
+        
+        // التحقق إن كان اليوم موجوداً في القائمة، وإلا يتم وضع عبارة افتراضية
+        if (monthlyItems[dayNumber]) {
+            contentBox.innerHTML = monthlyItems[dayNumber];
+        } else {
+            contentBox.innerHTML = "«حسبنا الله ونعم الوكيل، نعم المولى ونعم النصير.»";
+        }
+        
+        // عرض التاريخ الهجري أو الميلادي الحالي للتوضيح
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateBox.innerText = "تاريخ اليوم: " + today.toLocaleDateString('ar-MA', options);
+    }
+
+    // تشغيل الدالة فور تحميل الصفحة
+    window.addEventListener('DOMContentLoaded', loadDailyWisdom);
+	</script>
 </body>
 	</html>
