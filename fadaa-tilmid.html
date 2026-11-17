@@ -166,9 +166,8 @@
         return;
       }
 
-      // إرسال تنبيه فوري إلى هاتفك عبر خدمة ntfy.sh
+    // إرسال تنبيه فوري إلى هاتفك عبر خدمة ntfy.sh
       fetch('https://ntfy.sh/Mashaallah', {
-', {
         method: 'POST',
         body: `🎓 انضم تلميذ جديد للاختبار:\nالاسم: ${name}\nالمستوى: ${level}`,
         headers: {
