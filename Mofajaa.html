@@ -1,0 +1,67 @@
+<!-- مكان عرض المفاجأة اليومية المتجددة -->
+<div id="daily-surprise-container" class="max-w-2xl mx-auto my-6 p-6 bg-white rounded-2xl shadow-md border border-slate-200 text-center" dir="rtl">
+  <div id="surprise-header" class="text-xs font-bold text-emerald-800 bg-emerald-50 py-1.5 px-3 rounded-full inline-block mb-3"></div>
+  <h2 id="surprise-title" class="text-xl font-extrabold text-slate-800 mb-3"></h2>
+  <div id="surprise-content" class="text-slate-600 text-sm leading-relaxed mb-4">
+    <!-- محتوى مفاجأة اليوم يظهر هنا تلقائياً -->
+  </div>
+  <div id="surprise-action">
+    <!-- أزرار التفاعل الخاصة بمفاجأة اليوم -->
+  </div>
+</div>
+
+<!-- السكربت البرمجي الذي يغير المفاجأة حسب رقم اليوم في الشهر (من 1 إلى 31) -->
+<script>
+  // جدول مفاجآت الشهر (يمكنك تعديل محتوى كل يوم بما تشاء)
+  const surprisesOfTheMonth = {
+    1: {
+      type: "quiz",
+      title: "🏆 تحدي الإعراب ومتن الآجرومية (الشوط الأول)",
+      desc: "ابدأ أسبوعك باختبار معلوماتك النحوية في أقسام الكلمة والكلام المفيد.",
+      btnText: "ابدأ التحدي الآن",
+      link: "fadaa-tilmid.html"
+    },
+    2: {
+      type: "poem",
+      title: "📜 مفاجأة الأدب: نفحات من عيون الشعر",
+      desc: "«لا تحسبن المجد تمراً أنت آكلهِ ... لن تبلغ المجد حتى تلعق الصبرا.» - تأمل في حكمة الأيام.",
+      btnText: "قراءة التأمل الأدبي",
+      link: "qasaid.html"
+    },
+    3: {
+      type: "tool",
+      title: "🛠️ أداة اليوم: خريطة القسم الرقمية",
+      desc: "استعرض تنظيم الفضاء التربوي وتوزيع الأنشطة الصفية بذكاء.",
+      btnText: "فتح الخريطة",
+      link: "adawatostad.html"
+    },
+    // باقي الأيام تتوزع تلقائياً، وإذا لم يُحدد يوم معين يظهر تحدي افتراضي عام:
+    default: {
+      type: "quiz",
+      title: "⭐ مفاجأة اليوم التربوية",
+      desc: "محطة متجددة من المعرفة والذكر والاستغفار في رحاب موقع الأستاذ الحسن أيت لحسن.",
+      btnText: "استكشف المفاجأة",
+      link: "fadaa-tilmid.html"
+    }
+  };
+
+  function loadDailySurprise() {
+    const today = new Date();
+    const dayNum = today.getDate(); // يحصل على رقم اليوم الحالي (من 1 إلى 31)
+    
+    // اختيار المفاجأة بناءً على اليوم، أو استخدام الافتراضية إذا لم تكن مسجلة
+    const currentSurprise = surprisesOfTheMonth[dayNum] || surprisesOfTheMonth['default'];
+    
+    // تعبئة البيانات في الصفحة
+    document.getElementById('surprise-header').innerText = "📅 مفاجأة يوم " + dayNum;
+    document.getElementById('surprise-title').innerText = currentSurprise.title;
+    document.getElementById('surprise-content').innerText = currentSurprise.desc;
+    
+    // وضع الزر الرابط المناسب
+    const actionBox = document.getElementById('surprise-action');
+    actionBox.innerHTML = `<a href="${currentSurprise.link}" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl shadow transition-all inline-block text-sm">${currentSurprise.btnText} ←</a>`;
+  }
+
+  // تنفيذ الدالة فور تحميل الصفحة
+  window.addEventListener('DOMContentLoaded', loadDailySurprise);
+</script>
