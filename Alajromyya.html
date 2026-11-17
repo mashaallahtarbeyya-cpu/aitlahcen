@@ -1,0 +1,146 @@
+<!-- حاوية اختبار الآجرومية التفاعلي -->
+<div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-md border border-slate-200 p-6 my-6" dir="rtl">
+  <div class="text-center mb-6">
+    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">مسابقات فضاء التلميذ</span>
+    <h3 class="text-xl font-extrabold text-slate-800 mt-2">اختبار قواعد الآجرومية المباركة</h3>
+    <p class="text-xs text-slate-500 mt-1">أجب عن الأسئلة واكسب الحسنات في رحاب ذكر الله وتعلم النحو</p>
+  </div>
+
+  <!-- صندوق السؤال -->
+  <div id="quiz-container">
+    <div id="question-box" class="text-lg font-bold text-slate-700 mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+      <!-- السؤال يظهر هنا -->
+    </div>
+
+    <!-- خيارات الإجابة -->
+    <div id="options-box" class="space-y-3 mb-6">
+      <!-- الأزرار تولد تلقائياً -->
+    </div>
+  </div>
+
+  <!-- رسائل البشائر والاستغفار أثناء التقدم -->
+  <div id="encouragement-box" class="hidden text-center bg-amber-50 border border-amber-200 text-amber-900 p-4 rounded-xl mb-4 font-semibold text-sm">
+    <!-- عبارات الاستغفار والبشائر -->
+  </div>
+
+  <!-- زر الشطر الثاني / الانتقال للمستوى الموالي -->
+  <div id="next-stage-container" class="text-center hidden">
+    <button onclick="nextStage()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 px-6 rounded-xl shadow transition-all flex items-center justify-center mx-auto gap-2">
+      <span>الانتقال إلى الشطر الثاني (أسئلة أقوى) 🏆</span>
+    </button>
+  </div>
+</div>
+
+<!-- السكربت البرمجي للتفاعل -->
+<script>
+  // مستويات الأسئلة (المستوى الأول: الآجرومية الأساسية / المستوى الثاني: أسئلة أقوى)
+  const quizData = {
+    stage1: [
+      {
+        question: "س 1: ما هو الكلام عند النحويين؟",
+        options: [,
+          "اللفظ المركب المفيد بالوضع",
+          "كل ما تلفظ به اللسان ولو غير مفيد",
+          "مجموعة حروف هجائية فقط"
+        ],
+        correct: 0
+      },
+      {
+        question: "س 2: ما هي أقسام الكلمة في العربية؟",
+        options: [
+          "اسم، وفعل، وحرف جاء لمعنى",
+          "مبتدأ، وخبر، وفاعل فقط",
+          "ماضٍ، ومضارع، وأمر فقط"
+        ],
+        correct: 0
+      }
+    ],
+    stage2: [
+      {
+        question: "س 3 (تحدي أقوى): بما يُعرف الفعل المضارع تمييزاً له عن أخويه؟",
+        options: [
+          "بدخول قَدْ وسين الاستقبال وسوف",
+          "بقبول تاء التأنيث الساكنة",
+          "بأنه لا يقبل أي علامة"
+        ],
+        correct: 0
+      },
+      {
+        question: "س 4 (تحدي أقوى): علامة الاسم من بين ما يلي هي:",
+        options: [
+          "الخفض (الجر)، والتنوين، ودخول الألف واللام",
+          "دخول حروف الجزم عليه",
+          "دخول تاء الفاعل المتحركة"
+        ],
+        correct: 0
+      }
+    ]
+  };
+
+  let currentStage = 'stage1';
+  let currentIndex = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const questions = quizData[currentStage];
+    const qBox = document.getElementById('question-box');
+    const optBox = document.getElementById('options-box');
+    const encourageBox = document.getElementById('encouragement-box');
+
+    encourageBox.classList.add('hidden');
+
+    if (currentIndex < questions.length) {
+      const q = questions[currentIndex];
+      qBox.innerText = q.question;
+      optBox.innerHTML = '';
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-right bg-white border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 text-slate-700 font-medium py-3 px-4 rounded-xl transition-all shadow-sm";
+        btn.innerText = opt;
+        btn.onclick = () => checkAnswer(idx, q.correct);
+        optBox.appendChild(btn);
+      });
+    } else {
+      // إنهاء الشطر الأول
+      if (currentStage === 'stage1') {
+        qBox.innerText = "✨ أحسنت! واصل وردك أنت على وشك الانتهاء من الشطر الأول بنجاح.";
+        optBox.innerHTML = '';
+        encourageBox.innerHTML = "استغفر الله العظيم وأتوب إليه • اللهم صلِّ وسلم على نبينا محمد ﷺ";
+        encourageBox.classList.remove('hidden');
+        document.getElementById('next-stage-container').classList.remove('hidden');
+      } else {
+        qBox.innerText = "🏆 هنيئاً لك بكل هذه الحسنات والمعارف النحوية! لقد أتممت التحدي بنجاح يا بطل.";
+        optBox.innerHTML = '';
+        encourageBox.innerHTML = "«لا حول ولا قوة إلا بالله العلي العظيم» • عمل متقبل إن شاء الله.";
+        encourageBox.classList.remove('hidden');
+      }
+    }
+  }
+
+  function checkAnswer(selected, correct) {
+    if (selected === correct) {
+      score++;
+    }
+    currentIndex++;
+    
+    // بشائر وسط الشوط
+    const encourageBox = document.getElementById('encouragement-box');
+    if (currentIndex === 1) {
+      encourageBox.innerHTML = "💡 استمر.. استغفر الله وصلِّ على الحبيب المصطفى ﷺ.";
+      encourageBox.classList.remove('hidden');
+    }
+
+    loadQuestion();
+  }
+
+  function nextStage() {
+    currentStage = 'stage2';
+    currentIndex = 0;
+    document.getElementById('next-stage-container').classList.add('hidden');
+    loadQuestion();
+  }
+
+  // تشغيل الاختبار عند تحميل الصفحة
+  window.addEventListener('DOMContentLoaded', loadQuestion);
+</script>
