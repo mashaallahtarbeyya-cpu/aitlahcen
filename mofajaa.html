@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المفاجأة اليومية - موقع الأستاذ الحسن أيت لحسن</title>
+  <link rel="icon" type="image/png" href="logo.png.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html { font-size: 19px !important; }
+    body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
+    .quran { font-family: 'Amiri', serif; font-size: 22px; line-height: 2; }
+  </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between p-4">
+
+  <header class="max-w-2xl mx-auto text-center py-6 px-4 bg-gradient-to-r from-emerald-800 to-teal-700 text-white rounded-2xl shadow-md my-4 w-full">
+    <h1 class="text-2xl font-extrabold text-amber-300 mb-2">🎁 مفاجأة اليوم 🎁</h1>
+    <p class="text-sm font-medium">كل يوم مفاجأة جديدة من القلب... آية، دعاء، بشرى</p>
+    <p id="dateToday" class="text-xs mt-2 opacity-80"></p>
+  </header>
+
+  <main class="max-w-2xl mx-auto w-full my-auto">
+    <div id="daily-surprise-container" class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 text-center">
+      <div id="surprise-header" class="text-xs font-bold text-emerald-800 bg-emerald-50 py-1.5 px-3 rounded-full inline-block mb-3"></div>
+      <h2 id="surprise-title" class="text-xl font-extrabold text-slate-800 mb-3"></h2>
+      <div id="surprise-content" class="text-slate-600 text-base leading-relaxed mb-4"></div>
+      <div id="surprise-foot" class="text-sm text-emerald-700 font-bold bg-amber-50 py-3 px-4 rounded-xl"></div>
+      <div class="flex gap-2 justify-center mt-6 flex-wrap">
+        <button onclick="shareWhats()" class="bg-green-600 text-white font-bold py-2.5 px-5 rounded-xl text-sm">📤 صيفطها لشي واحد كتبغيه</button>
+        <button onclick="location.reload()" class="bg-slate-100 text-slate-700 font-bold py-2.5 px-5 rounded-xl text-sm">🔄 عاود شوفها</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow p-4 mt-4 text-center">
+      <p class="text-sm font-bold mb-2">📅 شوف مفاجأة نهار آخر:</p>
+      <div class="flex gap-2 justify-center flex-wrap" id="daysBtns"></div>
+    </div>
+
+    <div class="text-center mt-6">
+      <a href="index.html" class="inline-block bg-slate-700 hover:bg-slate-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-all shadow">
+        ← العودة إلى الصفحة الرئيسية
+      </a>
+    </div>
+  </main>
+
+  <footer class="text-center py-4 text-xs text-slate-500 mt-8">
+    موقع الأستاذ الحسن أيت لحسن &copy; 2026 - صدقة جارية ❤️
+  </footer>
+
+<script>
+const surprises = {
+1:{type:"📖 آية قرآنية", title:"افتتح شهرك بنور", content:"﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾", foot:"اللهم اجعل هذا الشهر فاتحة خير علينا جميعا."},
+2:{type:"💌 دعوة من القلب", title:"دعوة ليك اليوم", content:"الله يفرح قلبك، وييسر أمرك، ويعطيك فوق ما كتتمنى، ويجعل طريقك كله نور.", foot:"آمين يا رب العالمين 🤲"},
+3:{type:"🌈 بشرى", title:"لا تحزن، ستزول همومك", content:"كل هم كتحس بيه دابا، غادي يدوز. غير صبر، حيت ربي ما كينساش عبادو. غدا أحسن بإذن الله.", foot:"بشرى لك: الفرج قريب."},
+4:{type:"📖 آية قرآنية", title:"للمتعبين", content:"﴿ لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ﴾", foot:"ربي عارف طاقتك، وما عطاك هاد الهم إلا حيت قادر عليه."},
+5:{type:"💌 دعوة من القلب", title:"للمعلمين والمعلمات", content:"الله يعطيكم الصبر، ويبارك في صحتكم، ويجعل كل حرف علمتوه في ميزان حسناتكم.", foot:"تحية لكل أستاذ كيعطي من قلبو ❤️"},
+6:{type:"🌿 حكمة اليوم", title:"تأمل", content:"ما تأخر شيء إلا وفيه خير كبير ليك. ماشي كل تأخير حرمان، مرات التأخير حماية.", foot:"توكل على الله."},
+7:{type:"📖 آية قرآنية", title:"للي كيتسنى الفرج", content:"﴿ إِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾", foot:"مع العسر... ماشي من بعد العسر. اليسر جاي معاه."},
+8:{type:"💌 دعوة من القلب", title:"لوالديك", content:"اللهم ارحم من مات من والدينا، وبارك في عمر من بقي، واجعلنا بارين بهم.", foot:"دعي مع والديك اليوم."},
+9:{type:"🌈 بشرى", title:"بشرى للتلاميذ", content:"ماشي ضروري تكون الأول باش تنجح. المهم تكون حسن من البارح. خطوة صغيرة كل نهار كتوصلك بعيد.", foot:"أنت قادر، غير آمن براسك."},
+10:{type:"📖 آية قرآنية", title:"للي خايف من المستقبل", content:"﴿ وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ ﴾", foot:"سلمها لله، وتهنى."},
+11:{type:"🤲 حديث شريف", title:"من القلب", content:"قال رسول الله ﷺ: «الكلمة الطيبة صدقة»", foot:"قول اليوم كلمة زوينة لشي واحد، صدقة ليك."},
+12:{type:"💌 دعوة من القلب", title:"دعوة للمرضى", content:"اللهم اشف كل مريض، وخفف عليه ألمه، ورد عليه صحته أحسن مما كانت.", foot:"إلا كنت مريض، ربي يشافيك."},
+13:{type:"🌈 بشرى", title:"لا تحزن", content:"ربي كيسمعك، وكايشوفك، وما ناسيكش. دعوتك اللي دعيتيها بالليل، راها محفوظة عندو.", foot:"غادي تفرح قريب، إن شاء الله."},
+14:{type:"📖 آية قرآنية", title:"نور اليوم", content:"﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾", foot:"اللهم ارزقنا علما نافعا."},
+15:{type:"💡 إحياء المعنى", title:"شنو هو النجاح الحقيقي؟", content:"النجاح ماشي غير النقطة. النجاح هو تكون إنسان مزيان، كيعاون الناس، وكيخلي بلاصتو نقية فين ما مشى.", foot:"خلي بصمتك زوينة اليوم."},
+16:{type:"💌 دعوة من القلب", title:"للأمهات", content:"اللهم بارك في كل أم، وعوضها خير على كل تعب، وفرح قلبها بوليداتها.", foot:"بوس راس الوالدة اليوم ❤️"},
+17:{type:"📖 آية قرآنية", title:"للي كيحس بوحدو", content:"﴿ وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ ﴾", foot:"ماشي بوحدك، ربي معاك."},
+18:{type:"🌈 بشرى", title:"بشرى للصابرين", content:"﴿ وَبَشِّرِ الصَّابِرِينَ ﴾ - الصبر ديالك ما غاديش يمشي خاوي، ربي وجد ليك فرحة كبيرة.", foot:"صبرا، الفرح جاي."},
+19:{type:"🤲 دعاء", title:"دعاء الرزق", content:"اللهم ارزقنا رزقا حلالا طيبا، وبارك لنا فيه، واغننا بفضلك عمن سواك.", foot:"اللهم آمين."},
+20:{type:"🌿 حكمة", title:"من الميدان", content:"أحسن أستاذ ماشي هو اللي كيعرف بزاف، هو اللي كيخلي التلميذ يبغي يتعلم.", foot:"علم بحب."},
+21:{type:"📖 آية قرآنية", title:"للمترددين", content:"﴿ وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ ﴾", foot:"ثق في تدبير الله."},
+22:{type:"💌 دعوة من القلب", title:"للأصدقاء", content:"الله يحفظ ليك الناس اللي كتبغيهم، ويبعد عليك الناس اللي كيبغيو ليك الشر.", foot:"صيفط هاد الدعوة لصاحبك."},
+23:{type:"🌈 بشرى", title:"ستزول همومك", content:"شحال من هم قلتي هادا ما غاديش يدوز، وداز. وهادا تا هو غادي يدوز، بإذن الله.", foot:"تفاءل، غدا أجمل."},
+24:{type:"📖 آية قرآنية", title:"طمأنينة", content:"﴿ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾", foot:"العسر واحد، واليسر جوج. غادي تفرج."},
+25:{type:"💡 رسالة", title:"رسالة ليك أنت", content:"أنت ماشي فاشل، أنت غير باقي ما وصلتيش. الفرق كبير بيناتهم. كمل، ما تحبسش.", foot:"أنت قريب أكثر مما تظن."},
+26:{type:"🤲 دعاء", title:"دعاء المغفرة", content:"اللهم إنك عفو تحب العفو فاعف عنا، واغفر لنا، وارحمنا.", foot:"استغفر اليوم 100 مرة، قلبك غادي يرتاح."},
+27:{type:"📖 آية قرآنية", title:"للعائلة", content:"﴿ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ ﴾", foot:"اللهم احفظ عائلتك."},
+28:{type:"💌 دعوة من القلب", title:"دعوة من الأستاذ", content:"أنا الأستاذ الحسن، كندعي ليكم كاملين: الله يوفقكم، وينور طريقكم، ويجعل أيامكم كلها مفاجآت زوينة.", foot:"من القلب إلى القلب ❤️"},
+29:{type:"🌈 بشرى", title:"بشرى أخيرة", content:"ربي ما كيخيبش اللي كيدعيه. دعي، وصبر، وتفاءل، وغادي تشوف العجب.", foot:"لا تحزن، إن الله معنا."},
+30:{type:"📖 آية قرآنية", title:"ختم الشهر", content:"﴿ وَقُلِ الْحَمْدُ لِلَّهِ ﴾", foot:"الحمد لله على كل حال، على ما فات وما هو آت."},
+31:{type:"🎁 مفاجأة خاصة", title:"نهار 31 - نهارك أنت", content:"إلا وصلتي لهنا، فأنت من الناس اللي كيقلبو على الخير. ربي يبارك فيك، ويعطيك مفاجأة زوينة في حياتك قريب.", foot:"هاد المفاجأة ليك بوحدك 🎁"}
+};
+
+function getSurprise(day){
+  return surprises[day] || surprises[1];
+}
+function render(day){
+  const s = getSurprise(day);
+  document.getElementById('surprise-header').innerText = s.type + " • يوم " + day;
+  document.getElementById('surprise-title').innerText = s.title;
+  let c = document.getElementById('surprise-content');
+  c.innerText = s.content;
+  if(s.type.includes("آية") || s.type.includes("بشرى") && s.content.includes("﴿")) c.classList.add("quran");
+  else c.classList.remove("quran");
+  document.getElementById('surprise-foot').innerText = s.foot;
+  document.getElementById('dateToday').innerText = "اليوم: " + new Date().toLocaleDateString('ar-MA', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+}
+function shareWhats(){
+  const s = getSurprise(new Date().getDate());
+  const txt = "🎁 مفاجأة اليوم من موقع الأستاذ الحسن أيت لحسن:\n\n" + s.title + "\n" + s.content + "\n\n" + s.foot;
+  window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank");
+}
+let btns = "";
+for(let i=1;i<=31;i++){ btns += `<button onclick="render(${i})" class="w-9 h-9 rounded-full text-xs font-bold ${i===new Date().getDate()?'bg-emerald-700 text-white':'bg-slate-100'}">${i}</button>`; }
+document.getElementById('daysBtns').innerHTML = btns;
+render(new Date().getDate());
+</script>
+
+</body>
+</html>
