@@ -9,18 +9,22 @@
 <link rel="icon" href="icon-baqiyat-512.png">
 </head>
 <body style="margin:0;background:#0F3D2E">
+
 <div style="max-width:660px;margin:8px auto 20px;text-align:center;color:#FFE082;font-size:11px;line-height:1.7;font-family:Tahoma;padding:0 10px">
 📥 <b>نزل التطبيق:</b> Android: ⁞ > التثبيت وإنشاء اختصار | iPhone: مشاركة ⬆️ > إضافة إلى الشاشة الرئيسية<br>
 🔄 <b>التطبيق كيتجدد كل أسبوع</b> بأذكار وأوراد جديدة، خليك متبعنا
 </div>
-<button onclick="document.getElementById('wirdBox').style.display=document.getElementById('wirdBox').style.display=='block'?'none':'block'" style="display:block;margin:6px auto;background:#FFC107;color:#222;border:0;padding:8px 18px;border-radius:999px;font-weight:900;font-size:13px;font-family:Tahoma">🔔 تذكير بوردك اليوم</button>
+
+<div style="text-align:center">
+<button id="wirdBtn" style="display:block;margin:6px auto;background:#FFC107;color:#222;border:0;padding:8px 18px;border-radius:999px;font-weight:900;font-size:13px;font-family:Tahoma">🔔 تذكير بوردك اليوم</button>
+</div>
 <div id="wirdBox" style="display:none;max-width:660px;margin:6px auto;background:#FFF8E7;color:#222;border-radius:16px;padding:14px;text-align:center;font-family:Tahoma;font-size:14px;line-height:1.8">
 <b>🤲 واش درتي وردك اليوم؟</b><br>
-<span style="font-size:13px">ما تنساش: استغفارك، وصلاتك على النبي ﷺ، وزيارتك للصفحة.</span><br>
-<button onclick="document.getElementById('wirdBox').innerHTML='<b>ماشاء الله ✅</b><br>تقبل الله منك، غدا نذكرك عاوتاني إن شاء الله.'" style="margin-top:8px;background:#0F3D2E;color:#fff;border:0;padding:8px 18px;border-radius:999px;font-weight:900">درتو ✅</button>
-<button onclick="document.getElementById('wirdBox').style.display='none';document.getElementById('ist-box').scrollIntoView({behavior:'smooth'})" style="margin-top:8px;background:#fff;border:1px solid #0F3D2E;color:#0F3D2E;padding:8px 18px;border-radius:999px;font-weight:900">مزال، نبدا دابا 🔔</button>
+<span style="font-size:13px">ما تنساش: استغفارك، وصلاتك على النبي ﷺ، وزيارتك للصفحة.</span><br><br>
+<button id="wirdDone" style="background:#0F3D2E;color:#fff;border:0;padding:8px 18px;border-radius:999px;font-weight:900">درتو ✅</button>
+<button id="wirdStart" style="background:#fff;border:1px solid #0F3D2E;color:#0F3D2E;padding:8px 18px;border-radius:999px;font-weight:900">مزال، نبدا دابا 🔔</button>
 </div>
-  <!-- ===== الباقيات - نسخة مصلحة، خدامة بلا CountAPI ===== -->
+
 <style>
 .ist-box{font-family:Tahoma,Arial,sans-serif;direction:rtl;text-align:center;max-width:660px;margin:20px auto;background:linear-gradient(180deg,#0F3D2E,#1A5C44);color:#fff;border-radius:26px;padding:20px;box-shadow:0 14px 35px rgba(0,0,0,.25);overflow:hidden}
 .hadith{background:#FFF8E7;color:#222;border-radius:16px;padding:14px;margin:14px 0;text-align:right;font-size:15px;line-height:1.9;border-right:6px solid #FFC107}
@@ -48,7 +52,7 @@
 @keyframes flyUp{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-180px) scale(1.2)}}
 </style>
 
-<div class="ist-box">
+<div class="ist-box" id="mainBox">
   <div style="font-size:36px">🤲 🌹</div>
   <h2>اختر مسارك.. وابدأ وردك</h2>
   <p style="opacity:.9">جوج مسارات، اختر واحد، وكمل فيه، ورجع للثاني وقت ما بغيتي</p>
@@ -57,7 +61,7 @@
     <div><div class="lbl">🤲 استغفارك</div><div class="num" id="globalIst">0</div></div>
     <div><div class="lbl">🌹 صلاتك</div><div class="num" id="globalSal">0</div></div>
   </div>
-  <p style="font-size:12px;opacity:.7">* العداد هنا خاص بك، محفوظ في جهازك. العداد العالمي غادي نديروه من بعد بـ Firebase.</p>
+  <p style="font-size:12px;opacity:.7">* العداد هنا خاص بك، محفوظ في جهازك.</p>
   <div class="hadith">
     <b>📖 توجيه من السنة:</b><br>
     <b>الاستغفار:</b> قال ﷺ: <b>"يا أيها الناس توبوا إلى الله، فإني أتوب في اليوم إليه مائة مرة"</b> — رواه مسلم<br>
@@ -143,4 +147,40 @@ function getBushra(c){
     if(c===30) return ["نور يملأ قلبك ✨","الصلاة على النبي نور وبركة."];
     if(c===50) return ["50 صلاة! 🌸","50 صلاة منك = 500 صلاة من الله عليك."];
     if(c===70) return ["🎉 أتممت ورد السنة! 70 صلاة","هنيئا لك!"];
-    if(c===100) return ["🎉 أتم
+    if(c===100) return ["🎉 أتممت 100 صلاة!","أتممت ورد النبي ﷺ كاملا."];
+  }
+  return null;
+}
+function doZikr(){
+  if(counts[mode]>=target){ counts[mode]=0; updateUI(); return; }
+  counts[mode]++;
+  total[mode]++;
+  localStorage.setItem('my_total_ist', total.ist);
+  localStorage.setItem('my_total_sal', total.sal);
+  spawnFly();
+  let b = getBushra(counts[mode]);
+  if(b){
+    document.getElementById('istTitle').textContent=b[0];
+    document.getElementById('istText').textContent=b[1];
+    document.getElementById('istImg').src=imgs[Math.min(Math.floor(counts[mode]/10),9)];
+  }
+  updateUI();
+  refreshGlobal();
+}
+updateUI();
+
+// زر التذكير - نسخة آمنة بلا onclick في النص
+document.getElementById('wirdBtn').addEventListener('click', function(){
+  var b=document.getElementById('wirdBox');
+  b.style.display=(b.style.display==='block')?'none':'block';
+});
+document.getElementById('wirdDone').addEventListener('click', function(){
+  document.getElementById('wirdBox').innerHTML='<b>ماشاء الله ✅</b><br>تقبل الله منك، غدا نذكرك عاوتاني إن شاء الله.';
+});
+document.getElementById('wirdStart').addEventListener('click', function(){
+  document.getElementById('wirdBox').style.display='none';
+  document.getElementById('mainBox').scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
