@@ -1,0 +1,176 @@
+<!-- ===== قسم المسارين: الاستغفار + الصلاة على النبي - حطو في موقعك ===== -->
+<style>
+.ist-box{font-family:Tahoma,Arial,sans-serif;direction:rtl;text-align:center;max-width:660px;margin:20px auto;background:linear-gradient(180deg,#0F3D2E,#1A5C44);color:#fff;border-radius:26px;padding:20px;box-shadow:0 14px 35px rgba(0,0,0,.25);overflow:hidden}
+.ist-box h2{margin:0;font-size:30px}
+.hadith{background:#FFF8E7;color:#222;border-radius:16px;padding:14px;margin:14px 0;text-align:right;font-size:15px;line-height:1.9;border-right:6px solid #FFC107}
+.hadith b{color:#0F3D2E}
+.path-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.path-card{border:3px solid rgba(255,255,255,.25);border-radius:20px;padding:14px;cursor:pointer;background:rgba(255,255,255,.08)}
+.path-card.active{border-color:#FFC107;background:rgba(255,193,7,.18);box-shadow:0 0 0 3px rgba(255,193,7,.3)}
+.path-card h3{margin:0;font-size:20px}
+.path-card p{margin:4px 0 0;font-size:13px;opacity:.9}
+.path-card .mini{font-size:22px;font-weight:900;margin-top:6px}
+.targets{display:flex;gap:8px;justify-content:center;margin:10px 0;flex-wrap:wrap}
+.targets button{border:0;padding:9px 16px;border-radius:999px;font-weight:800;cursor:pointer;background:rgba(255,255,255,.18);color:#fff}
+.targets button.active{background:#FFC107;color:#222}
+.ist-img{width:100%;height:280px;object-fit:cover;border-radius:20px;border:3px solid rgba(255,255,255,.35)}
+.ist-count{font-size:52px;font-weight:900;line-height:1;margin:8px 0}
+.ist-progress{height:12px;background:rgba(255,255,255,.22);border-radius:99px;overflow:hidden;margin:10px 0}
+.ist-bar{height:100%;width:0%;background:#FFC107;transition:.4s}
+.ist-card{background:rgba(255,255,255,.13);border-radius:18px;padding:16px;margin:12px 0;min-height:92px}
+.ist-card b{font-size:21px;display:block}
+.ist-card span{font-size:16px}
+.ist-big-btn{width:100%;border:0;background:#FFC107;color:#1A1A1A;font-size:34px;font-weight:900;padding:30px 10px;border-radius:22px;cursor:pointer;box-shadow:0 10px 0 #D39E00,0 14px 30px rgba(0,0,0,.25)}
+.ist-big-btn:active{transform:translateY(6px);box-shadow:0 4px 0 #D39E00}
+.ist-small{font-size:14px;opacity:.85;margin-top:12px}
+.switch-note{background:rgba(255,255,255,.12);border-radius:12px;padding:8px;font-size:13px;margin-top:10px}
+</style>
+
+<div class="ist-box">
+  <div style="font-size:36px">🤲 🌹</div>
+  <h2>اختر مسارك.. وابدأ وردك</h2>
+  <p style="opacity:.9">جوج مسارات، اختر واحد، وكمل فيه، ورجع للثاني وقت ما بغيتي</p>
+
+  <div class="hadith">
+    <b>📖 توجيه من السنة:</b><br>
+    <b>الاستغفار:</b> قال ﷺ: <b>"يا أيها الناس توبوا إلى الله، فإني أتوب في اليوم إليه مائة مرة"</b> — رواه مسلم<br>
+    وقال ﷺ: <b>"والله إني لأستغفر الله وأتوب إليه في اليوم أكثر من سبعين مرة"</b> — رواه البخاري<br>
+    <b>الصلاة على النبي:</b> قال ﷺ: <b>"من صلى علي واحدة صلى الله عليه عشرا"</b> — رواه مسلم<br>
+    وقال ﷺ: <b>"أولى الناس بي يوم القيامة أكثرهم علي صلاة"</b> — رواه الترمذي
+  </div>
+
+  <!-- اختيار المسار -->
+  <div class="path-wrap">
+    <div class="path-card active" id="cardIst" onclick="setMode('ist')">
+      <h3>🤲 مسار الاستغفار</h3>
+      <p>أستغفر الله وأتوب إليه</p>
+      <div class="mini"><span id="miniIst">0</span> / <span class="tShow">70</span></div>
+      <p id="statusIst">اضغط لتبدأ هنا</p>
+    </div>
+    <div class="path-card" id="cardSal" onclick="setMode('sal')">
+      <h3>🌹 مسار الصلاة على النبي</h3>
+      <p>اللهم صل وسلم على محمد</p>
+      <div class="mini"><span id="miniSal">0</span> / <span class="tShow">70</span></div>
+      <p id="statusSal">اضغط لتنتقل هنا</p>
+    </div>
+  </div>
+
+  <div class="targets">
+    <button onclick="setTarget(10,this)">10 - خفيف</button>
+    <button class="active" onclick="setTarget(70,this)">70 - ورد السنة ✨</button>
+    <button onclick="setTarget(100,this)">100 - ورد الكمال</button>
+  </div>
+
+  <img id="istImg" class="ist-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="طبيعة">
+  <div class="ist-count"><span id="istNum">0</span> / <span id="istTarget">70</span></div>
+  <div class="ist-progress"><div class="ist-bar" id="istBar"></div></div>
+
+  <div class="ist-card">
+    <b id="istTitle">أنت في مسار الاستغفار 💚</b>
+    <span id="istText">اضغط الزر الكبير وابدأ. كل 10 أشواط = صورة طبيعة جديدة + بشرى جديدة.</span>
+  </div>
+
+  <button class="ist-big-btn" id="istBtn" onclick="doZikr()">أستغفر الله 🤲</button>
+
+  <div class="switch-note">
+    🔁 تقدر تبدل المسار في أي وقت بالضغط على البطاقة اللي فوق، والعداد ديالك كيبقى محفوظ، ما كيتمسحش.<br>
+    <span id="istMsg">المسار الحالي: الاستغفار - 0 / 70</span>
+  </div>
+</div>
+
+<script>
+let mode='ist', target=70;
+let counts={ist:0, sal:0};
+let done={ist:false, sal:false};
+const imgs=[
+"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80",
+"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=900&q=80",
+"https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900&q=80",
+"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80",
+"https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=900&q=80",
+"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=900&q=80",
+"https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=80",
+"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&q=80",
+"https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=900&q=80"
+];
+function setTarget(n,btn){
+  target=n;
+  document.querySelectorAll('.targets button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('istTarget').textContent=n;
+  document.querySelectorAll('.tShow').forEach(e=>e.textContent=n);
+  updateUI();
+}
+function setMode(m){
+  mode=m;
+  document.getElementById('cardIst').classList.toggle('active',m==='ist');
+  document.getElementById('cardSal').classList.toggle('active',m==='sal');
+  updateUI();
+}
+function updateUI(){
+  let c=counts[mode];
+  document.getElementById('istNum').textContent=c;
+  document.getElementById('istBar').style.width=(c/target*100)+'%';
+  document.getElementById('miniIst').textContent=counts.ist;
+  document.getElementById('miniSal').textContent=counts.sal;
+  document.getElementById('istBtn').textContent = c>=target ? '🔁 ابدأ وردا جديدا في هذا المسار' : (mode==='ist' ? 'أستغفر الله 🤲' : 'اللهم صل وسلم على محمد ﷺ 🌹');
+  document.getElementById('istMsg').textContent = 'المسار الحالي: ' + (mode==='ist' ? 'الاستغفار' : 'الصلاة على النبي') + ' - ' + c + ' / ' + target + ' | المسار الآخر محفوظ: ' + (mode==='ist' ? counts.sal : counts.ist) + ' / ' + target;
+  document.getElementById('statusIst').textContent = counts.ist>=target ? '✅ تم! اضغط لتعيده' : (counts.ist>0 ? '⏸️ توقفت في '+counts.ist+' - اضغط لتكمل' : 'اضغط لتبدأ هنا');
+  document.getElementById('statusSal').textContent = counts.sal>=target ? '✅ تم! اضغط لتعيده' : (counts.sal>0 ? '⏸️ توقفت في '+counts.sal+' - اضغط لتكمل' : 'اضغط لتنتقل هنا');
+  if(c===0){
+    document.getElementById('istTitle').textContent = mode==='ist' ? 'أنت في مسار الاستغفار 💚' : 'أنت في مسار الصلاة على النبي 🌹';
+    document.getElementById('istText').textContent = mode==='ist' ? 'اضغط الزر الكبير وابدأ. كل 10 أشواط = صورة طبيعة جديدة + بشرى جديدة.' : 'اضغط الزر الكبير وابدأ. كل 10 صلوات = صورة جديدة + بشرى جديدة.';
+    document.getElementById('istImg').src=imgs[0];
+  }
+}
+function getBushra(c){
+  if(mode==='ist'){
+    if(c===10) return ["أول 10.. أول نور 💚","هنيئا لك! فتحت بابا من أبواب الرحمة."];
+    if(c===20) return ["واصل.. فالسماء تسمعك 🌿","كل استغفار يمحو ذنبا، ويزرع في قلبك سكينة."];
+    if(c===30) return ["الله يحب المستغفرين 🌸","من لزم الاستغفار جعل الله له من كل هم فرجا."];
+    if(c===40) return ["وصلت لنصف الطريق تقريبا 👏","واصل وردك، الباقي أجمل."];
+    if(c===50) return ["50 استغفار! ما شاء الله 💎","تخيل ميزان حسناتك الآن."];
+    if(c===60) return ["بقي القليل.. لا تتوقف ⭐","الشيطان يريدك أن تتوقف الآن. لا تعطه الفرصة."];
+    if(c===70) return ["🎉 أتممت ورد السنة! 70 مرة","فعلت كما كان يفعل النبي ﷺ. اللهم اغفر له وارزقه."];
+    if(c===80) return ["80.. تجاوزت السنة 🌄","أنت الآن في طريق المائة."];
+    if(c===90) return ["90.. شوط واحد ويكتمل وردك 🌹","ادع الله الآن بما في قلبك."];
+    if(c===100) return ["🎉 أتممت 100 استغفار!","أتممت ورد النبي ﷺ كاملا. تقبل الله منك."];
+  } else {
+    if(c===10) return ["أول 10 صلوات 🌹","من صلى علي واحدة صلى الله عليه عشرا."];
+    if(c===20) return ["النبي ﷺ يرد عليك السلام 💚","ما من أحد يسلم علي إلا رد الله علي روحي حتى أرد عليه السلام."];
+    if(c===30) return ["نور يملأ قلبك ✨","الصلاة على النبي نور وبركة وشفاء للقلب."];
+    if(c===40) return ["أنت قريب منه ﷺ 🌾","أولى الناس بي يوم القيامة أكثرهم علي صلاة."];
+    if(c===50) return ["50 صلاة! 🌸","50 صلاة منك = 500 صلاة من الله عليك."];
+    if(c===60) return ["همومك تذوب 🍃","من جعل صلاته كلها للنبي ﷺ، كُفي همه وغُفر ذنبه."];
+    if(c===70) return ["🎉 أتممت ورد السنة! 70 صلاة","هنيئا لك! 70 صلاة على الحبيب ﷺ."];
+    if(c===80) return ["80.. واصل 🌄","أنت في طريق المائة."];
+    if(c===90) return ["90.. بقي شوط واحد 🌹","ادع الله الآن، فالدعاء مع الصلاة على النبي لا يرد."];
+    if(c===100) return ["🎉 أتممت 100 صلاة!","اللهم ارزقه شفاعته واسقه من حوضه."];
+  }
+  return null;
+}
+function doZikr(){
+  if(counts[mode]>=target){ counts[mode]=0; updateUI(); return; }
+  counts[mode]++;
+  let c=counts[mode];
+  document.getElementById('istNum').textContent=c;
+  document.getElementById('istBar').style.width=(c/target*100)+'%';
+  if(c%10===0) document.getElementById('istImg').src=imgs[Math.floor((c-1)/10)%10];
+  let b=getBushra(c);
+  if(b){
+    document.getElementById('istTitle').textContent=b[0];
+    document.getElementById('istText').textContent=b[1];
+  } else {
+    document.getElementById('istTitle').textContent = mode==='ist' ? 'أستغفر الله.. واصل 💚' : 'اللهم صل على محمد.. واصل 🌹';
+    document.getElementById('istText').textContent='واصل، بقي '+(target-c)+' حتى تتم وردك في هذا المسار.';
+  }
+  updateUI();
+  if(c===target){
+    document.getElementById('istTitle').textContent=getBushra(c)[0];
+    document.getElementById('istText').textContent=getBushra(c)[1];
+  }
+}
+updateUI();
+</script>
+<!-- ===== نهاية القسم ===== -->
