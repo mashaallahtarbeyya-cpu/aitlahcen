@@ -21,6 +21,10 @@
 .ist-card b{font-size:21px;display:block}
 .ist-big-btn{width:100%;border:0;background:#FFC107;color:#1A1A1A;font-size:34px;font-weight:900;padding:30px 10px;border-radius:22px;cursor:pointer;box-shadow:0 10px 0 #D39E00}
 .ist-big-btn:active{transform:translateY(6px);box-shadow:0 4px 0 #D39E00}
+/* ===== الجديد: الكلمات الطايرة ===== */
+.fly-zone{position:relative;height:0;overflow:visible;pointer-events:none}
+.fly{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:26px;font-weight:900;color:#FFE082;text-shadow:0 2px 8px rgba(0,0,0,.4);animation:flyUp 1.4s ease-out forwards;white-space:nowrap}
+@keyframes flyUp{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-180px) scale(1.2)}}
 </style>
 
 <div class="ist-box">
@@ -28,7 +32,12 @@
   <h2>اختر مسارك.. وابدأ وردك</h2>
   <p style="opacity:.9">جوج مسارات، اختر واحد، وكمل فيه، ورجع للثاني وقت ما بغيتي</p>
 
-  <!-- العداد - دابا محلي، ما كيبلوكيش الصفحة -->
+  <!-- 
+  ملاحظة مهمة للزوار:
+  العداد هنا جميل كما هو، وهو عداد خاص بك وحدك، محفوظ في جهازك بـ localStorage.
+  يعني إلا خرجتي ورجعتي غادي تلقى عددك باقي محفوظ.
+  العداد العالمي لجميع الزوار غادي نديروه من بعد بـ Firebase.
+  -->
   <div class="global-box">
     <div><div class="lbl">👥 زرت الصفحة</div><div class="num" id="visitsCount">1</div></div>
     <div><div class="lbl">🤲 استغفارك</div><div class="num" id="globalIst">0</div></div>
@@ -68,6 +77,8 @@
 
   <div class="ist-card"><b id="istTitle">أنت في مسار الاستغفار 💚</b><span id="istText">اضغط الزر الكبير وابدأ. كل 10 = صورة + بشرى جديدة.</span></div>
 
+  <!-- منطقة الكلمات الطايرة -->
+  <div class="fly-zone" id="flyZone"></div>
   <button class="ist-big-btn" id="istBtn" onclick="doZikr()">أستغفر الله 🤲</button>
   <p id="istMsg" style="font-size:13px;opacity:.85;margin-top:10px">المسار الحالي: الاستغفار - 0 / 70</p>
 </div>
@@ -75,7 +86,6 @@
 <script>
 let mode='ist', target=70;
 let counts={ist:0, sal:0};
-// عداد محلي آمن - ما كيعتمدش على الإنترنت
 let total={ist: parseInt(localStorage.getItem('my_total_ist')||0), sal: parseInt(localStorage.getItem('my_total_sal')||0), visits: parseInt(localStorage.getItem('my_visits')||0)+1};
 localStorage.setItem('my_visits', total.visits);
 function refreshGlobal(){
@@ -88,6 +98,18 @@ refreshGlobal();
 const imgs=["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80","https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=900&q=80","https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900&q=80","https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80","https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=900&q=80","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80","https://images.unsplash.com/photo-1519681393784-d120267933ba?w=900&q=80","https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=80","https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&q=80","https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=900&q=80"];
 function setTarget(n,btn){target=n;document.querySelectorAll('.targets button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('istTarget').textContent=n;document.querySelectorAll('.tShow').forEach(e=>e.textContent=n);updateUI();}
 function setMode(m){mode=m;document.getElementById('cardIst').classList.toggle('active',m==='ist');document.getElementById('cardSal').classList.toggle('active',m==='sal');updateUI();}
+
+// ===== الجديد: دالة الكلمة الطايرة =====
+function spawnFly(){
+  let zone=document.getElementById('flyZone');
+  let s=document.createElement('div');
+  s.className='fly';
+  s.textContent = mode==='ist' ? 'أستغفر الله' : 'اللهم صل وسلم على محمد';
+  s.style.left = (35+Math.random()*30)+'%';
+  zone.appendChild(s);
+  setTimeout(()=>s.remove(),1400);
+}
+
 function updateUI(){
   let c=counts[mode];
   document.getElementById('istNum').textContent=c;
@@ -125,8 +147,8 @@ function getBushra(c){
 function doZikr(){
   if(counts[mode]>=target){ counts[mode]=0; updateUI(); return; }
   counts[mode]++;
+  spawnFly(); // <-- هنا كتطلع الكلمة
   let c=counts[mode];
-  // زيادة العداد المحلي - ما كتبلوكيش
   if(mode==='ist'){ total.ist++; localStorage.setItem('my_total_ist', total.ist); }
   else { total.sal++; localStorage.setItem('my_total_sal', total.sal); }
   refreshGlobal();
