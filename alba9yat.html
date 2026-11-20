@@ -1,9 +1,13 @@
-<!-- ===== قسم المسارين: الاستغفار + الصلاة على النبي - حطو في موقعك ===== -->
+<!-- ===== قسم المسارين: الاستغفار + الصلاة على النبي - النسخة النهائية مع العداد العالمي ===== -->
 <style>
 .ist-box{font-family:Tahoma,Arial,sans-serif;direction:rtl;text-align:center;max-width:660px;margin:20px auto;background:linear-gradient(180deg,#0F3D2E,#1A5C44);color:#fff;border-radius:26px;padding:20px;box-shadow:0 14px 35px rgba(0,0,0,.25);overflow:hidden}
 .ist-box h2{margin:0;font-size:30px}
 .hadith{background:#FFF8E7;color:#222;border-radius:16px;padding:14px;margin:14px 0;text-align:right;font-size:15px;line-height:1.9;border-right:6px solid #FFC107}
 .hadith b{color:#0F3D2E}
+.global-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
+.global-box div{background:rgba(255,255,255,.12);border-radius:14px;padding:10px}
+.global-box .lbl{font-size:12px;opacity:.85}
+.global-box .num{font-size:20px;font-weight:900}
 .path-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
 .path-card{border:3px solid rgba(255,255,255,.25);border-radius:20px;padding:14px;cursor:pointer;background:rgba(255,255,255,.08)}
 .path-card.active{border-color:#FFC107;background:rgba(255,193,7,.18);box-shadow:0 0 0 3px rgba(255,193,7,.3)}
@@ -30,6 +34,13 @@
   <div style="font-size:36px">🤲 🌹</div>
   <h2>اختر مسارك.. وابدأ وردك</h2>
   <p style="opacity:.9">جوج مسارات، اختر واحد، وكمل فيه، ورجع للثاني وقت ما بغيتي</p>
+
+  <!-- ===== العداد العالمي - بجوج: العرض + الزيادة ===== -->
+  <div class="global-box">
+    <div><div class="lbl">👥 زار الصفحة</div><div class="num" id="visitsCount">...</div></div>
+    <div><div class="lbl">🤲 استغفار في الموقع</div><div class="num" id="globalIst">...</div></div>
+    <div><div class="lbl">🌹 صلاة على النبي</div><div class="num" id="globalSal">...</div></div>
+  </div>
 
   <div class="hadith">
     <b>📖 توجيه من السنة:</b><br>
@@ -128,49 +139,4 @@ function getBushra(c){
   if(mode==='ist'){
     if(c===10) return ["أول 10.. أول نور 💚","هنيئا لك! فتحت بابا من أبواب الرحمة."];
     if(c===20) return ["واصل.. فالسماء تسمعك 🌿","كل استغفار يمحو ذنبا، ويزرع في قلبك سكينة."];
-    if(c===30) return ["الله يحب المستغفرين 🌸","من لزم الاستغفار جعل الله له من كل هم فرجا."];
-    if(c===40) return ["وصلت لنصف الطريق تقريبا 👏","واصل وردك، الباقي أجمل."];
-    if(c===50) return ["50 استغفار! ما شاء الله 💎","تخيل ميزان حسناتك الآن."];
-    if(c===60) return ["بقي القليل.. لا تتوقف ⭐","الشيطان يريدك أن تتوقف الآن. لا تعطه الفرصة."];
-    if(c===70) return ["🎉 أتممت ورد السنة! 70 مرة","فعلت كما كان يفعل النبي ﷺ. اللهم اغفر له وارزقه."];
-    if(c===80) return ["80.. تجاوزت السنة 🌄","أنت الآن في طريق المائة."];
-    if(c===90) return ["90.. شوط واحد ويكتمل وردك 🌹","ادع الله الآن بما في قلبك."];
-    if(c===100) return ["🎉 أتممت 100 استغفار!","أتممت ورد النبي ﷺ كاملا. تقبل الله منك."];
-  } else {
-    if(c===10) return ["أول 10 صلوات 🌹","من صلى علي واحدة صلى الله عليه عشرا."];
-    if(c===20) return ["النبي ﷺ يرد عليك السلام 💚","ما من أحد يسلم علي إلا رد الله علي روحي حتى أرد عليه السلام."];
-    if(c===30) return ["نور يملأ قلبك ✨","الصلاة على النبي نور وبركة وشفاء للقلب."];
-    if(c===40) return ["أنت قريب منه ﷺ 🌾","أولى الناس بي يوم القيامة أكثرهم علي صلاة."];
-    if(c===50) return ["50 صلاة! 🌸","50 صلاة منك = 500 صلاة من الله عليك."];
-    if(c===60) return ["همومك تذوب 🍃","من جعل صلاته كلها للنبي ﷺ، كُفي همه وغُفر ذنبه."];
-    if(c===70) return ["🎉 أتممت ورد السنة! 70 صلاة","هنيئا لك! 70 صلاة على الحبيب ﷺ."];
-    if(c===80) return ["80.. واصل 🌄","أنت في طريق المائة."];
-    if(c===90) return ["90.. بقي شوط واحد 🌹","ادع الله الآن، فالدعاء مع الصلاة على النبي لا يرد."];
-    if(c===100) return ["🎉 أتممت 100 صلاة!","اللهم ارزقه شفاعته واسقه من حوضه."];
-  }
-  return null;
-}
-function doZikr(){
-  if(counts[mode]>=target){ counts[mode]=0; updateUI(); return; }
-  counts[mode]++;
-  let c=counts[mode];
-  document.getElementById('istNum').textContent=c;
-  document.getElementById('istBar').style.width=(c/target*100)+'%';
-  if(c%10===0) document.getElementById('istImg').src=imgs[Math.floor((c-1)/10)%10];
-  let b=getBushra(c);
-  if(b){
-    document.getElementById('istTitle').textContent=b[0];
-    document.getElementById('istText').textContent=b[1];
-  } else {
-    document.getElementById('istTitle').textContent = mode==='ist' ? 'أستغفر الله.. واصل 💚' : 'اللهم صل على محمد.. واصل 🌹';
-    document.getElementById('istText').textContent='واصل، بقي '+(target-c)+' حتى تتم وردك في هذا المسار.';
-  }
-  updateUI();
-  if(c===target){
-    document.getElementById('istTitle').textContent=getBushra(c)[0];
-    document.getElementById('istText').textContent=getBushra(c)[1];
-  }
-}
-updateUI();
-</script>
-<!-- ===== نهاية القسم ===== -->
+    if(c===30) return ["الله يحب المستغفرين 🌸","من لزم
