@@ -18,6 +18,12 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 </script>
+	<script>
+  if(location.search.includes('admin=1')){
+    localStorage.setItem('i_am_admin','1');
+    alert('صافي، زياراتك ما غاديش تتحسب ✅');
+  }
+	</script>
 </head>
 <style>
   html {
