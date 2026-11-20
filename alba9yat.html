@@ -32,7 +32,6 @@
 .ist-card b{font-size:21px;display:block}
 .ist-big-btn{width:100%;border:0;background:#FFC107;color:#1A1A1A;font-size:34px;font-weight:900;padding:30px 10px;border-radius:22px;cursor:pointer;box-shadow:0 10px 0 #D39E00}
 .ist-big-btn:active{transform:translateY(6px);box-shadow:0 4px 0 #D39E00}
-/* ===== الجديد: الكلمات الطايرة ===== */
 .fly-zone{position:relative;height:0;overflow:visible;pointer-events:none}
 .fly{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:26px;font-weight:900;color:#FFE082;text-shadow:0 2px 8px rgba(0,0,0,.4);animation:flyUp 1.4s ease-out forwards;white-space:nowrap}
 @keyframes flyUp{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-180px) scale(1.2)}}
@@ -42,27 +41,18 @@
   <div style="font-size:36px">🤲 🌹</div>
   <h2>اختر مسارك.. وابدأ وردك</h2>
   <p style="opacity:.9">جوج مسارات، اختر واحد، وكمل فيه، ورجع للثاني وقت ما بغيتي</p>
-
-  <!-- 
-  ملاحظة مهمة للزوار:
-  العداد هنا جميل كما هو، وهو عداد خاص بك وحدك، محفوظ في جهازك بـ localStorage.
-  يعني إلا خرجتي ورجعتي غادي تلقى عددك باقي محفوظ.
-  العداد العالمي لجميع الزوار غادي نديروه من بعد بـ Firebase.
-  -->
   <div class="global-box">
     <div><div class="lbl">👥 زرت الصفحة</div><div class="num" id="visitsCount">1</div></div>
     <div><div class="lbl">🤲 استغفارك</div><div class="num" id="globalIst">0</div></div>
     <div><div class="lbl">🌹 صلاتك</div><div class="num" id="globalSal">0</div></div>
   </div>
   <p style="font-size:12px;opacity:.7">* العداد هنا خاص بك، محفوظ في جهازك. العداد العالمي غادي نديروه من بعد بـ Firebase.</p>
-
   <div class="hadith">
     <b>📖 توجيه من السنة:</b><br>
     <b>الاستغفار:</b> قال ﷺ: <b>"يا أيها الناس توبوا إلى الله، فإني أتوب في اليوم إليه مائة مرة"</b> — رواه مسلم<br>
     وقال ﷺ: <b>"والله إني لأستغفر الله وأتوب إليه في اليوم أكثر من سبعين مرة"</b> — رواه البخاري<br>
     <b>الصلاة على النبي:</b> قال ﷺ: <b>"من صلى علي واحدة صلى الله عليه عشرا"</b> — رواه مسلم
   </div>
-
   <div class="path-wrap">
     <div class="path-card active" id="cardIst" onclick="setMode('ist')">
       <h3>🤲 مسار الاستغفار</h3><p>أستغفر الله وأتوب إليه</p>
@@ -75,20 +65,15 @@
       <p id="statusSal">اضغط لتنتقل هنا</p>
     </div>
   </div>
-
   <div class="targets">
     <button onclick="setTarget(10,this)">10 - خفيف</button>
     <button class="active" onclick="setTarget(70,this)">70 - ورد السنة ✨</button>
     <button onclick="setTarget(100,this)">100 - ورد الكمال</button>
   </div>
-
   <img id="istImg" class="ist-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80">
   <div class="ist-count"><span id="istNum">0</span> / <span id="istTarget">70</span></div>
   <div class="ist-progress"><div class="ist-bar" id="istBar"></div></div>
-
   <div class="ist-card"><b id="istTitle">أنت في مسار الاستغفار 💚</b><span id="istText">اضغط الزر الكبير وابدأ. كل 10 = صورة + بشرى جديدة.</span></div>
-
-  <!-- منطقة الكلمات الطايرة -->
   <div class="fly-zone" id="flyZone"></div>
   <button class="ist-big-btn" id="istBtn" onclick="doZikr()">أستغفر الله 🤲</button>
   <p id="istMsg" style="font-size:13px;opacity:.85;margin-top:10px">المسار الحالي: الاستغفار - 0 / 70</p>
@@ -105,12 +90,9 @@ function refreshGlobal(){
   document.getElementById('globalSal').textContent = total.sal;
 }
 refreshGlobal();
-
 const imgs=["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80","https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=900&q=80","https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900&q=80","https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80","https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=900&q=80","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80","https://images.unsplash.com/photo-1519681393784-d120267933ba?w=900&q=80","https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=80","https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&q=80","https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=900&q=80"];
 function setTarget(n,btn){target=n;document.querySelectorAll('.targets button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('istTarget').textContent=n;document.querySelectorAll('.tShow').forEach(e=>e.textContent=n);updateUI();}
 function setMode(m){mode=m;document.getElementById('cardIst').classList.toggle('active',m==='ist');document.getElementById('cardSal').classList.toggle('active',m==='sal');updateUI();}
-
-// ===== الجديد: دالة الكلمة الطايرة =====
 function spawnFly(){
   let zone=document.getElementById('flyZone');
   let s=document.createElement('div');
@@ -120,7 +102,6 @@ function spawnFly(){
   zone.appendChild(s);
   setTimeout(()=>s.remove(),1400);
 }
-
 function updateUI(){
   let c=counts[mode];
   document.getElementById('istNum').textContent=c;
@@ -151,26 +132,4 @@ function getBushra(c){
     if(c===30) return ["نور يملأ قلبك ✨","الصلاة على النبي نور وبركة."];
     if(c===50) return ["50 صلاة! 🌸","50 صلاة منك = 500 صلاة من الله عليك."];
     if(c===70) return ["🎉 أتممت ورد السنة! 70 صلاة","هنيئا لك!"];
-    if(c===100) return ["🎉 أتممت 100 صلاة!","اللهم ارزقه شفاعته."];
-  }
-  return null;
-}
-function doZikr(){
-  if(counts[mode]>=target){ counts[mode]=0; updateUI(); return; }
-  counts[mode]++;
-  spawnFly(); // <-- هنا كتطلع الكلمة
-  let c=counts[mode];
-  if(mode==='ist'){ total.ist++; localStorage.setItem('my_total_ist', total.ist); }
-  else { total.sal++; localStorage.setItem('my_total_sal', total.sal); }
-  refreshGlobal();
-  document.getElementById('istNum').textContent=c;
-  document.getElementById('istBar').style.width=(c/target*100)+'%';
-  if(c%10===0) document.getElementById('istImg').src=imgs[Math.floor((c-1)/10)%10];
-  let b=getBushra(c);
-  if(b){ document.getElementById('istTitle').textContent=b[0]; document.getElementById('istText').textContent=b[1]; }
-  else { document.getElementById('istTitle').textContent=mode==='ist'?'أستغفر الله.. واصل 💚':'اللهم صل على محمد.. واصل 🌹'; document.getElementById('istText').textContent='واصل، بقي '+(target-c)+' حتى تتم وردك.'; }
-  updateUI();
-  if(c===target && b){ document.getElementById('istTitle').textContent=b[0]; document.getElementById('istText').textContent=b[1]; }
-}
-updateUI();
-</script>
+    if(c===100) return ["🎉 أتم
