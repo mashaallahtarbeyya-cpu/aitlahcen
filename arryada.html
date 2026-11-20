@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حصص المواد - درايف النيابة</title>
+</head>
+<body style="margin:0;background:#0F3D2E;font-family:Tahoma">
+
+<div style="max-width:800px;margin:0 auto;padding:16px;color:#fff;text-align:center">
+<h2>📚 حصص المواد</h2>
+<p style="opacity:.85;font-size:14px">اختار المادة، غادي يبانو ليك غير الحصص ديالها</p>
+
+<!-- أزرار الفرز -->
+<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0">
+<button onclick="showMada('m1',this)" class="madaBtn active" style="border:0;padding:10px 18px;border-radius:999px;font-weight:900;cursor:pointer;background:#FFC107;color:#222">📖 اللغة العربية</button>
+<button onclick="showMada('m2',this)" class="madaBtn" style="border:0;padding:10px 18px;border-radius:999px;font-weight:900;cursor:pointer;background:rgba(255,255,255,.18);color:#fff">🇫🇷 اللغة العربية</button>
+<button onclick="showMada('m3',this)" class="madaBtn" style="border:0;padding:10px 18px;border-radius:999px;font-weight:900;cursor:pointer;background:rgba(255,255,255,.18);color:#fff">🕌  اللغة العربية</button>
+<button onclick="showMada('m4',this)" class="madaBtn" style="border:0;padding:10px 18px;border-radius:999px;font-weight:900;cursor:pointer;background:rgba(255,255,255,.18);color:#fff">📘  اللغة العربية</button>
+</div>
+
+<!-- صندوق العرض -->
+<div id="box" style="background:#fff;border-radius:20px;padding:10px;color:#222;text-align:right">
+<div id="titleBox" style="text-align:center;font-weight:900;font-size:16px;margin:8px">📖 اللغة العربية - جميع الحصص</div>
+<iframe id="driveFrame" src="https://drive.google.com/embeddedfolderview?id=1vXyq5T3NA4QsK7zf3NHUNnkAcqfliT7k#grid" style="width:100%;height:520px;border:0;border-radius:12px"></iframe>
+<div style="text-align:center;margin:10px">
+<a id="openLink" href="https://drive.google.com/drive/folders/1vXyq5T3NA4QsK7zf3NHUNnkAcqfliT7k?usp=drive_link" target="_blank" style="display:inline-block;background:#0F3D2E;color:#fff;padding:10px 22px;border-radius:999px;text-decoration:none;font-weight:900">فتح في Google Drive ↗️</a>
+</div>
+</div>
+
+<p style="font-size:12px;opacity:.7;margin-top:10px">المصدر: رابط Drive الرسمي من النيابة</p>
+</div>
+
+<script>
+const data = {
+  m1: {title:"📖مرحلة التقويم", id:"1vXyq5T3NA4QsK7zf3NHUNnkAcqfliT7k", link:"https://drive.google.com/drive/folders/1vXyq5T3NA4QsK7zf3NHUNnkAcqfliT7k?usp=drive_link"},
+  m2: {title:"🇫🇷 دروس الرقمية PPT", id:"18RzDwmOAKfRMabHBLVBhW-5GyZ9lXLX-", link:"https://drive.google.com/drive/folders/18RzDwmOAKfRMabHBLVBhW-5GyZ9lXLX-?usp=drive_link"},
+  m3: {title:"الكتب المدرسية", id:"1Cp95J7-sy28fx_HBpGZ06k6NKCIwBHY2", link:"https://drive.google.com/drive/folders/1Cp95J7-sy28fx_HBpGZ06k6NKCIwBHY2?usp=drive_link"},
+  m4: {title:"📘 دعامات التكوين", id:"13bca2_sRSRhmIcS9lbPWQleMIPNrcxMz", link:"https://drive.google.com/drive/folders/13bca2_sRSRhmIcS9lbPWQleMIPNrcxMz?usp=drive_link"}
+};
+function showMada(key, btn){
+  document.querySelectorAll('.madaBtn').forEach(b=>{b.style.background='rgba(255,255,255,.18)'; b.style.color='#fff';});
+  btn.style.background='#FFC107'; btn.style.color='#222';
+  document.getElementById('titleBox').textContent = data[key].title;
+  document.getElementById('driveFrame').src = 'https://drive.google.com/embeddedfolderview?id='+data[key].id+'#grid';
+  document.getElementById('openLink').href = data[key].link;
+}
+</script>
+</body>
+</html>
