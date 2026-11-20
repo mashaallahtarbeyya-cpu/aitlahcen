@@ -1,0 +1,11 @@
+{
+  "name": "الباقيات الصالحات",
+  "short_name": "الباقيات",
+  "start_url": "baqiyat.html",
+  "display": "standalone",
+  "background_color": "#0F3D2E",
+  "theme_color": "#0F3D2E",
+  "icons": [
+    {"src": "icon-baqiyat-512.png","sizes": "512x512","type": "image/png"}
+  ]
+}
