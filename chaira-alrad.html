@@ -39,7 +39,7 @@
   <div class="ornament">✦ ─── ✦ ─── ✦</div>
   <div class="audio-box">
     <p>🎙️ استمع بصوت شاعر الغد</p>
-    <audio controls preload="auto">
+   <audio id="myAudio" controls preload="auto">
       <source src="sawti.ogg" type="audio/ogg">
     </audio>
   </div>
@@ -97,5 +97,30 @@
     <a class="btn" href="#" onclick="window.print();return false;">🖨️ طباعة / حفظ PDF</a>
   </div>
 </div>
+ <script>
+  const audio = document.getElementById('myAudio');
+  let isScrolling = false;
+
+  function scrollPoem() {
+    if (!isScrolling) return;
+    // هاد الرقم هو السرعة: 0.5 بطيء، 1.0 سريع
+    window.scrollBy(0, 0.7);
+    requestAnimationFrame(scrollPoem);
+  }
+
+  audio.addEventListener('play', () => {
+    isScrolling = true;
+    scrollPoem();
+  });
+
+  audio.addEventListener('pause', () => {
+    isScrolling = false;
+  });
+
+  audio.addEventListener('ended', () => {
+    isScrolling = false;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+</script>
 </body>
 </html>
