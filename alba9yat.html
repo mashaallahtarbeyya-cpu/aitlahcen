@@ -7,10 +7,18 @@
 <link rel="manifest" href="manifest-baqiyat.json">
 <meta name="theme-color" content="#0F3D2E">
 <link rel="icon" href="icon-baqiyat-512.png">
+<link rel="apple-touch-icon" href="icon-baqiyat-512.png">
 </head>
 <body style="margin:0;background:#0F3D2E">
 
-<button id="installBtn" style="display:none; background:#ffc107; color:#000; border:none; padding:12px 20px; border-radius:25px; font-size:17px; font-weight:bold; width:90%; margin:10px auto; display:block;">
+<div style="background:#0b3d26; color:#ffe9a8; text-align:center; padding:12px 10px; font-size:16px; line-height:1.9; border-radius:12px; margin:10px;">
+  📲 <b>باش تنزّل التطبيق:</b><br>
+  ورك على <b>3 النقط اللي الفوق ⋮</b> وهبط شوية<br>
+  غادي تلقى <b>"تنزيل التطبيق"</b> ورك عليها<br>
+  <span style="color:#fff; font-size:14px;">iPhone: ورك على زر المشاركة لتحت ⬆️ ودير "إضافة إلى الشاشة الرئيسية"</span>
+</div>
+
+<button id="installBtn" style="display:none; background:#ffc107; color:#000; border:none; padding:12px 20px; border-radius:25px; font-size:17px; font-weight:bold; width:90%; margin:10px auto;">
   📲 تنزيل التطبيق هنا
 </button>
 
@@ -182,8 +190,6 @@ function doZikr(){
   refreshGlobal();
 }
 updateUI();
-
-// زر التذكير - نسخة آمنة بلا onclick في النص
 document.getElementById('wirdBtn').addEventListener('click', function(){
   var b=document.getElementById('wirdBox');
   b.style.display=(b.style.display==='block')?'none':'block';
@@ -195,6 +201,11 @@ document.getElementById('wirdStart').addEventListener('click', function(){
   document.getElementById('wirdBox').style.display='none';
   document.getElementById('mainBox').scrollIntoView({behavior:'smooth'});
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 </body>
 </html>
