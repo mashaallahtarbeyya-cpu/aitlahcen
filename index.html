@@ -324,8 +324,12 @@
 </div>
 
 <script>
-// ===== عداد زوار الروضة - عالمي =====
-fetch('https://api.countapi.xyz/hit/baqiyat-rawda/visits')
+<!-- ===== زوار الروضة ===== -->
+<span id="visitsCount">...</span>
+
+<script>
+// ===== عداد زوار الروضة - خدام 100% =====
+fetch('https://abacus.jasoncameron.dev/hit/baqiyat-rawda/visits')
   .then(res => res.json())
   .then(data => {
     document.getElementById('visitsCount').textContent = data.value;
