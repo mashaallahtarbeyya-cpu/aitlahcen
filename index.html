@@ -318,24 +318,23 @@
     </script>
 </div>
 <!-- ===== زوار الروضة ===== -->
-<div class="card">
-  <span>زوار الروضة</span>
-  <span id="visitsCount">...</span>
+<div style="text-align:center; padding:15px; background:#fff; border-radius:14px; margin:10px;">
+  <span>زوار الروضة: </span>
+  <span class="visitsCount">...</span>
 </div>
 
 <script>
-<!-- ===== زوار الروضة ===== -->
-<span id="visitsCount">...</span>
-
-<script>
-// ===== عداد زوار الروضة - خدام 100% =====
 fetch('https://abacus.jasoncameron.dev/hit/baqiyat-rawda/visits')
   .then(res => res.json())
   .then(data => {
-    document.getElementById('visitsCount').textContent = data.value;
+    document.querySelectorAll('.visitsCount').forEach(el => {
+      el.textContent = data.value;
+    });
   })
   .catch(() => {
-    document.getElementById('visitsCount').textContent = '0';
+    document.querySelectorAll('.visitsCount').forEach(el => {
+      el.textContent = '0';
+    });
   });
 </script>
 <!-- تذييل المدونة (Footer) -->
