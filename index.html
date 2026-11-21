@@ -318,25 +318,10 @@
     </script>
 </div>
 <!-- ===== زوار الروضة ===== -->
-<div style="text-align:center; padding:15px; background:#fff; border-radius:14px; margin:10px;">
-  <span>زوار الروضة: </span>
-  <span class="visitsCount">...</span>
+<div style="text-align:center; padding:15px; background:#fff; border-radius:14px; margin:10px; font-weight:900;">
+  زوار الروضة: 
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=mashaallahtarbeyya-cpu.github.io&count_bg=%23065f46&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false" style="vertical-align:middle; height:22px;" alt="زوار الروضة">
 </div>
-
-<script>
-fetch('https://abacus.jasoncameron.dev/hit/baqiyat-rawda/visits')
-  .then(res => res.json())
-  .then(data => {
-    document.querySelectorAll('.visitsCount').forEach(el => {
-      el.textContent = data.value;
-    });
-  })
-  .catch(() => {
-    document.querySelectorAll('.visitsCount').forEach(el => {
-      el.textContent = '0';
-    });
-  });
-</script>
 <!-- تذييل المدونة (Footer) -->
 <footer class="bg-slate-900 text-slate-300 py-8 mt-12 text-center text-xs">
   <div class="max-w-6xl mx-auto px-4 space-y-2">
