@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بلاغات وزارة التربية الوطنية</title>
+<style>
+  body{font-family:Tahoma, Arial; background:#f2f2f2; margin:0; padding:20px;}
+  .wrap{max-width:780px; margin:auto;}
+  h1.main{text-align:center; color:#1a5c2a; font-size:20px; margin-bottom:5px;}
+  p.sub{text-align:center; color:#666; font-size:13px; margin-top:0;}
+  .buttons{display:flex; gap:10px; margin:20px 0;}
+  .buttons button{flex:1; padding:14px; border:none; border-radius:10px; font-family:Tahoma; font-size:15px; font-weight:bold; cursor:pointer; transition:.2s;}
+  #btn1{background:#1a5c2a; color:#fff;}
+  #btn2{background:#fff; color:#8e1a1a; border:2px solid #8e1a1a;}
+  .buttons button.active{transform:scale(1.03); box-shadow:0 4px 12px rgba(0,0,0,.15);}
+  .card{background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.1); display:none;}
+  .card.show{display:block;}
+  .top{padding:18px; text-align:center; color:#fff;}
+  .green{background:#1a5c2a;}
+  .red{background:#8e1a1a;}
+  .top h2{font-size:18px; margin:0; line-height:1.6;}
+  .top p{margin:5px 0 0; font-size:12px; opacity:.9;}
+  .content{padding:22px; line-height:1.9; color:#222;}
+  .badge{display:inline-block; padding:6px 14px; border-radius:20px; font-weight:bold; font-size:13px;}
+  .badge-g{background:#e8f5e9; color:#1a5c2a;}
+  .badge-r{background:#ffebee; color:#8e1a1a;}
+  .box{background:#fff8e1; border:1px solid #ffe082; padding:14px; border-radius:8px; margin:15px 0;}
+  table{width:100%; border-collapse:collapse; margin:15px 0;}
+  td,th{border:1px solid #ddd; padding:12px; text-align:center;}
+  th{background:#f5f5f5;}
+  .old{color:#999; text-decoration:line-through;}
+  .new{color:#1a5c2a; font-weight:bold; font-size:18px;}
+  .btn{display:inline-block; color:#fff; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold; margin-top:10px;}
+  .btn-g{background:#1a5c2a;}
+  .btn-r{background:#8e1a1a;}
+  .footer{background:#f8f8f8; padding:12px; text-align:center; font-size:12px; color:#666;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="main">🏛️ وزارة التربية الوطنية والتعليم الأولي والرياضة</h1>
+  <p class="sub">بلاغات رسمية - الموسم الدراسي 2026 / 2027 - المصدر: www.men.gov.ma</p>
+
+  <div class="buttons">
+    <button id="btn1" onclick="show(1)" class="active">📢 مباراة ولوج سلك التأهيل<br><small>دورة نونبر 2026</small></button>
+    <button id="btn2" onclick="show(2)">⏰ تأجيل الكفاءة المهنية<br><small>دورة دجنبر 2026</small></button>
+  </div>
+
+  <!-- البلاغ 1 -->
+  <div id="card1" class="card show">
+    <div class="top green">
+      <p>المملكة المغربية - وزارة التربية الوطنية والتعليم الأولي والرياضة</p>
+      <h2>الإعلان عن مباريات ولوج سلك تأهيل أطر التدريس<br>بالمراكز الجهوية لمهن التربية والتكوين - دورة نونبر 2026</h2>
+    </div>
+    <div class="content">
+      <span class="badge badge-g">📢 إعلان رسمي</span>
+      <p>تعلن وزارة التربية الوطنية والتعليم الأولي والرياضة عن فتح باب إيداع طلبات الترشيح للمشاركة في مباريات ولوج سلك تأهيل أطر التدريس بالمراكز الجهوية لمهن التربية والتكوين، دورة نونبر 2026.</p>
+      <div class="box">
+        <b>🎯 الهدف:</b> تكوين الأساتذة المتدربين من أجل الالتحاق بسلك التعليم.<br>
+        <b>🏫 المراكز المعنية:</b> المراكز الجهوية لمهن التربية والتكوين CRMEF بجميع جهات المملكة.<br>
+        <b>📅 الدورة:</b> نونبر 2026
+      </div>
+      <p>للاطلاع على الشروط والتخصصات والآجال والوثائق المطلوبة، يرجى تحميل البلاغ الكامل.</p>
+      <a class="btn btn-g" href="#">⬇ تنزيل البلاغ PDF</a>
+    </div>
+    <div class="footer">المصدر: www.men.gov.ma</div>
+  </div>
+
+  <!-- البلاغ 2 -->
+  <div id="card2" class="card">
+    <div class="top red">
+      <p>المملكة المغربية - وزارة التربية الوطنية والتعليم الأولي والرياضة</p>
+      <h2>بلاغ في شأن تأجيل موعد إجراء امتحانات الكفاءة المهنية<br>دورة دجنبر 2026</h2>
+    </div>
+    <div class="content">
+      <span class="badge badge-r">⏰ تأجيل الموعد</span>
+      <p>تنهي وزارة التربية الوطنية والتعليم الأولي والرياضة إلى علم كافة المترشحات والمترشحين أنه تقرر تأجيل موعد إجراء امتحانات الكفاءة المهنية - دورة دجنبر 2026.</p>
+      <table>
+        <tr><th>الموعد السابق</th><th>الموعد الجديد</th></tr>
+        <tr><td class="old">السبت 05 دجنبر 2026</td><td class="new">السبت 19 دجنبر 2026</td></tr>
+      </table>
+      <div class="box">
+        <b>📌 ملاحظة:</b> سيتم الإعلان لاحقا عن التدابير التنظيمية لهذه الامتحانات بموجب مذكرة، وسيتم نشرها بالموقع الرسمي للوزارة ومواقع الأكاديميات الجهوية للتربية والتكوين.
+      </div>
+      <a class="btn btn-r" href="#">⬇ تنزيل البلاغ PDF</a>
+    </div>
+    <div class="footer">المصدر: www.men.gov.ma</div>
+  </div>
+
+</div>
+
+<script>
+function show(n){
+  document.getElementById('card1').classList.remove('show');
+  document.getElementById('card2').classList.remove('show');
+  document.getElementById('btn1').classList.remove('active');
+  document.getElementById('btn2').classList.remove('active');
+  document.getElementById('card'+n).classList.add('show');
+  document.getElementById('btn'+n).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
