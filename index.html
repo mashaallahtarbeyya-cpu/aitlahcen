@@ -284,6 +284,71 @@
     <div class="text-[11px] text-emerald-700 bg-emerald-50 py-1.5 rounded-lg font-bold">
         📖 تلاوة عطرة
     </div>
+	<aside class="space-y-6">
+
+<!-- ===== رقم 5 : الصلاة في الشريط - تارودانت ===== -->
+<div style="background:#065f46;border-radius:15px;padding:15px;color:#fff;text-align:center;">
+  <h4 style="font-weight:900;margin:0;">🕌 أوقات الصلاة</h4>
+  <p style="font-size:12px;color:#a7f3d0;margin:4px 0 10px;">تارودانت - المغرب</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;">
+    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">الفجر<br><b id="t-Fajr">--:--</b></div>
+    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">الشروق<br><b id="t-Sunrise">--:--</b></div>
+    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">الظهر<br><b id="t-Dhuhr">--:--</b></div>
+    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">العصر<br><b id="t-Asr">--:--</b></div>
+    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">المغرب<br><b id="t-Maghrib">--:--</b></div>
+    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">العشاء<br><b id="t-Isha">--:--</b></div>
+  </div>
+
+  <div id="next-prayer" style="margin-top:10px;background:#fbbf24;color:#111;font-weight:900;font-size:13px;padding:8px;border-radius:10px;">جاري التحميل...</div>
+
+  <button onclick="enablePrayerReminder()" style="margin-top:8px;background:#fff;color:#065f46;font-weight:900;font-size:13px;padding:7px 12px;border-radius:20px;border:none;width:100%;">🔔 فعّل التذكير بالصلاة</button>
+</div>
+
+<script>
+let prayerData=null, reminderOn=false;
+async function loadPrayer(){
+const r=await fetch('https://api.aladhan.com/v1/timingsByCity?city=Taroudant&country=Morocco&method=5');
+const j=await r.json();
+prayerData=j.data.timings;
+['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'].forEach(k=>{
+document.getElementById('t-'+k).textContent=prayerData[k].slice(0,5);
+});
+setInterval(updateCountdown,1000);
+updateCountdown();
+}
+function updateCountdown(){
+if(!prayerData) return;
+const now=new Date();
+const names={Fajr:'الفجر',Dhuhr:'الظهر',Asr:'العصر',Maghrib:'المغرب',Isha:'العشاء'};
+let next=null, nextTime=null;
+for(const k of ['Fajr','Dhuhr','Asr','Maghrib','Isha']){
+const p=prayerData[k].slice(0,5).split(':');
+const d=new Date(); d.setHours(p[0],p[1],0,0);
+if(d>now){next=k;nextTime=d;break;}
+}
+if(!next){
+const p=prayerData['Fajr'].slice(0,5).split(':');
+nextTime=new Date(); nextTime.setDate(nextTime.getDate()+1);
+nextTime.setHours(p[0],p[1],0,0); next='Fajr';
+}
+const diff=nextTime-now;
+const h=Math.floor(diff/3600000);
+const m=Math.floor(diff%3600000/60000);
+const s=Math.floor(diff%60000/1000);
+document.getElementById('next-prayer').textContent='القادمة: '+names[next]+' بعد '+h+' س '+m+' د '+s+' ث';
+if(reminderOn && diff<2000){ alert('🕌 حان وقت صلاة '+names[next]); }
+}
+function enablePrayerReminder(){
+reminderOn=true;
+if('Notification' in window) Notification.requestPermission();
+alert('✅ التذكير مفعّل - تارودانت');
+}
+window.addEventListener('DOMContentLoaded', loadPrayer);
+</script>
+<!-- ===== نهاية الصلاة ===== -->
+
+<!-- من هنا كيبدا صندوق الرقية ديالك القديم -->
     <script>
         const audioPlayer = document.getElementById('resumeAudio');
         const storageKey = 'quran_audio_position';
@@ -370,3 +435,4 @@
 </footer>
 </body>
 	</html>
+
