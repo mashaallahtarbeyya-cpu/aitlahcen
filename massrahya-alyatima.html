@@ -4,6 +4,114 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>اليتيمة - رسالة للجيل 💚</title>
+  <!-- زر شارك مع صديقك الفكرة 💡 - يناسب صفحتك الخضراء -->
+<style>
+.share-box{
+  background:#fff;
+  border-radius:24px;
+  padding:24px;
+  margin:18px 0;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  border-right:14px solid #10b981;
+  font-family:Arial;
+}
+.share-box h3{
+  font-size:32px;
+  color:#065f46;
+  margin:0 0 8px;
+  line-height:1.5;
+}
+.share-box p{
+  font-size:26px;
+  color:#333;
+  margin:0 0 16px;
+  line-height:1.8;
+}
+.btn-share{
+  display:block;
+  width:100%;
+  background:linear-gradient(135deg,#065f46,#10b981,#34d399);
+  color:#fff!important;
+  border:none;
+  padding:20px;
+  border-radius:30px;
+  font-size:30px;
+  font-weight:900;
+  cursor:pointer;
+  font-family:Arial;
+}
+.btn-share:active{transform:scale(.97)}
+.share-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:14px;
+}
+.share-links a{
+  text-decoration:none;
+  font-weight:900;
+  font-size:24px;
+  padding:12px 20px;
+  border-radius:30px;
+  color:#fff;
+  font-family:Arial;
+}
+.wa{background:#25D366}
+.fb{background:#1877F2}
+.copy{background:#065f46}
+</style>
+
+<div class="share-box">
+  <h3>💡 شارك مع صديقك الفكرة 💡</h3>
+  <p>إذا أعجبتك هذه المسرحية، أرسلها لصديقك، لعلها تنفعه كما نفعتك.</p>
+  <button class="btn-share" onclick="shareIdea()">💡 شارك مع صديقك الفكرة</button>
+  <div class="share-links">
+    <a class="wa" href="#" onclick="shareWhatsApp();return false;">WhatsApp 💚</a>
+    <a class="fb" href="#" onclick="shareFacebook();return false;">Facebook 🔵</a>
+    <a class="copy" href="#" onclick="copyLink();return false;">📋 نسخ الرابط</a>
+  </div>
+  <p id="share-msg" style="font-size:24px;color:#065f46;font-weight:900;display:none;margin-top:12px;">تم النسخ ✅ أرسله الآن لصديقك</p>
+</div>
+
+<script>
+var pageUrl = window.location.href;
+var pageTitle = document.title || "مسرحية اليتيمة - فكرة جميلة";
+var shareText = "💡 شارك مع صديقك الفكرة - مسرحية اليتيمة، فكرة تستحق أن تصل لكل صديق: ";
+
+function shareIdea(){
+  if(navigator.share){
+    navigator.share({title: pageTitle, text: shareText, url: pageUrl}).catch(function(){});
+  } else {
+    shareWhatsApp();
+  }
+}
+function shareWhatsApp(){
+  var url = "https://wa.me/?text=" + encodeURIComponent(shareText + " " + pageUrl);
+  window.open(url, "_blank");
+}
+function shareFacebook(){
+  var url = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(pageUrl);
+  window.open(url, "_blank");
+}
+function copyLink(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(pageUrl).then(function(){
+      document.getElementById('share-msg').style.display='block';
+    });
+  } else {
+    var t = document.createElement('textarea');
+    t.value = pageUrl;
+    document.body.appendChild(t);
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+    document.getElementById('share-msg').style.display='block';
+  }
+}
+</script>
+<!-- نهاية زر المشاركة -->
   <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; background: #e8f3ee; color: #0d4f3c; padding: 8px 16px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 20px; border: 1px solid rgba(13,79,60,0.2);">
     ← العودة إلى الصفحة الرئيسية
 <style>
