@@ -5,35 +5,36 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>اليتيمة - رسالة للجيل 💚</title>
 <style>
-body{font-family:Arial;background:#ecfdf5;margin:0;padding:14px;font-size:27px;line-height:2.1;color:#111}
-.top{background:linear-gradient(135deg,#065f46,#10b981,#34d399);color:#fff;padding:36px 18px;border-radius:28px;text-align:center;font-size:38px;font-weight:900;box-shadow:0 12px 30px rgba(6,95,70,.35)}
-.top small{display:block;font-size:22px;font-weight:400;margin-top:12px}
-.card{background:#fff;padding:26px;border-radius:24px;margin:16px 0;box-shadow:0 6px 18px rgba(0,0,0,.08);border-right:14px solid #10b981}
+/* === إصلاح التنسيق: النص لليمين ومعدل، ماشي في الوسط === */
+body{font-family:Arial;background:#ecfdf5;margin:0;padding:14px;font-size:24px;line-height:1.9;color:#111;text-align:right}
+.top{background:linear-gradient(135deg,#065f46,#10b981,#34d399);color:#fff;padding:32px 18px;border-radius:28px;text-align:center;font-size:34px;font-weight:900;box-shadow:0 12px 30px rgba(6,95,70,.35)}
+.top small{display:block;font-size:20px;font-weight:400;margin-top:10px;line-height:1.7}
+.card{background:#fff;padding:24px;border-radius:24px;margin:16px 0;box-shadow:0 6px 18px rgba(0,0,0,.08);border-right:14px solid #10b981;text-align:right}
 .card.gold{border-right-color:#f59e0b;background:#fffbeb}
 .card.red{border-right-color:#ef4444}
-h2{font-size:33px;margin:0 0 12px;color:#065f46}
-.role{display:inline-block;background:#d1fae5;color:#065f46;padding:6px 16px;border-radius:20px;font-size:22px;font-weight:900;margin:6px 0}
-.dialogue{font-size:28px;font-weight:700;background:#f0fdf4;padding:18px;border-radius:16px;margin:12px 0;border:1px solid #bbf7d0}
-.msg{background:#065f46;color:#fff;padding:24px;border-radius:24px;margin:16px 0;font-size:28px;font-weight:900;text-align:center;line-height:2.1}
-.btn{display:block;text-align:center;background:#065f46;color:#fff!important;padding:18px;border-radius:30px;text-decoration:none;font-size:27px;font-weight:900;margin:12px 0}
-.back{display:inline-flex;align-items:center;gap:8px;background:#e8f3ee;color:#0d4f3c;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:900;font-size:22px;margin-bottom:16px;border:1px solid rgba(13,79,60,.2)}
+h2{font-size:28px;margin:0 0 12px;color:#065f46;text-align:right;line-height:1.7}
+/* هنا الإصلاح المهم */
+.card p{font-size:24px;line-height:2;text-align:justify;text-justify:inter-word;margin:10px 0}
+.role{display:inline-block;background:#d1fae5;color:#065f46;padding:6px 16px;border-radius:20px;font-size:20px;font-weight:900;margin:6px 0}
+.dialogue{font-size:24px;font-weight:700;background:#f0fdf4;padding:18px;border-radius:16px;margin:12px 0;border:1px solid #bbf7d0;text-align:justify;line-height:2}
+.msg{background:#065f46;color:#fff;padding:24px;border-radius:24px;margin:16px 0;font-size:26px;font-weight:900;text-align:center;line-height:2}
+.btn{display:block;text-align:center;background:#065f46;color:#fff!important;padding:18px;border-radius:30px;text-decoration:none;font-size:26px;font-weight:900;margin:12px 0}
+.back{display:inline-flex;align-items:center;gap:8px;background:#e8f3ee;color:#0d4f3c;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:900;font-size:20px;margin-bottom:16px;border:1px solid rgba(13,79,60,.2)}
 audio{width:100%;margin:10px 0}
-/* زر المشاركة - نفس الأخضر */
 .share-box{background:#fff;border-radius:24px;padding:24px;margin:16px 0;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.08);border-right:14px solid #10b981}
-.share-box h3{font-size:32px;color:#065f46;margin:0 0 8px}
-.share-box p{font-size:26px;color:#333;margin:0 0 16px}
-.btn-share{display:block;width:100%;background:linear-gradient(135deg,#065f46,#10b981,#34d399);color:#fff;border:none;padding:20px;border-radius:30px;font-size:30px;font-weight:900;cursor:pointer;font-family:Arial}
+.share-box h3{font-size:30px;color:#065f46;margin:0 0 8px}
+.share-box p{font-size:24px;color:#333;margin:0 0 16px;text-align:center}
+.btn-share{display:block;width:100%;background:linear-gradient(135deg,#065f46,#10b981,#34d399);color:#fff;border:none;padding:18px;border-radius:30px;font-size:28px;font-weight:900;cursor:pointer;font-family:Arial}
 .share-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
-.share-links a{text-decoration:none;font-weight:900;font-size:24px;padding:12px 20px;border-radius:30px;color:#fff}
+.share-links a{text-decoration:none;font-weight:900;font-size:22px;padding:12px 20px;border-radius:30px;color:#fff}
 .wa{background:#25D366}.fb{background:#1877F2}.copy{background:#065f46}
 </style>
 </head>
 <body id="top">
 
-<!-- زر العودة - هنا بلاصتو الصحيحة، في body وليس في head -->
 <a class="back" href="index.html">← العودة إلى الصفحة الرئيسية</a>
 
-<p>🎙️ استمع من هنا</p>
+<p style="text-align:right">🎙️ استمع من هنا</p>
 <audio id="myAudio" controls preload="auto">
   <source src="sawti.sawti.mp3.m4a" type="audio/mp4">
 </audio>
@@ -44,27 +45,25 @@ audio{width:100%;margin:10px 0}
 
 <div class="card">
 <h2>🎬 المشهد الأول - في شارع من شوارع المدينة</h2>
-<p>كان يا مكان، في شارع من شوارع المدينة، امرأة تدعى <b>اللغة العربية</b>.</p>
-<p>تجلس وحيدة فريدة، لا أنيس لها ولا جليس، وفي ثياب ممزقة رثة، آخذة برأسها كالذي يفكر في أمر هام. وتهمهم في نفسها بصوت غير مفهوم.</p>
+<p>كان يا مكان، في شارع من شوارع المدينة، امرأة تدعى <b>اللغة العربية</b>. تجلس وحيدة فريدة، لا أنيس لها ولا جليس، وفي ثياب ممزقة رثة، آخذة برأسها كالذي يفكر في أمر هام. وتهمهم في نفسها بصوت غير مفهوم.</p>
 </div>
 
 <div class="card">
 <h2>👗 مرت الفرنسية والإنجليزية</h2>
-<p>وبينما هي على تلك الحالة، إذ مرت <b>الفرنسية والإنجليزية</b>، وهما في أبهى حلة وأحسن ثياب، لا يرى عليهما أثر التعاسة.</p>
-<p>وهو الأمر الذي حز في نفس اللغة العربية وزاد من همها، مما جعلها تهرول من أجل اللحوق بهما ولكن دون جدوى. حاولت وحاولت حتى فشلت، ثم استلقت على ظهرها كالذي يحتضر.</p>
+<p>وبينما هي على تلك الحالة، إذ مرت <b>الفرنسية والإنجليزية</b>، وهما في أبهى حلة وأحسن ثياب، لا يرى عليهما أثر التعاسة. وهو الأمر الذي حز في نفس اللغة العربية وزاد من همها، مما جعلها تهرول من أجل اللحوق بهما ولكن دون جدوى. حاولت وحاولت حتى فشلت، ثم استلقت على ظهرها كالذي يحتضر.</p>
 </div>
 
 <div class="card gold">
 <h2>👦👦 جاء فتيان</h2>
 <p>وبينما هي كذلك، إذ مر فتيان فرنسي وإنجليزي، فرقا لحالها، فجعلا يسألانها أسئلة:</p>
-<div class="dialogue"><span class="role">الفتيان</span><br>من أنت أيتها المسكينة البئيسة؟ وما الذي أخرجك إلى هذا المكان الذي ليس فيه أنيس ولا جليس؟<br><br>أليس لك مأوى؟ أليس لك أبناء يعتنون بك؟ لا حول ولا قوة إلا بالله... وما هذه الثياب الرثة البالية الممزقة؟</div>
+<div class="dialogue"><span class="role">الفتيان</span><br>من أنت أيتها المسكينة البئيسة؟ وما الذي أخرجك إلى هذا المكان الذي ليس فيه أنيس ولا جليس؟ أليس لك مأوى؟ أليس لك أبناء يعتنون بك؟ لا حول ولا قوة إلا بالله... وما هذه الثياب الرثة البالية الممزقة؟</div>
 </div>
 
 <div class="card red">
 <h2>😭 جواب اللغة العربية - والدموع تسبقها</h2>
-<div class="dialogue"><span class="role">اللغة العربية</span><br>استمعا يا إخواني أقص عليكم من حالي:<br><br>أنا اللغة العربية، لغة الضاد، اللغة التي نزل بها القرآن ونطق بها النبي العدنان، ومن أضاعني فقد أضاع الخير الكثير.</div>
+<div class="dialogue"><span class="role">اللغة العربية</span><br>استمعا يا إخواني أقص عليكم من حالي: أنا اللغة العربية، لغة الضاد، اللغة التي نزل بها القرآن ونطق بها النبي العدنان، ومن أضاعني فقد أضاع الخير الكثير.</div>
 <p><b>سولوها:</b> نعم ولكن ما الذي أوصلك إلى هذه الحالة البئيسة؟</p>
-<div class="dialogue"><span class="role">اللغة العربية</span><br>لقد كنت في بداية أمري شريفة معززة مكرمة. يعتني بي أجدادي ويهتمون بي صباحا ومساء، ويغترفون من معيني، ويتذللون أمامي.<br><br>حتى صار الأمر إلى أبنائي فبدأوا يتركونني واحدا تلو الآخر حتى تركوني جميعا، فصرت الآن إلى ما ترون من حالي.</div>
+<div class="dialogue"><span class="role">اللغة العربية</span><br>لقد كنت في بداية أمري شريفة معززة مكرمة. يعتني بي أجدادي ويهتمون بي صباحا ومساء، ويغترفون من معيني، ويتذللون أمامي. حتى صار الأمر إلى أبنائي فبدأوا يتركونني واحدا تلو الآخر حتى تركوني جميعا، فصرت الآن إلى ما ترون من حالي.</div>
 </div>
 
 <div class="card">
@@ -78,13 +77,9 @@ audio{width:100%;margin:10px 0}
 
 <div class="card">
 <h2>✍️ شنو غادي تدير أنت دابا؟</h2>
-<p>⬜ غادي نرجع نقرا بالعربية كل نهار</p>
-<p>⬜ غادي نهضر بالعربية بلا حشمة</p>
-<p>⬜ غادي نكتب بالعربية ونفتخر بيها</p>
-<p>⬜ غادي نكون من الأبناء اللي رجعو لأمهم، ماشي اللي تركوها</p>
+<p>⬜ غادي نرجع نقرا بالعربية كل نهار<br>⬜ غادي نهضر بالعربية بلا حشمة<br>⬜ غادي نكتب بالعربية ونفتخر بيها<br>⬜ غادي نكون من الأبناء اللي رجعو لأمهم، ماشي اللي تركوها</p>
 </div>
 
-<!-- زر المشاركة - هنا بلاصتو، في آخر الصفحة -->
 <div class="share-box">
   <h3>💡 شارك مع صديقك الفكرة 💡</h3>
   <p>إذا أعجبتك هذه المسرحية، أرسلها لصديقك، لعلها تنفعه كما نفعتك.</p>
@@ -94,7 +89,7 @@ audio{width:100%;margin:10px 0}
     <a class="fb" href="#" onclick="shareFacebook();return false;">Facebook 🔵</a>
     <a class="copy" href="#" onclick="copyLink();return false;">📋 نسخ الرابط</a>
   </div>
-  <p id="share-msg" style="font-size:24px;color:#065f46;font-weight:900;display:none;margin-top:12px;">تم النسخ ✅ أرسله الآن لصديقك</p>
+  <p id="share-msg" style="font-size:22px;color:#065f46;font-weight:900;display:none;margin-top:12px;">تم النسخ ✅ أرسله الآن لصديقك</p>
 </div>
 
 <a class="btn" href="#top">🔁 عاود قرا الرسالة 💚</a>
@@ -102,27 +97,14 @@ audio{width:100%;margin:10px 0}
 <script>
 var pageUrl = window.location.href;
 var pageTitle = document.title || "مسرحية اليتيمة";
-var shareText = "💡 شارك مع صديقك الفكرة - مسرحية اليتيمة، فكرة تستحق أن تصل لكل صديق: ";
+var shareText = "💡 شارك مع صديقك الفكرة - مسرحية اليتيمة: ";
 function shareIdea(){
-  if(navigator.share){
-    navigator.share({title: pageTitle, text: shareText, url: pageUrl}).catch(function(){});
-  } else {
-    shareWhatsApp();
-  }
+  if(navigator.share){ navigator.share({title: pageTitle, text: shareText, url: pageUrl}).catch(function(){}); }
+  else { shareWhatsApp(); }
 }
-function shareWhatsApp(){
-  window.open("https://wa.me/?text=" + encodeURIComponent(shareText + " " + pageUrl), "_blank");
-}
-function shareFacebook(){
-  window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(pageUrl), "_blank");
-}
-function copyLink(){
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(pageUrl).then(function(){
-      document.getElementById('share-msg').style.display='block';
-    });
-  }
-}
+function shareWhatsApp(){ window.open("https://wa.me/?text=" + encodeURIComponent(shareText + " " + pageUrl), "_blank"); }
+function shareFacebook(){ window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(pageUrl), "_blank"); }
+function copyLink(){ if(navigator.clipboard){ navigator.clipboard.writeText(pageUrl).then(function(){ document.getElementById('share-msg').style.display='block'; }); } }
 </script>
 
 </body>
