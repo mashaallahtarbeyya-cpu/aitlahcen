@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حكمة اليوم | بوابات الأستاذ الحسن</title>
+<style>
+body{font-family:Tahoma,Arial;background:#fdf6e3;margin:0;padding:18px;color:#333}
+.box{max-width:680px;margin:auto;background:#fff;padding:28px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.12);text-align:center}
+.date{background:#1a7a3a;color:#fff;display:inline-block;padding:8px 18px;border-radius:20px;font-size:16px}
+h1{color:#8a6d1b;margin:18px 0 5px;font-size:26px}
+.poem{font-size:24px;line-height:2.1;background:#fff8dc;border:1px solid #e8d48a;padding:22px;border-radius:14px;margin:20px 0}
+.sharh{font-size:18px;line-height:1.8;background:#f7f7f7;padding:16px;border-radius:12px;color:#444}
+.btns{margin-top:22px;display:flex;gap:10px;justify-content:center}
+.btns button{padding:11px 20px;border:none;border-radius:25px;font-size:16px;cursor:pointer}
+.prev{background:#eee}
+.next{background:#c9a227;color:#fff}
+.links{margin-top:25px}
+.links a{color:#1a7a3a;text-decoration:none;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="box">
+<span class="date" id="todayDate"></span>
+<h1>🌙 حكمة اليوم</h1>
+<p style="color:#888">بيت شعري جديد كل يوم، حسب تاريخ اليوم</p>
+
+<div class="poem" id="poem"></div>
+<div class="sharh" id="sharh"></div>
+
+<div class="btns">
+<button class="prev" onclick="changeDay(-1)">⬅️ أمس</button>
+<button class="next" onclick="changeDay(1)">غداً ➡️</button>
+</div>
+
+<p style="margin-top:20px;color:#999;font-size:14px" id="dayNum"></p>
+
+<div class="links">
+<a href="/">⬅️ الرئيسية</a> &nbsp; | &nbsp; <a href="/bank.mashallah/">🏦 البنك</a>
+</div>
+</div>
+
+<script>
+const data=[
+["دع الأيام تفعل ما تشاءُ / وطب نفساً إذا حكم القضاءُ","الراحة في الرضا بقضاء الله."],
+["إذا المرء لا يرعاك إلا تكلفاً / فدعه ولا تكثر عليه التأسفا","من لم يحبك بصدق، اتركه ولا تحزن عليه."],
+["لا تكن للعيش مجروح الفؤاد / إنما الرزق على رب العباد","رزقك مضمون عند الله، فلا تحمل هم الغد."],
+["إذا غامرت في شرف مروم / فلا تقنع بما دون النجوم","اطمح للأعلى ولا ترضَ بالقليل."],
+["إن الشباب والفراغ والجدة / مفسدة للمرء أي مفسدة","اشغل فراغك بالخير قبل أن يشغلك بالشر."],
+["اصبر على مر الجفا من معلمٍ / فإن رسوب العلم في نفراته","من صبر على التعلم، نال العلم."],
+["ومن لم يذق مر التعلم ساعةً / تجرع ذل الجهل طول حياته","تعب ساعة في التعلم، خير من ذل الجهل طول العمر."],
+["وإن ضاق رزق اليوم فاصبر إلى غدٍ / عسى نكبات الدهر عنك تزول","بعد الضيق يأتي الفرج، فاصبر."],
+["إذا كنت ذا رأي فكن ذا عزيمةٍ / فإن فساد الرأي أن تترددا","لا تتردد بعد أن تتأكد من صواب رأيك."],
+["لا تمدحن امرأً حتى تجربه / ولا تذمنه من غير تجريب","لا تحكم على الناس قبل أن تعاشرهم."],
+["خير الكلام ما قل ودل / ولم يطل فيمل","الكلام الجميل هو القصير المفيد."],
+["إذا جار عليك الزمان فاصبر / فما بعد العسر إلا اليسر","كل شدة وراءها فرج قريب."],
+["احفظ لسانك أيها الإنسان / لا يلدغنك إنه ثعبان","كلمة واحدة قد تجرح أكثر من السيف."],
+["لا خير في ود امرئ متملقٍ / حلو اللسان وقلبه يتلهب","احذر من المنافق الذي يظهر الحب ويخفي الشر."],
+["تواضع تكن كالنجم لاح لناظرٍ / على صفحات الماء وهو رفيع","التواضع يرفعك، والكبر يسقطك."],
+["ولا تمشِ فوق الأرض إلا تواضعاً / فكم تحتها قوم هم منك أرفع","تحت التراب أناس كانوا أعظم منك، فتواضع."],
+["ازرع جميلاً ولو في غير موضعه / فلن يضيع جميل أينما زرعا","الخير الذي تفعله لن يضيع أبداً."],
+["إن الكريم إذا ناديت قال نعم / فكيف بالله ذي الإنعام والكرم","إذا كان الكريم من البشر يجيب، فكيف بالله الكريم."],
+["وإذا أتتك مذمتي من ناقصٍ / فهي الشهادة لي بأني كامل","إذا ذمك الناقص، فهذا دليل على كمالك."],
+["ومن يتهيب صعود الجبال / يعش أبد الدهر بين الحفر","من يخاف من الصعاب، سيبقى في الأسفل دائماً."],
+["سهرت أعين ونامت عيون / في أمور تكون أو لا تكون","لا تُتعب نفسك بالتفكير في ما قد لا يحدث."],
+["فدع الصبا فلقد عداك زمانه / وازهد فعمرك مر منه الأطيب","اغتنم عمرك في الطاعة، فما مضى لن يعود."],
+["قدر الله وما شاء فعل / فلا تقل لو أني فعلت كذا","لا تندم على الماضي، وسلم أمرك لله."],
+["لا تحسب المجد تمراً أنت آكله / لن تبلغ المجد حتى تلعق الصبرا","المجد يحتاج إلى صبر وتعب، وليس سهلاً."],
+["إذا أردت أن تحيا سعيداً / فلا تقارن نفسك بغيرك","المقارنة تسرق سعادتك، ارضَ بما قسم الله لك."],
+["الصبر مفتاح الفرج / والتوكل على الله نجاة","من صبر وتوكل على الله، فتحت له أبواب الفرج."],
+["من جد وجد ومن زرع حصد / ومن سار على الدرب وصل","لكل مجتهد نصيب، ومن سعى وصل لهدفه."],
+["لا تشكو للناس جرحاً أنت صاحبه / لا يؤلم الجرح إلا من به ألم","لا تشكُ همك إلا لله، فالناس لا يشعرون بك."],
+["إذا ضاقت بك الدنيا فقل / يا الله، فباب الله لا يضيق","مهما ضاقت الدنيا، باب الله مفتوح دائماً."],
+["وخير الناس من كان للناس نافعاً / وشرهم من كان للناس ضاراً","قيمتك عند الله بقدر نفعك للناس."],
+["اليوم يومك / اصنع فيه خيراً يبقى","الشهر فيه 31 يوم، وهذا بيت إضافي لليوم 31."]
+];
+
+let offset = 0;
+function show(){
+  const now = new Date();
+  now.setDate(now.getDate() + offset);
+  const day = now.getDate(); // 1 إلى 31
+  const index = day - 1;
+  document.getElementById('poem').innerHTML = data[index][0];
+  document.getElementById('sharh').innerHTML = "<b>الشرح:</b> " + data[index][1];
+  document.getElementById('dayNum').innerText = "حكمة اليوم " + day + " من الشهر";
+  document.getElementById('todayDate').innerText = now.toLocaleDateString('ar-MA', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+function changeDay(n){ offset += n; show(); }
+show();
+</script>
+</body>
+</html>
