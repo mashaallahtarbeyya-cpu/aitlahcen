@@ -13,7 +13,14 @@
   </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col justify-between">
-
+<!-- أزرار العودة - ضعه بعد <body> مباشرة -->
+<div style="position:fixed;top:0;right:0;left:0;z-index:100;background:#065f46;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(0,0,0,.2)">
+  <b style="font-size:13px">🤲 حصن المسلم</b>
+  <div style="display:flex;gap:6px">
+    <a href="https://mashaallahtarbeyya-cpu.github.io/aitlahcen/" style="background:#fff;color:#065f46;text-decoration:none;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:900">🏠 الأصلي</a>
+    <a href="https://aitlahcenelhassan983-stack.github.io/bank.mashallah/" style="background:#f59e0b;color:#111;text-decoration:none;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:900">🌿 البنك</a>
+  </div>
+</div>
   <!-- زر العودة إلى الأعلى -->
   <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
           class="fixed bottom-6 left-6 bg-emerald-700 hover:bg-emerald-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-50 text-lg"
@@ -208,6 +215,9 @@
       <p class="text-slate-400">موقع الأستاذ الحسن أيت لحسن &copy; 2026 - جميع الحقوق محفوظة</p>
     </div>
   </footer>
-
+<!-- زر العودة العائم - ضعه قبل </body> مباشرة -->
+<div style="position:fixed;bottom:12px;right:12px;left:12px;z-index:100;text-align:center">
+  <a href="https://mashaallahtarbeyya-cpu.github.io/aitlahcen/" style="display:inline-block;background:#111827;color:#fff;text-decoration:none;padding:11px 22px;border-radius:25px;font-weight:900;font-size:14px">🏠 العودة إلى الموقع الأصلي</a>
+</div>
 </body>
 </html>
