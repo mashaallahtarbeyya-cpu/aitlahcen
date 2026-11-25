@@ -21,8 +21,17 @@
             color: var(--text-ink);
             font-family: 'Changa', sans-serif;
             padding: 20px;
+            padding-top: 68px;
+            padding-bottom: 70px;
             line-height: 1.6;
         }
+        /* شريط العودة الثابت - مثل الباقيات */
+        .topbar{position:fixed;top:0;right:0;left:0;z-index:100;background:#065f46;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+        .topbar b{font-size:13px}
+        .topbar a{background:#fff;color:#065f46;text-decoration:none;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:900;white-space:nowrap}
+        .topbar a.gold{background:#f59e0b;color:#111}
+        .float-back{position:fixed;bottom:12px;right:12px;left:12px;z-index:100;text-align:center}
+        .float-back a{display:inline-block;background:#111827;color:#fff;text-decoration:none;padding:11px 22px;border-radius:25px;font-weight:900;font-size:14px;box-shadow:0 5px 15px rgba(0,0,0,.3)}
         .hisn-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -53,7 +62,6 @@
         .hisn-content {
             padding: 30px;
         }
-        /* تصميم خانة البحث الجديدة */
         .search-box-container {
             margin-bottom: 25px;
         }
@@ -133,6 +141,15 @@
     <link rel="manifest" href="manifest-hisn.json">
 </head>
 <body>
+<!-- شريط العودة الثابت في الأعلى - مثل الباقيات -->
+<div class="topbar">
+  <b>🤲 حصن المسلم</b>
+  <div style="display:flex;gap:6px">
+    <a href="https://mashaallahtarbeyya-cpu.github.io/aitlahcen/">🏠 الأصلي</a>
+    <a class="gold" href="https://mashaallahtarbeyya-cpu.github.io/aitlahcen/bank.html">🌿 البنك</a>
+  </div>
+</div>
+
 <div class="hisn-container">
     <div class="hisn-hero">
         تصميم الاستاذ الحسن أيت لحسن
@@ -292,8 +309,12 @@
     </div>
 </div>
 
+<!-- زر العودة العائم في الأسفل -->
+<div class="float-back">
+  <a href="https://mashaallahtarbeyya-cpu.github.io/aitlahcen/">🏠 العودة إلى الموقع الأصلي</a>
+</div>
+
 <script>
-    // توليد البطاقات تلقائياً من البيانات النصية
     const rawElement = document.getElementById('raw-data');
     if (rawElement) {
         const lines = rawElement.innerText.trim().split('\n');
@@ -301,11 +322,9 @@
         lines.forEach(line => {
             if(!line.trim()) return;
             const parts = line.trim().split(/\s+/);
-                        
             let audioLink = "#";
             let titleParts = [];
             let count = "1";
-
             if (parts[parts.length - 1].startsWith('http')) {
                 audioLink = parts[parts.length - 1];
                 count = parts[parts.length - 2];
@@ -314,14 +333,11 @@
                 count = parts[parts.length - 1];
                 titleParts = parts.slice(0, parts.length - 1);
             }
-
             const title = titleParts.join(' ');
-
             const card = document.createElement('a');
             card.className = 'hisn-card';
             card.href = audioLink;
             card.target = "_blank";
-            // نضيف خاصية لتسهيل البحث بالصيغة النصية
             card.setAttribute('data-title', title);
             card.innerHTML = `
                 <span class="hisn-name">${title}</span>
@@ -333,18 +349,15 @@
             grid.appendChild(card);
         });
     }
-
-    // دالة البحث الفوري المفلترة للبطاقات
     function filterHisnCards() {
         let input = document.getElementById('hisnSearch').value.toLowerCase().trim();
         let cards = document.getElementsByClassName('hisn-card');
-
         for (let i = 0; i < cards.length; i++) {
             let title = cards[i].getAttribute('data-title').toLowerCase();
             if (title.indexOf(input) > -1) {
-                cards[i].style.display = ""; // إظهار البطاقة إذا تطابق البحث
+                cards[i].style.display = "";
             } else {
-                cards[i].style.display = "none"; // إخفاء البطاقة إذا لم تتطابق
+                cards[i].style.display = "none";
             }
         }
     }
