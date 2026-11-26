@@ -2,456 +2,295 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>موقع الأستاذ الحسن أيت لحسن</title>
-	<link rel="icon" type="image/png" href="logo.png.jpg">
-	<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#065f46">
+<meta name="description" content="موقع الأستاذ الحسن أيت لحسن: مستجدات التربية، دروس اللغة العربية، الأذكار، القرآن الكريم، الأدب، والمكتبة الدينية">
+<link rel="icon" type="image/png" href="logo.png.jpg">
 <link rel="apple-touch-icon" href="logo.png.jpg">
-<!-- Tailwind CSS للتصميم العصري -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-  body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
-  .hero-pattern { background: linear-gradient(135deg, #065f46 0%, #047857 100%); }
-</style>
-	<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5HHNH72P"></script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a6444">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+/* وضع المشرف: افتح الموقع بـ ?admin=1 مرة واحدة فلا تُحتسب زياراتك */
+try{
+if(location.search.indexOf('admin=1')>-1){localStorage.setItem('i_am_admin','1');alert('صافي، زياراتك ما غاديش تتحسب ✅');}
+if(!localStorage.getItem('i_am_admin')){
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5HHNH72P');
+}
+}catch(e){}
 </script>
-	<script>
-  if(location.search.includes('admin=1')){
-    localStorage.setItem('i_am_admin','1');
-    alert('صافي، زياراتك ما غاديش تتحسب ✅');
-  }
-	</script>
+<style>
+:root{--g:#0a6444;--g2:#084d34;--line:#d8e0db;--gold:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 18px/1.9 Cairo,Tahoma,Arial,sans-serif;color:#1c2420;
+background:#f7f8f7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%230a6444' stroke-opacity='.07' stroke-width='1.2'%3E%3Crect x='12' y='12' width='36' height='36'/%3E%3Crect x='12' y='12' width='36' height='36' transform='rotate(45 30 30)'/%3E%3C/g%3E%3C/svg%3E")}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.strip{background:#fff;border-bottom:1px solid var(--line);padding:8px 14px;font-size:15px}
+.brand{text-align:center;padding:20px 14px 14px}
+.brand img{width:84px;height:84px;border-radius:50%;border:3px solid var(--g);object-fit:cover}
+.brand h1{font:400 42px/1.5 "Aref Ruqaa",serif;color:var(--g)}
+.brand p{color:#4d6358;font-size:15px}
+.navwrap{position:sticky;top:0;z-index:50}
+.navbar{background:var(--g);padding:10px 14px}
+.navbar button{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:10px;padding:5px 16px;font:inherit;font-size:17px;cursor:pointer}
+#menu{display:none;background:var(--g2);max-height:75vh;overflow:auto}
+#menu.open{display:block}
+#menu a,#menu summary{display:block;color:#fff;text-decoration:none;padding:10px 18px;border-top:1px solid rgba(255,255,255,.12);cursor:pointer}
+#menu a:hover,#menu summary:hover{background:var(--g)}
+#menu details a{padding-right:38px;background:rgba(0,0,0,.18);font-size:16px}
+.page{max-width:1100px;margin:auto;padding:16px 12px 90px;display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:900px){.page{grid-template-columns:2fr 1fr;align-items:start}.full{grid-column:1/-1}}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 1px 5px rgba(0,0,0,.08);overflow:hidden;margin-bottom:16px}
+.card h2{background:var(--g);color:#fff;text-align:center;font-size:20px;line-height:1.6;padding:9px 12px}
+.in{padding:14px 16px;text-align:center}
+.in p{font-size:15px;color:#4b5563}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px}
+.btn{display:inline-block;padding:8px 18px;border-radius:6px;background:var(--g);color:#fff;font-weight:700;font-size:16px;text-decoration:none}
+.btn:hover{background:var(--g2)}
+.btn.gold{background:var(--gold);color:#111}
+.btn.light{background:#ecfdf5;color:var(--g2);border:1px solid #a7f3d0}
+.btn.block{display:block;text-align:center;margin-top:8px}
+.badge{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--g);background:#ecfdf5;border-radius:6px;padding:2px 12px}
+audio{width:100%;margin:10px 0}
+#daily-content{min-height:70px;display:flex;align-items:center;justify-content:center;font-size:17px;line-height:2}
+#daily-date{font-size:13px;color:#8a5a00;border-top:1px solid #f3e3b8;padding-top:6px;margin-top:8px}
+.pt{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:15px}
+.pt div{background:#ecfdf5;border-radius:6px;padding:5px}
+.pt b{font-size:18px;color:var(--g)}
+#next-prayer{margin-top:10px;background:#fde68a;font-weight:800;font-size:15px;padding:8px;border-radius:6px}
+.lib{display:grid;gap:10px;grid-template-columns:1fr;text-align:right}
+@media (min-width:600px){.lib{grid-template-columns:1fr 1fr}}
+.lib a{display:block;padding:12px 14px;border-radius:6px;text-decoration:none;color:#1c2420}
+.lib a b{display:block;font-size:17px}
+.lib a span{font-size:14px;color:#4b5563}
+.lib .a1{background:#fffbeb;border:1px solid #fde68a}
+.lib .a2{background:#ecfdf5;border:1px solid #a7f3d0}
+.poem{background:var(--g2);color:#fff;text-align:center;padding:26px 14px;border-radius:6px}
+.poem h2{font:400 30px/1.6 "Aref Ruqaa",serif;color:#fcd34d}
+.poem p{margin:6px 0 16px;font-size:17px}
+.poem a{display:inline-block;background:#c00000;color:#fff;padding:12px 30px;border-radius:40px;font-weight:700;text-decoration:none}
+.counter{text-align:center;font-weight:800}
+.counter img{vertical-align:middle;height:24px}
+footer{background:var(--g2);color:#d1e7dd;text-align:center;font-size:14px;padding:22px 14px 90px}
+footer nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+footer a{color:#fcd34d;text-decoration:none;font-weight:700}
+.top{position:fixed;bottom:16px;left:16px;z-index:60;width:46px;height:46px;border-radius:50%;border:none;background:var(--g);color:#fff;font-size:22px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+@media (max-width:600px){body{font-size:17px}.brand h1{font-size:34px}}
+</style>
 </head>
-<style>
-  html {
-    font-size: 19px !important; /* الحجم الافتراضي هو 16px، يمكنك رفعه إلى 20px أو 22px حسب رغبتك */
-  }
-</style>
-<body class="text-slate-800 min-h-screen flex flex-col justify-between">
-	<!-- زر العودة إلى الأعلى -->
-<button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" 
-        class="fixed bottom-6 left-6 bg-emerald-700 hover:bg-emerald-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-50 flex items-center justify-center text-lg" 
-        title="العودة إلى الأعلى">
-  ↑
-</button>
-   <!-- شريط التنقل العلوي المحدث والمنظم بدقة -->
-<nav class="site-nav">
-  <div class="nav-container">
-    <a href="index.html" class="site-logo">موقع الأستاذ الحسن أيت لحسن</a>
-    <div class="nav-links">
-      <a href="index.html">الرئيسية</a>
-		<a href="khabar.html">مستجدات التربية </a>
-	 <a href="ssira-datya.html">نبذة عن الأستاذ</a>
-      <a href="fadaa-tilmid.html">فضاء المتعلم</a>
-	 <a href="https://mashaallahtarbeyya-cpu.github.io/Modakira/">المذكرة التقنية</a>
-      <!-- فضاء التربية -->
-      <div class="dropdown">
-        <a href="Alajromya.html" class="drop-btn">فضاء التربية ▾</a>
-        <div class="dropdown-menu">
-			<a href="https://mashaallahtarbeyya-cpu.github.io/Maktab-lostad/" class="hover:text-emerald-300 transition">مكتب الأستاذ</a>
-          <a href="https://mashaallahtarbeyya-cpu.github.io/Modakira/">المفكرة الآلية التقنية</a>
-          <a href="https://mashaallahtarbeyya-cpu.github.io/Psychologie-/">إلى المريض النفسي</a>
-          <a href="#">أنشطة دعم المتعلمين</a>
-        </div>
-      </div>
-      <!-- قصائد ونفحات -->
-      <div class="dropdown">
-        <a href="favorites-v2.html" class="drop-btn">مختارات الأستاذ▾</a>
-        <div class="dropdown-menu">
-          <a href="#">من وحي السكون والرحلة</a>
-          <a href="#">خواطر أدبية</a>
-        </div>
-      </div>
-		<a href="mofajaa.html">مفاجأة</a>
-		<a href="massrahya-alyatima.html">مسرحيات</a>
-      <!-- أدوات الأستاذ -->
-      <div class="dropdown">
-        <a href="taqyim-riyada.html" class="drop-btn">امقال مستجد ▾</a>
-		   <a href="arryada.html">الدروس▾</a>
-		   <a href="attawzi3-assanawi.html">التوزيع السنوي▾</a>
-        <div class="dropdown-menu">
-          <a href="taqyim-riyada.html">   مستجدات اللغة العربية ومعايير التنقيط</a>
-          <a href="adawatostad.html">خريطة القسم </a>
-        </div>
-      </div>
-      <a href="Rawabit.html">اتصل بنا</a>
-    </div>
-  </div>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HHNH72P" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="strip"><span id="dt"></span></div>
+<div class="brand">
+<img src="logo.png.jpg" alt="شعار الموقع">
+<h1>موقع الأستاذ الحسن أيت لحسن</h1>
+<p>تربية · لغة عربية · أذكار · قرآن · أدب</p>
+</div>
+<div class="navwrap">
+<div class="navbar"><button id="mb" aria-expanded="false" aria-controls="menu">☰ القائمة</button></div>
+<nav id="menu" aria-label="القائمة الرئيسية">
+<a href="index.html">الرئيسية</a>
+<a href="khabar.html">مستجدات التربية</a>
+<a href="ssira-datya.html">نبذة عن الأستاذ</a>
+<a href="fadaa-tilmid.html">فضاء المتعلم</a>
+<details><summary>فضاء التربية</summary>
+<a href="Alajromya.html">الآجرومية</a>
+<a href="https://mashaallahtarbeyya-cpu.github.io/Maktab-lostad/">مكتب الأستاذ</a>
+<a href="https://mashaallahtarbeyya-cpu.github.io/Modakira/">المفكرة الآلية التقنية</a>
+<a href="https://mashaallahtarbeyya-cpu.github.io/Psychologie-/">إلى المريض النفسي</a>
+<a href="fadaa-tilmid.html">أنشطة دعم المتعلمين</a>
+</details>
+<details><summary>مختارات الأستاذ</summary>
+<a href="favorites-v2.html">من وحي السكون والرحلة</a>
+<a href="favorites-v2.html">خواطر أدبية</a>
+</details>
+<a href="mofajaa.html">مفاجأة</a>
+<a href="massrahya-alyatima.html">مسرحيات</a>
+<details><summary>الدروس والتخطيط</summary>
+<a href="arryada.html">الدروس</a>
+<a href="attawzi3-assanawi.html">التوزيع السنوي</a>
+<a href="taqyim-riyada.html">مستجدات اللغة العربية ومعايير التنقيط</a>
+<a href="adawatostad.html">خريطة القسم</a>
+</details>
+<a href="Rawabit.html">اتصل بنا</a>
 </nav>
-<style>
-  .site-nav {
-    background-color: #1e3a5f;
-    color: #ffffff;
-    padding: 12px 20px;
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    direction: rtl;
-    position: relative;
-    z-index: 1000;
-  }
-  .nav-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .site-logo {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .nav-links > a, .drop-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: color 0.2s, background 0.2s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-  }
-  .nav-links > a:hover, .drop-btn:hover, .dropdown:hover .drop-btn {
-    color: #ffffff;
-    background-color: #0f766e;
-  }
-  /* نظام القوائم المنسدلة المستقلة */
-  .dropdown {
-    position: relative;
-  }
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #ffffff;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 5px;
-  }
-  .dropdown-menu a {
-    color: #334155;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 13px;
-    border-bottom: 1px solid #f1f5f9;
-    text-align: right;
-    transition: background 0.2s, color 0.2s;
-  }
-  .dropdown-menu a:last-child {
-    border-bottom: none;
-  }
-  .dropdown-menu a:hover {
-    background-color: #f1f5f9;
-    color: #0f766e;
-    padding-right: 20px;
-  }
-  /* إظهار القائمة الخاصة بالزر المُشار إليه فقط */
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-</style>
-    <!-- مقال 2 -->
-    <!-- مقال 2 - مصحح + الزر الثالث -->
-<!-- مقال 2 - مصحح + الزر الثالث + حكمة اليوم -->
-<article class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all">
-  <div class="flex items-center justify-between gap-2 flex-wrap">
-    
-    <!-- اليمين - نفحات شعرية - كيدي لـ shi3r.html -->
-    <a href="shi3r.html" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">🌙 نفحات شعرية - حكمة اليوم</a>
-    
-    <!-- الوسط -->
-    <a href="hisn.html" class="bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-extrabold px-4 py-1.5 rounded-full transition">📿 حصن المسلم</a>
-    
-    <!-- اليسار -->
-    <a href="alba9yat.html" class="bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-extrabold px-4 py-1.5 rounded-full transition">🤲 الباقيات الصالحات</a>
-
-  </div>
-
-  <!-- زر حكمة اليوم الكبير -->
-  <a href="shi3r.html" class="block text-center mt-4 bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold text-sm py-3 rounded-xl transition">
-    🌙 حكمة اليوم - بيت شعري جديد كل يوم - اضغط هنا
-  </a>
-</article>
-<a href="alba9yat.html" style="display:block;text-align:center;background:#FFC107;color:#222;padding:14px;border-radius:14px;font-weight:900;text-decoration:none;margin:10px;">📥 افتح تطبيق الباقيات الصالحات</a>
-<!-- بطاقة اخترت لكم اليوم (توضع في الشريط الجانبي <aside> فوق إذاعة الرقية الشرعية) -->
-<div class="bg-gradient-to-b from-amber-50 to-white rounded-2xl shadow-sm border border-amber-200 p-5 text-center" dir="rtl">
-    <h4 class="font-extrabold text-emerald-900 mb-2 text-lg">✨ اخترت لكم اليوم ✨</h4>
-    <div id="daily-content" class="text-slate-700 text-sm leading-relaxed font-medium min-h-[70px] flex items-center justify-center">
-        <!-- المحتوى يظهر تلقائياً هنا -->
-    </div>
-    <div id="daily-date" class="text-[11px] text-amber-800 mt-3 pt-2 border-t border-amber-100 font-semibold"></div>
 </div>
 
-<script>
-    // جدول الأيام الـ 31 (مدمج بآيات قرآنية، أحاديث نبوية، وعيون الشعر العربي الأصيل)
-    const monthlyItems = {
-        1: "«اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي.»",
-        2: "من الشعر القوي: «لا تحسبن المجد تمراً أنت آكلهِ ... لن تبلغ المجد حتى تلعق الصبرا.»",
-        3: "آية العزم: «وَاصْبِرْ فَإِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ.»",
-        4: "«ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.»",
-        5: "من شواعر الحكمة: «لسانُكَ حصانُكَ إن صُنْتَهُ صَنَكَ وإن أهنتَهُ هانك.»",
-        6: "حديث الشرف: «إنما بُعثْتُ لأتمم مكارم الأخلاق.» (رواه أحمد)",
-        7: "«اللهم آتِ نفسي تقواها وزكّها أنت خير من زكّاها، أنت وليّها ومولاها.»",
-        8: "«لا حول ولا قوة إلا بالله العلي العظيم، كنز من كنوز الجنة.»",
-        9: "من الشعر الخالد: «ومن يجعلِ المعروفَ في غيرِ أهلهِ ... يكن حمدهُ ذماً عليهِ ويندمِ.»",
-        10: "آية النور: «اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ.»",
-        11: "حكمة بليغة: «خير الكلام ما قلّ ودلّ ولم يطل فيُملّ.»",
-        12: "من درر الشعر: «اصبر لكل مصيبة وتجلّ ... واعلم أن دهرك ليس بمخلد.»",
-        13: "«اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن.»",
-        14: "آية السكينة: «هُوَ الَّذِي أَنزَلَ السَّكِينَةَ فِي قُلُوبِ الْمُؤْمِنِينَ لِيَزْدَادُوا إِيمَانًا مَّعَ إِيمَانِهِمْ.»",
-        15: "من عيون البلاغة: «اللسان عاقل إن وُظف في الخير، وسيف إن أُطلق في الشر.»",
-        16: "«ربِّ أوزعني أن أشكر نعمتك التي أنعمت عليَّ وعلى والديَّ وأن أعمل صالحاً ترضاه.»",
-        17: "من الشعر الرفيع: «بالعلم والأخلاق تبنى الأوطان ... وتسمو النفوس وتعلو الأزمان.»",
-        18: "حديث عظيم: «من سلك طريقاً يلتمس فيه علماً سهّل الله له به طريقاً إلى الجنة.»",
-        19: "«اللهم اقسم لنا من خشيتك ما يحول بيننا وبين معاصيك.»",
-        20: "أثر بليغ: «رُبَّ سكوت أبلغ من كلام، ورُبَّ كلمة جلبَت خيراً عظيماً.»",
-        21: "آية التدبر: «أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَى قُلُوبٍ أَقْفَالُهَا.»",
-        22: "«ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.»",
-        23: "من عِبر الزمان: «تأمل في الطبيعة وسكونها ... يغذي الروح ويصفو به الذهن.»",
-        24: "شعر الحكمة: «إذا الإيمان ضاع فلا أمان ... ولا دنيا لمن لم يحي دينَا.»",
-        25: "«اللهم إني أسألك علماً نافعاً ورزقاً طيباً وعملاً متقبلاً.»",
-        26: "حكمة الخلود: «من أصلح سريرته أصلح الله علانيته وجعل له قبولاً في الأرض.»",
-        27: "روائع الأدب: «الكلمة الطيبة ترك أثراً كالشجرة الطيبة أصلها ثابت وفرعها في السماء.»",
-        28: "«حسبنا الله ونعم الوكيل، نعم المولى ونعم النصير.»",
-        29: "من درر المتنبي: «إذا غامرتَ في شرفٍ مرومِ ... فلا تقنعْ بما دونَ النجومِ.»",
-        30: "«اللهم صلِّ وسلم على نبينا محمد وعلى آله وصحبه أجمعين.»",
-        31: "خاتمة الشهر: «دوام الإحسان يوجب المحبة، وحسن الخلق يرفع الدرجات.»"
-    };
+<main class="page">
 
-    function loadDailyWisdom() {
-        const today = new Date();
-        const dayNumber = today.getDate();
-        const contentBox = document.getElementById('daily-content');
-        const dateBox = document.getElementById('daily-date');
-        
-        if (contentBox) {
-            contentBox.innerHTML = monthlyItems[dayNumber] || "«حسبنا الله ونعم الوكيل، نعم المولى ونعم النصير.»";
-        }
-        if (dateBox) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            dateBox.innerText = "📅 " + today.toLocaleDateString('ar-MA', options);
-        }
-    }
-
-    // تشغيل الدالة فور تحميل الصفحة
-    window.addEventListener('DOMContentLoaded', loadDailyWisdom);
-</script>
-  <!-- الشريط الجانبي (يسار) - يضم إذاعة الرقية الشرعية والقرآن -->
-  <aside class="space-y-6">
-    <!-- صندوق البث المباشر المدمج (الرقية الشرعية) -->
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 text-center">
-      <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">📻</div>
-      <h4 class="font-extrabold text-slate-800 mb-1">ينقل لكم الموقع إذاعة الرقية الشرعية</h4>
-      <p class="text-xs text-slate-500 mb-4">استماع مباشر على مدار الساعة</p>
-      <!-- مشغل الصوت المباشر -->
-      <audio id="liveRadio" controls class="w-full mb-3 rounded-lg">
-        <source src="https://qurango.net/radio/roqiah" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت المباشر.
-      </audio>
-      <div class="text-[11px] text-emerald-700 bg-emerald-50 py-1.5 rounded-lg font-bold">
-        🔴 بث حي مباشر
-      </div>
-    <!-- مشغل الصوت المباشر -->
-    <!-- الختمة السريعة للقرآن الكريم مع حفظ مكان السماع -->
-<div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 text-center">
-    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">🎧</div>
-    <h4 class="font-extrabold text-slate-800 mb-1">الختمة السريعة للقرآن الكريم</h4>
-    <p class="text-xs text-slate-500 mb-4">استماع مباشر لتلاوة مباركة مع حفظ مكان التوقف</p>
-    <!-- مشغل الصوت متضمنًا رابط الختمة ومعرف الاستئناف -->
-    <audio id="resumeAudio" controls class="w-full mb-3 rounded-lg">
-        <source src="https://ahmed-deban.com/Quran1/95/ahmed-deban478892.mp3" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت المباشر.
-    </audio>
-    <div class="text-[11px] text-emerald-700 bg-emerald-50 py-1.5 rounded-lg font-bold">
-        📖 تلاوة عطرة
-    </div>
-	<aside class="space-y-6">
-
-<!-- ===== رقم 5 : الصلاة في الشريط - تارودانت ===== -->
-<div style="background:#065f46;border-radius:15px;padding:15px;color:#fff;text-align:center;">
-  <h4 style="font-weight:900;margin:0;">🕌 أوقات الصلاة</h4>
-  <p style="font-size:12px;color:#a7f3d0;margin:4px 0 10px;">تارودانت - المغرب</p>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;">
-    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">الفجر<br><b id="t-Fajr">--:--</b></div>
-    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">الشروق<br><b id="t-Sunrise">--:--</b></div>
-    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">الظهر<br><b id="t-Dhuhr">--:--</b></div>
-    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">العصر<br><b id="t-Asr">--:--</b></div>
-    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">المغرب<br><b id="t-Maghrib">--:--</b></div>
-    <div style="background:rgba(255,255,255,.15);padding:7px;border-radius:10px;">العشاء<br><b id="t-Isha">--:--</b></div>
-  </div>
-
-  <div id="next-prayer" style="margin-top:10px;background:#fbbf24;color:#111;font-weight:900;font-size:13px;padding:8px;border-radius:10px;">جاري التحميل...</div>
-
-  <button onclick="enablePrayerReminder()" style="margin-top:8px;background:#fff;color:#065f46;font-weight:900;font-size:13px;padding:7px 12px;border-radius:20px;border:none;width:100%;">🔔 فعّل التذكير بالصلاة</button>
+<div>
+<section class="card">
+<h2>🌙 أذكار ونفحات</h2>
+<div class="in">
+<div class="row">
+<a class="btn light" href="shi3r.html">🌙 نفحات شعرية</a>
+<a class="btn gold" href="hisn.html">📿 حصن المسلم</a>
+<a class="btn" href="alba9yat.html">🤲 الباقيات الصالحات</a>
 </div>
-
-<script>
-let prayerData=null, reminderOn=false;
-async function loadPrayer(){
-const r=await fetch('https://api.aladhan.com/v1/timingsByCity?city=Taroudant&country=Morocco&method=5');
-const j=await r.json();
-prayerData=j.data.timings;
-['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'].forEach(k=>{
-document.getElementById('t-'+k).textContent=prayerData[k].slice(0,5);
-});
-setInterval(updateCountdown,1000);
-updateCountdown();
-}
-function updateCountdown(){
-if(!prayerData) return;
-const now=new Date();
-const names={Fajr:'الفجر',Dhuhr:'الظهر',Asr:'العصر',Maghrib:'المغرب',Isha:'العشاء'};
-let next=null, nextTime=null;
-for(const k of ['Fajr','Dhuhr','Asr','Maghrib','Isha']){
-const p=prayerData[k].slice(0,5).split(':');
-const d=new Date(); d.setHours(p[0],p[1],0,0);
-if(d>now){next=k;nextTime=d;break;}
-}
-if(!next){
-const p=prayerData['Fajr'].slice(0,5).split(':');
-nextTime=new Date(); nextTime.setDate(nextTime.getDate()+1);
-nextTime.setHours(p[0],p[1],0,0); next='Fajr';
-}
-const diff=nextTime-now;
-const h=Math.floor(diff/3600000);
-const m=Math.floor(diff%3600000/60000);
-const s=Math.floor(diff%60000/1000);
-document.getElementById('next-prayer').textContent='القادمة: '+names[next]+' بعد '+h+' س '+m+' د '+s+' ث';
-if(reminderOn && diff<2000){ alert('🕌 حان وقت صلاة '+names[next]); }
-}
-function enablePrayerReminder(){
-reminderOn=true;
-if('Notification' in window) Notification.requestPermission();
-alert('✅ التذكير مفعّل - تارودانت');
-}
-window.addEventListener('DOMContentLoaded', loadPrayer);
-</script>
-<!-- ===== نهاية الصلاة ===== -->
-
-<!-- من هنا كيبدا صندوق الرقية ديالك القديم -->
-    <script>
-        const audioPlayer = document.getElementById('resumeAudio');
-        const storageKey = 'quran_audio_position';
-        // استرجاع آخر نقطة توقف عندها المستمع عند فتح الصفحة
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTime = localStorage.getItem(storageKey);
-            if (savedTime) {
-                audioPlayer.currentTime = parseFloat(savedTime);
-            }
-        });
-        // حفظ الوقت تلقائياً أثناء الاستماع
-        audioPlayer.addEventListener('timeupdate', () => {
-            localStorage.setItem(storageKey, audioPlayer.currentTime);
-        });
-        // مسح التخزين إذا انتهت التلاوة تماماً
-        audioPlayer.addEventListener('ended', () => {
-            localStorage.removeItem(storageKey);
-        });
-    </script>
+<a class="btn gold block" href="shi3r.html">🌙 حكمة اليوم: بيت شعري جديد كل يوم، اضغط هنا</a>
+<a class="btn block" href="alba9yat.html">📥 افتح تطبيق الباقيات الصالحات</a>
 </div>
-</div>
-	<!--هل تحتاج إلى مساعدة  -->
-<div class="max-w-3xl mx-auto my-8 p-6 bg-white rounded-2xl shadow-xl border border-slate-200" dir="rtl">
-    <h3 class="text-lg font-bold text-slate-800 mb-4">💬 هل تحتاج إلى مساعدة</h3>
-    <div id="disqus_thread"></div>
-</div>
-<div class="max-w-3xl mx-auto my-8 p-6 bg-white rounded-2xl shadow-xl border border-slate-200" dir="rtl">
-    <h3 class="text-lg font-bold text-slate-800 mb-4">💬 تعليقات الزوار</h3>
-    <script src="https://utteranc.es/client.js"
-        repo="mashaallahtarbeyya-cpu/aitlahcen"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-    </script>
-</div>
-<!-- ===== زوار الروضة ===== -->
-<div style="text-align:center; padding:15px; background:#fff; border-radius:14px; margin:10px; font-weight:900; font-size:18px;">
-  زوار الروضة: 
-  <img src="https://komarev.com/ghpvc/?username=baqiyat-rawda&label=visits&color=065f46&style=flat" style="vertical-align:middle; height:24px;" alt="">
-</div>
-	 </div>
-<!-- ===== المكتبة الدينية - كبار العلماء ===== -->
-<section class="max-w-6xl mx-auto px-4 my-10" dir="rtl">
-  <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 text-center">
-    <h2 class="text-2xl font-extrabold text-emerald-900 mb-2">📚 المكتبة الدينية - كبار العلماء</h2>
-    <p class="text-sm text-slate-500 mb-6">13 كتابا، اقرأها داخل الموقع أو حمّلها مجانا</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
-
-     <!-- الزر الأول - القديم - خليتو كيما هو - لون ذهبي -->
-     <a href="https://archive.org/download/noor-book.com-11_202611/" target="_blank" class="block p-4 bg-amber-50 hover:bg-amber-100 rounded-xl border border-amber-100">
-       <b class="text-amber-900">📥 تحميل الكتب واحد بواحد</b>
-       <p class="text-xs text-slate-500 mt-1">اختر الكتاب اللي بغيتي و هبطو</p>
-     </a>
-
-      <!-- الزر الثاني - الجديد - لون أخضر - يهبط نيشان بلا مشكل كبير -->
-      <a href="https://archive.org/download/maktaba-waqfia/" target="_blank" class="block p-4 bg-emerald-50 hover:bg-emerald-100 rounded-xl border border-emerald-200">
-        <b class="text-emerald-900">📥 تحميل المكتبة كاملة PDF</b>
-        <p class="text-xs text-slate-500 mt-1">المكتبة الجديدة - زر واحد يهبط ليك كلشي</p>
-      </a>
-
-    </div>
-  </div>
 </section>
-<!-- زر البيري في الوسط بعنوان جديد -->
-<div style="text-align:center; padding:30px 15px; background:#000; border-radius:20px;">
 
-  <h2 style="color:#FFD700; font-size:28px; font-weight:bold; margin:0 0 10px 0; line-height:1.4;">
-    ✨ اخترت لك من أروع القصائد ✨
-  </h2>
-
-  <p style="color:#fff; font-size:17px; margin:0 0 20px 0;">
-    قصيدة ستبقى في قلبك... اضغط وشاهدها كاملة
-  </p>
-
-  <a href="https://youtu.be/HEYIcr8ODcI?si=OsgqT3Br7dRkRS9i" target="_blank" style="display:inline-block; background:#c00000; color:#fff; padding:16px 35px; border-radius:50px; font-weight:bold; font-size:19px; text-decoration:none; box-shadow:0 5px 20px rgba(255,0,0,0.5);">
-     ▶ شاهد المقطع كله من هنا
-  </a>
-
+<section class="card">
+<h2>📚 المكتبة الدينية - كبار العلماء</h2>
+<div class="in">
+<p style="margin-bottom:12px">13 كتابا، اقرأها داخل الموقع أو حمّلها مجانا</p>
+<div class="lib">
+<a class="a1" href="https://archive.org/download/noor-book.com-11_202611/" target="_blank" rel="noopener"><b>📥 تحميل الكتب واحدًا واحدًا</b><span>اختر الكتاب الذي تريد وحمّله</span></a>
+<a class="a2" href="https://archive.org/download/maktaba-waqfia/" target="_blank" rel="noopener"><b>📥 تحميل المكتبة كاملة PDF</b><span>زر واحد يحمّل لك كل المكتبة</span></a>
 </div>
-<!-- تذييل المدونة (Footer) -->
-<footer class="bg-slate-900 text-slate-300 py-8 mt-12 text-center text-xs">
-  <div class="max-w-6xl mx-auto px-4 space-y-2">
-    <p class="text-slate-500">.</p>
-  </div>
-	<!-- تذييل المدونة (Footer) مع روابط الصفحات الأساسية -->
-<footer class="bg-slate-900 text-slate-300 py-8 mt-12 text-center text-xs w-full">
-  <div class="max-w-6xl mx-auto px-4 space-y-4">
-    <!-- روابط الصفحات التعريفية والقانونية -->
-    <div class="flex justify-center flex-wrap gap-6 text-sm font-semibold text-emerald-400">
-      <a href="about-us.html" class="hover:text-white transition-colors">من نحن</a>
-      <a href="Privacy-Policy.html" class="hover:text-white transition-colors">سياسة الخصوصية</a>
-      <a href="Terms-of-Use.html" class="hover:text-white transition-colors">شروط الاستخدام</a>
-      <a href="Rawabit.html" class="hover:text-white transition-colors">اتصل بنا</a>
-    </div>
-    <div class="border-t border-slate-800 pt-4 space-y-1">
-      <p>موقع الأستاذ الحسن أيت الحسن &copy; 2026 - جميع الحقوق محفوظة للأستاذ</p>
-      <p class="text-slate-500">تم التصميم والتطوير خصيصاً لخدمة اللغة العربية</p>
-    </div>
-</footer>
-</body>
-	</html>
+</div>
+</section>
 
+<section class="poem">
+<h2>✨ اخترت لك من أروع القصائد ✨</h2>
+<p>قصيدة ستبقى في قلبك... اضغط وشاهدها كاملة</p>
+<a href="https://youtu.be/HEYIcr8ODcI?si=OsgqT3Br7dRkRS9i" target="_blank" rel="noopener">▶ شاهد المقطع كله من هنا</a>
+</section>
+</div>
+
+<aside>
+<section class="card">
+<h2>✨ اخترت لكم اليوم ✨</h2>
+<div class="in"><div id="daily-content"></div><div id="daily-date"></div></div>
+</section>
+
+<section class="card">
+<h2>📻 إذاعة الرقية الشرعية</h2>
+<div class="in">
+<p>استماع مباشر على مدار الساعة</p>
+<audio id="liveRadio" controls preload="none"><source src="https://qurango.net/radio/roqiah" type="audio/mpeg">متصفحك لا يدعم تشغيل الصوت.</audio>
+<span class="badge">🔴 بث حي مباشر</span>
+</div>
+</section>
+
+<section class="card">
+<h2>🎧 الختمة السريعة للقرآن الكريم</h2>
+<div class="in">
+<p>تلاوة مباركة مع حفظ مكان التوقف</p>
+<audio id="resumeAudio" controls preload="none"><source src="https://ahmed-deban.com/Quran1/95/ahmed-deban478892.mp3" type="audio/mpeg">متصفحك لا يدعم تشغيل الصوت.</audio>
+<span class="badge">📖 تلاوة عطرة</span>
+</div>
+</section>
+
+<section class="card">
+<h2>🕌 أوقات الصلاة - تارودانت</h2>
+<div class="in">
+<div class="pt">
+<div>الفجر<br><b id="t-Fajr">--:--</b></div><div>الشروق<br><b id="t-Sunrise">--:--</b></div>
+<div>الظهر<br><b id="t-Dhuhr">--:--</b></div><div>العصر<br><b id="t-Asr">--:--</b></div>
+<div>المغرب<br><b id="t-Maghrib">--:--</b></div><div>العشاء<br><b id="t-Isha">--:--</b></div>
+</div>
+<div id="next-prayer" aria-live="polite">جاري التحميل...</div>
+<button class="btn block" id="remind" style="width:100%;border:none;cursor:pointer;font-family:inherit">🔔 فعّل التذكير بالصلاة</button>
+</div>
+</section>
+</aside>
+
+<section class="card full">
+<h2>💬 تعليقات الزوار</h2>
+<div class="in" id="comments"></div>
+</section>
+
+<div class="card full"><div class="in counter">زوار الروضة: <img src="https://komarev.com/ghpvc/?username=baqiyat-rawda&label=visits&color=065f46&style=flat" alt="عداد الزوار" loading="lazy"></div></div>
+
+</main>
+
+<footer>
+<nav>
+<a href="about-us.html">من نحن</a>
+<a href="Privacy-Policy.html">سياسة الخصوصية</a>
+<a href="Terms-of-Use.html">شروط الاستخدام</a>
+<a href="Rawabit.html">اتصل بنا</a>
+</nav>
+<p>موقع الأستاذ الحسن أيت لحسن &copy; 2026 - جميع الحقوق محفوظة للأستاذ</p>
+<p>صُمم وطُوّر خصيصاً لخدمة اللغة العربية</p>
+</footer>
+
+<button class="top" aria-label="العودة إلى الأعلى" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+/* القائمة */
+var m=$('menu'),b=$('mb');
+b.onclick=function(){b.setAttribute('aria-expanded',m.classList.toggle('open'))};
+/* التاريخ */
+try{
+var d=new Date();
+$('dt').textContent=new Intl.DateTimeFormat('ar-u-ca-islamic-umalqura-nu-latn',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)+' - '+new Intl.DateTimeFormat('ar-u-nu-latn',{day:'numeric',month:'long',year:'numeric'}).format(d);
+}catch(e){}
+/* اخترت لكم اليوم */
+var W=[
+"«اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي.»",
+"من الشعر: «لا تحسبنَّ المجدَ تمراً أنتَ آكلُهُ ... لن تبلغَ المجدَ حتى تلعقَ الصَّبرا.»",
+"آية العزم: «وَاصْبِرْ فَإِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ.»",
+"«ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.»",
+"من الحكم: «لسانُكَ حصانُكَ إن صُنتَهُ صانَكَ وإن خُنتَهُ خانَكَ.»",
+"حديث الشرف: «إنما بُعثتُ لأتمم صالح الأخلاق.» (رواه أحمد)",
+"«اللهم آتِ نفسي تقواها وزكّها أنت خير من زكّاها، أنت وليّها ومولاها.»",
+"«لا حول ولا قوة إلا بالله، كنز من كنوز الجنة.»",
+"من الشعر الخالد: «ومن يجعلِ المعروفَ في غيرِ أهلهِ ... يكن حمدُهُ ذماً عليهِ ويندمِ.»",
+"آية النور: «اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ.»",
+"حكمة بليغة: «خير الكلام ما قلّ ودلّ ولم يطل فيُملّ.»",
+"من درر الشعر: «اصبرْ لكلِّ مصيبةٍ وتجلَّدِ ... واعلمْ بأنَّ المرءَ غيرُ مخلَّدِ.»",
+"«اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن.»",
+"آية السكينة: «هُوَ الَّذِي أَنزَلَ السَّكِينَةَ فِي قُلُوبِ الْمُؤْمِنِينَ لِيَزْدَادُوا إِيمَانًا مَّعَ إِيمَانِهِمْ.»",
+"من الحكم: «اللسان عاقلٌ إن وُظِّف في الخير، وسيفٌ إن أُطلق في الشر.»",
+"«ربِّ أوزعني أن أشكر نعمتك التي أنعمت عليَّ وعلى والديَّ وأن أعمل صالحاً ترضاه.»",
+"من الحكم: «بالعلم والأخلاق تُبنى الأوطان ... وتسمو النفوس وتعلو الأزمان.»",
+"حديث عظيم: «من سلك طريقاً يلتمس فيه علماً سهّل الله له به طريقاً إلى الجنة.» (رواه مسلم)",
+"«اللهم اقسم لنا من خشيتك ما يحول بيننا وبين معاصيك.»",
+"أثر بليغ: «رُبَّ سكوتٍ أبلغُ من كلام، ورُبَّ كلمةٍ جلبت خيراً عظيماً.»",
+"آية التدبر: «أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَىٰ قُلُوبٍ أَقْفَالُهَا.»",
+"«ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.»",
+"من درر الشعر: «وما نيلُ المطالبِ بالتمنِّي ... ولكنْ تُؤخذُ الدنيا غِلابا.» (أحمد شوقي)",
+"من الحكم: «إذا الإيمانُ ضاعَ فلا أمانَ ... ولا دنيا لمن لم يُحيِ دينا.»",
+"«اللهم إني أسألك علماً نافعاً ورزقاً طيباً وعملاً متقبلاً.»",
+"حكمة الخلود: «من أصلح سريرته أصلح الله علانيته.»",
+"روائع الأدب: «الكلمة الطيبة كالشجرة الطيبة أصلها ثابت وفرعها في السماء.»",
+"«حسبنا الله ونعم الوكيل، نعم المولى ونعم النصير.»",
+"من درر المتنبي: «إذا غامرتَ في شرفٍ مرومِ ... فلا تقنعْ بما دونَ النجومِ.»",
+"«اللهم صلِّ وسلم على نبينا محمد وعلى آله وصحبه أجمعين.»",
+"خاتمة الشهر: «دوام الإحسان يوجب المحبة، وحسن الخلق يرفع الدرجات.»"];
+$('daily-content').textContent=W[new Date().getDate()-1];
+$('daily-date').textContent='📅 '+new Intl.DateTimeFormat('ar-MA-u-nu-latn',{year:'numeric',month:'long',day:'numeric'}).format(new Date());
+/* أوقات الصلاة */
+var P=null,on=false,fired='',N={Fajr:'الفجر',Dhuhr:'الظهر',Asr:'العصر',Maghrib:'المغرب',Isha:'العشاء'};
+function notify(t){try{if('Notification' in window&&Notification.permission==='granted'){new Notification(t);return}}catch(e){}alert(t)}
+function tick(){
+if(!P)return;
+var now=new Date(),nx=null,nt=null,k,p,x;
+for(k in N){p=P[k].slice(0,5).split(':');x=new Date();x.setHours(+p[0],+p[1],0,0);if(x>now){nx=k;nt=x;break}}
+if(!nx){p=P.Fajr.slice(0,5).split(':');nt=new Date();nt.setDate(nt.getDate()+1);nt.setHours(+p[0],+p[1],0,0);nx='Fajr'}
+var df=nt-now,h=Math.floor(df/3600000),mi=Math.floor(df%3600000/60000),s=Math.floor(df%60000/1000);
+$('next-prayer').textContent='القادمة: '+N[nx]+' بعد '+h+' س '+mi+' د '+s+' ث';
+if(on&&df<1500&&fired!==nx+nt.getDate()){fired=nx+nt.getDate();notify('🕌 حان وقت صلاة '+N[nx])}
+}
+fetch('https://api.aladhan.com/v1/timingsByCity?city=Taroudant&country=Morocco&method=21')
+.then(function(r){return r.json()})
+.then(function(j){P=j.data.timings;['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'].forEach(function(k){$('t-'+k).textContent=P[k].slice(0,5)});setInterval(tick,1000);tick()})
+.catch(function(){$('next-prayer').textContent='تعذّر تحميل المواقيت، حدّث الصفحة'});
+$('remind').onclick=function(){on=true;try{if('Notification' in window)Notification.requestPermission()}catch(e){}alert('✅ التذكير مفعّل - تارودانت (أبقِ الصفحة مفتوحة)')};
+/* الختمة: حفظ مكان التوقف */
+var a=$('resumeAudio'),key='quran_audio_position',last=0;
+try{
+a.addEventListener('loadedmetadata',function(){var v=parseFloat(localStorage.getItem(key));if(v>0&&v<a.duration)a.currentTime=v});
+a.addEventListener('timeupdate',function(){var s=Math.floor(a.currentTime);if(s!==last){last=s;localStorage.setItem(key,a.currentTime)}});
+a.addEventListener('ended',function(){localStorage.removeItem(key)});
+}catch(e){}
+/* التعليقات */
+var u=document.createElement('script');
+u.src='https://utteranc.es/client.js';
+u.setAttribute('repo','mashaallahtarbeyya-cpu/aitlahcen');
+u.setAttribute('issue-term','pathname');
+u.setAttribute('theme','github-light');
+u.crossOrigin='anonymous';u.async=true;
+$('comments').appendChild(u);
+})();
+</script>
+</body>
+</html>
